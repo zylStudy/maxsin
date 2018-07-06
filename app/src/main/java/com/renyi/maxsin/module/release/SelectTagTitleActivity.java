@@ -249,7 +249,7 @@ public class SelectTagTitleActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("user_id", "1");
         map.put("key", Api.KEY);
-        map.put("title", "title");
+        map.put("title", etTitle.getText().toString().trim());
         map.put("description", "description");
         map.put("type_id", "1");
         map.put("tag_name", "tag_name");
