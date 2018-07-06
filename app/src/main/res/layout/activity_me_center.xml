@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleGravity="center"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center|bottom"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="."
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@color/white"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_me_bg"/>
+
+                <ImageView
+                    android:id="@+id/headImageView"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="167dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/headImageView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="张玉良"
+                    android:textColor="@color/color3"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="张玉良"
+                    android:textColor="@color/color8"
+                    android:textSize="12sp"
+                    />
+
+                <RelativeLayout
+                    android:id="@+id/butrel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/info"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp">
+
+
+                    <TextView
+                        android:id="@+id/cline"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:layout_centerHorizontal="true"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/follow"
+                        android:layout_width="80dp"
+                        android:layout_height="28dp"
+                        android:layout_below="@+id/cline"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_toStartOf="@+id/cline"
+                        android:background="@drawable/shap_null_center_layout"
+                        android:gravity="center"
+                        android:text="关注"
+                        android:textColor="@color/colorOuteb4161"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/letter"
+                        android:layout_width="80dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginStart="28dp"
+                        android:layout_toEndOf="@+id/cline"
+                        android:background="@drawable/shap_null_center_layout"
+                        android:gravity="center"
+                        android:text="私信"
+                        android:textColor="@color/colorOuteb4161"
+                        android:textSize="12sp"/>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/butrel"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="66"
+                            android:textColor="@color/color3"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv01"
+                            android:layout_marginTop="3dp"
+                            android:text="人气"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/color6"
+                            android:textSize="12sp"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="88"
+                            android:textColor="@color/color3"
+                            android:textSize="16sp"
+                            android:layout_centerHorizontal="true"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@+id/tv02"
+                            android:layout_below="@+id/tv02"
+                            android:layout_marginTop="3dp"
+                            android:text="关注"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/color6"
+                            android:textSize="12sp"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="22"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/color3"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv03"
+                            android:layout_marginTop="3dp"
+                            android:text="粉丝"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/color6"
+                            android:textSize="12sp"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/layout"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colore1"
+                    />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:titleTextColor="@color/white"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="_"
+                />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <RelativeLayout
+            android:id="@+id/study_rel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            app:layout_scrollFlags="exitUntilCollapsed"
+            >
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/line"
+                android:background="@color/white"
+                tl:tl_indicator_color="@color/colorOuteb4161"
+                tl:tl_indicator_width="25dp"
+                tl:tl_tab_space_equal="true"
+                tl:tl_textSelectColor="@color/color3"
+                tl:tl_textUnselectColor="@color/color9"
+                tl:tl_textsize="16sp"
+                app:tl_textBold="BOTH"
+                tl:tl_underline_height="3dp"/>
+
+        </RelativeLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_contlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

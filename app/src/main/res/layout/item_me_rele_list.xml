@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.renyi.maxsin.view.swipe.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:ios="false"
+    app:leftSwipe="true"
+    app:swipeEnable="true"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/rellayout"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shap_line_layout"
+            >
+
+
+            <ImageView
+                android:id="@+id/cover_image"
+                android:layout_width="140dp"
+                android:layout_height="110dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/cover_image"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="2"
+                android:text="基础课"
+                android:textColor="@color/color48"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/cover_image"
+                android:maxLines="2"
+                android:text="2017.04.27"
+                android:textColor="@color/color8"
+                android:textSize="12sp"/>
+
+
+            <TextView
+                android:id="@+id/likenum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cover_image"
+                android:layout_toRightOf="@+id/cover_image"
+                android:text="2017.04.27"
+                android:maxLength="8"
+                android:textColor="@color/color8"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/joinnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cover_image"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="6dp"
+                android:text="2017.04.27"
+                android:textColor="@color/color8"
+                android:textSize="12sp"/>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/joinnum"
+                android:layout_marginTop="15dp"
+                />
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="140dp"
+            android:layout_height="110dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:scaleType="centerCrop"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorOuteb4161"
+        android:text="删除"
+        android:textColor="@android:color/white"/>
+</com.renyi.maxsin.view.swipe.SwipeMenuLayout>

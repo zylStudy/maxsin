@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_study_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基础课进度"
+            android:textColor="@color/color3"
+            android:textSize="15sp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_study_base"
+            android:background="@color/colorfa">
+
+            <TextView
+                android:id="@+id/tv_study_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="已完成"
+                android:textColor="@color/colora3"
+                android:textSize="12sp"
+                />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_study_base_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_study_base"
+            android:layout_marginTop="6dp"
+            android:text="3/4已完成"
+            android:textColor="@color/colora3"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_study_base_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_study_base_status"
+            android:layout_alignParentRight="true"
+            android:text="0%"
+            android:textColor="@color/color48"
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            />
+
+        <com.renyi.maxsin.view.CBProgressBar
+            android:id="@+id/tv_study_base_pro"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_below="@+id/tv_study_base_status"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            cb:isHorizonStroke="true"
+            cb:percent_text_size="@dimen/percent_text_size_large"
+            cb:progressBarBgColor="@color/colorec"
+            cb:progressColor="#ff0000"
+            cb:rect_round="@dimen/horizontal_corner"
+            cb:showPercentSign="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tv_study_base_pro"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

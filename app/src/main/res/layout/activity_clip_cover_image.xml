@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/black"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/head_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="选择封面"
+            android:textColor="@color/color3"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <RelativeLayout
+            android:id="@+id/back_rel"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/ic_back_bg"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/next_rel"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="visible">
+
+
+            <TextView
+                android:id="@+id/operation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="下一步"
+                android:textColor="@color/colorOuteb4161"
+                android:textSize="15sp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colore1"
+            />
+    </RelativeLayout>
+
+
+
+
+    <!--圆形裁剪框示例
+        app:clipBorderWidth="5dp"     ： 裁剪框边框宽度
+        app:clipType="circle"         ： 裁剪框类型为圆形
+        app:mHorizontalPadding="30dp" ：裁剪框距离左右边距为30dp
+     -->
+    <com.renyi.maxsin.view.headpic.ClipViewLayout
+        android:id="@+id/clipViewLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:clipBorderWidth="2dp"
+        app:clipType="circle"
+        android:visibility="gone"
+        app:mHorizontalPadding="30dp"/>
+
+    <!--矩形裁剪框示例 -->
+    <com.renyi.maxsin.view.headpic.ClipViewLayout
+        android:id="@+id/clipViewLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:clipBorderWidth="0dp"
+        app:clipType="rectangle"
+        app:mHorizontalPadding="0dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/colorPrimary">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/add_image"
+            android:layout_marginRight="15dp"
+            android:divider="@null"
+            android:scrollbars="none"/>
+
+        <ImageView
+            android:id="@+id/add_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/ic_add_image_bg"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

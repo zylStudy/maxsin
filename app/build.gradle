@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'com.mob.sdk'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.renyi.maxsin"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    MobSDK {
+        appKey "24b93268203e0"
+        appSecret "387b160271bccfceac32825da4c2aba0"
+
+        ShareSDK {
+            //平台配置信息
+            devInfo {
+                SinaWeibo {
+                    appKey "338123447"
+                    appSecret "82b356d9f69daf04fd70676cab6e234a"
+                    callbackUri "https://sns.whalecloud.com/sina2/callback"
+                    shareByAppClient false
+                }
+                Wechat {
+                    appId "wx11be49c1ffc3ea68"
+                    appSecret "2c13d37477489cdf5645f6f4eaf814bc"
+                }
+                WechatMoments {
+                    appId "wx11be49c1ffc3ea68"
+                    appSecret "2c13d37477489cdf5645f6f4eaf814bc"
+                }
+                QQ {
+                    appId "100371282"
+                    appKey "aed9b0303e3ed1e27bae87c33761161d"
+                }
+                QZone {
+                    appId "100371282"
+                    appKey "aed9b0303e3ed1e27bae87c33761161d"
+                }
+
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.squareup.okio:okio:1.11.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.androidkun:XTabLayout:1.1.3'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    compile 'com.android.support:design:26.0.0-alpha1'
+
+//     compile project(':richtextlibrary')
+//    compile project(':picture_library')
+
+//    compile 'cn.bingoogolapple:bga-photopicker:1.2.8@aar'
+//    compile 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+//    compile 'pub.devrel:easypermissions:1.0.1'
+    // compile 'cn.finalteam.rxgalleryfinal:library:1.1.3'
+    //  compile 'com.yuyh.imgsel:library:2.0.3'
+
+    //   compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+
+
+    compile 'pub.devrel:easypermissions:0.2.0'
+    // -------------------- 以下4个库是必须依赖的 ----------------------------
+    compile 'cn.bingoogolapple:bga-photopicker:1.1.4@aar'
+    compile 'cn.bingoogolapple:bga-adapter:1.1.0@aar'
+
+    //图片压缩
+    compile 'me.shaohui.advancedluban:library:1.3.2'
+}

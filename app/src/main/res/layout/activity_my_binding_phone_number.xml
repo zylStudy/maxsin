@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_binding_phone_number"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.renyi.maxsin.module.me.MyBindingPhoneNumberActivity">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/ic_binding_phone_bg"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv1"
+            android:gravity="center"
+            android:shadowRadius="3"
+            android:text="13681099127"
+            android:textColor="@color/colorOuteb4161"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:shadowRadius="3"
+            android:text="当前手机号："
+            android:textColor="@color/color3"
+            android:textSize="18sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="●"
+        android:textColor="@color/color9"
+        android:textSize="6sp"/>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@+id/tv2"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="更换后当前课程、收藏等信息不变，修改后须使用新手机号登录。"
+        android:textColor="@color/color9"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="●"
+        android:textColor="@color/color9"
+        android:textSize="6sp"/>
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv3"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/tv5"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="仅支持修改到未注册手机号，如手机号已注册，请退出当前账号，并登录要修改到的手机号进行注销。"
+        android:textColor="@color/color9"
+        android:textSize="14sp"/>
+<View
+    android:id="@+id/line"
+    android:layout_width="wrap_content"
+    android:layout_height="1dp"
+    android:layout_alignParentBottom="true"
+
+    />
+    <TextView
+        android:id="@+id/bt_change"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@+id/line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center"
+        android:text="更换手机号"
+        android:background="@drawable/shape_bt_hl"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_release_image_and_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.renyi.maxsin.module.release.ReleaseImageAndTextActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rel"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <com.renyi.maxsin.view.richtext.RichEditText
+                android:id="@+id/edit_richtext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:fadingEdge="none"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:textColor="#797979"
+
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/imagerel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rel"
+        android:background="@color/white"
+        >
+        <TextView
+            android:id="@+id/tv01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/color6"
+            android:textSize="14sp"
+            android:text="请选择你要发布的信息类型，\n使用一下工具将您的内容添加到您的项目"
+            />
+
+        <TextView
+            android:id="@+id/tv02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_above="@+id/tv01"
+            android:lineSpacingExtra="3dp"
+            android:text="开始创建"
+            android:textColor="@color/color3"
+            android:textSize="16sp"
+            android:layout_marginBottom="6dp"
+            />
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/tv02"
+            android:layout_marginBottom="8dp"
+            android:background="@mipmap/ic_push_work_bg"/>
+        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="22dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/ic_insert_image_bg"/>
+
+        <ImageView
+            android:id="@+id/text"
+            android:layout_width="17dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/image"
+
+            android:background="@mipmap/ic_instert_word_bg"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

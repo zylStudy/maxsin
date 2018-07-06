@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        >
+
+
+        <ImageView
+            android:id="@+id/cover_image"
+            android:layout_width="140dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
+            />
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/cover_image"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="2"
+            android:text="基础课"
+            android:textColor="@color/color48"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/cover_image"
+            android:text="2017.04.27"
+            android:textColor="@color/color8"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/cover_image"
+            android:text="2017.04.27"
+            android:textColor="@color/color8"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/likenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cover_image"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/cover_image"
+            android:text="2017.04.27"
+            android:textColor="@color/color8"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/joinnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/cover_image"
+            android:layout_alignParentRight="true"
+            android:text="2017.04.27"
+            android:textColor="@color/color8"
+            android:textSize="12sp"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/joinnum"
+            android:layout_marginTop="15dp"
+            android:background="@color/colore1"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

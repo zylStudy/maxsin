@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:layout_gravity="center_horizontal"
+            >
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_height="40dp">
+
+
+    <TextView
+        android:id="@+id/tv_pay1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:maxLength="1"
+        android:background="@color/colorf0f4"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_pay2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:layout_toRightOf="@+id/tv_pay1"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorf0f4"
+        android:maxLength="1"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_pay3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_pay2"
+        android:maxLength="1"
+        android:background="@color/colorf0f4"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/tv_pay4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_pay3"
+        android:maxLength="1"
+        android:background="@color/colorf0f4"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/tv_pay5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_pay4"
+        android:maxLength="1"
+        android:background="@color/colorf0f4"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_pay6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:inputType="phone"
+        android:layout_toRightOf="@+id/tv_pay5"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorf0f4"
+        android:maxLength="1"
+        android:textSize="20sp"/>
+
+</RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        >
+
+
+        <ImageView
+            android:id="@+id/cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:scaleType="centerCrop"
+            />
+
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cover_image"
+            android:text="基础课"
+            android:maxLines="2"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/color48"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp"
+            android:textSize="17sp"/>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/title">
+
+            <ImageView
+                android:id="@+id/sImage"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:src="@mipmap/ic_act_list_time_bg"/>
+
+            <ImageView
+                android:id="@+id/pImage"
+                android:layout_width="12dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/time"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/ic_act_list_pos_bg"/>
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@+id/pImage"
+                android:maxLines="1"
+                android:text="北京"
+                android:textColor="@color/color8"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:maxLines="1"
+                android:text="2018-9-8"
+                android:textColor="@color/color8"
+                android:textSize="14sp"
+                android:layout_alignBaseline="@+id/position"
+                android:layout_alignBottom="@+id/position"
+                android:layout_toEndOf="@+id/sImage"/>
+
+
+        </RelativeLayout>
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/rel"
+            android:layout_marginTop="15dp"
+            android:background="@color/colore1"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

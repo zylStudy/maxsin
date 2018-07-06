@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cb="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_base"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="18dp"
+                >
+
+
+                <ImageView
+                    android:id="@+id/cover_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.75"
+                    android:background="@drawable/shape_study_briefing_layout"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/head_image"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:scaleType="centerCrop"
+                        />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/head_image"
+                        android:lineSpacingExtra="3dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                         />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true">
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="15dp"
+                            android:text="本周课程总数"
+                            android:textColor="@color/color9"
+                            android:textSize="15sp"
+                            />
+
+
+                        <TextView
+                            android:id="@+id/class_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/tv01"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="6dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="15dp"
+                            android:text="本周待上课"
+                            android:textColor="@color/color9"
+                            android:textSize="15sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/time_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/tv02"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="6dp"
+                            android:maxLength="6"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tv07"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="15dp"
+                            android:text="本周已上课"
+                            android:textColor="@color/color9"
+                            android:textSize="15sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/stu_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/tv07"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="6dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            <!--  添加我的学习进度   -->
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+
+                android:layout_marginTop="25dp"
+                android:background="@color/colore1"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_study_process"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:layout_marginTop="25dp"
+                android:text="我的学习进度"
+                android:textColor="@color/color3"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/tv_study_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="基础课进度"
+                    android:textColor="@color/color3"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_base_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_study_base"
+                    android:layout_marginTop="2dp"
+                    android:text="3/4已完成"
+                    android:textColor="@color/colora3"
+                    android:textSize="13sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_base_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_study_base_status"
+                    android:layout_alignParentRight="true"
+                    android:text="0%"
+                    android:textColor="@color/color48"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <com.renyi.maxsin.view.CBProgressBar
+                    android:id="@+id/tv_study_base_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_below="@+id/tv_study_base_status"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    cb:isHorizonStroke="true"
+                    cb:percent_text_size="@dimen/percent_text_size_large"
+                    cb:progressBarBgColor="@color/colorec"
+                    cb:progressColor="#ff0000"
+                    cb:rect_round="@dimen/horizontal_corner"
+                    cb:showPercentSign="true"/>
+            </RelativeLayout>
+
+            <!--基础项目进度-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_study_base_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="课时项目进度"
+                    android:textColor="@color/color3"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_base_project_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_study_base_project"
+                    android:layout_marginTop="2dp"
+                    android:text="3/4已完成"
+                    android:textColor="@color/colora3"
+                    android:textSize="13sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_base_project_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_study_base_project_status"
+                    android:layout_alignParentRight="true"
+                    android:text="0%"
+                    android:textColor="@color/color48"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <com.renyi.maxsin.view.CBProgressBar
+                    android:id="@+id/tv_study_base_project_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_below="@+id/tv_study_base_project_status"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    cb:isHorizonStroke="true"
+                    cb:percent_text_size="@dimen/percent_text_size_large"
+                    cb:progressBarBgColor="@color/colorec"
+                    cb:progressColor="#ff0000"
+                    cb:rect_round="@dimen/horizontal_corner"
+                    cb:showPercentSign="true"/>
+            </RelativeLayout>
+
+            <!--课时项目课进度-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_study_course_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="普通项目进度"
+                    android:textColor="@color/color3"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_course_project_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_study_course_project"
+                    android:layout_marginTop="2dp"
+                    android:text="3/4已完成"
+                    android:textColor="@color/colora3"
+                    android:textSize="13sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_course_project_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_study_course_project_status"
+                    android:layout_alignParentRight="true"
+                    android:text="0%"
+                    android:textColor="@color/color48"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <com.renyi.maxsin.view.CBProgressBar
+                    android:id="@+id/tv_study_course_project_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_below="@+id/tv_study_course_project_status"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    cb:isHorizonStroke="true"
+                    cb:percent_text_size="@dimen/percent_text_size_large"
+                    cb:progressBarBgColor="@color/colorec"
+                    cb:progressColor="#ff0000"
+                    cb:rect_round="@dimen/horizontal_corner"
+                    cb:showPercentSign="true"/>
+            </RelativeLayout>
+            <!--排版课进度-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_study_typesetting_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="排版课进度"
+                    android:textColor="@color/color3"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_typesetting_project_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_study_typesetting_project"
+                    android:layout_marginTop="2dp"
+                    android:text="3/4已完成"
+                    android:textColor="@color/colora3"
+                    android:textSize="13sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_study_typesetting_project_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_study_typesetting_project_status"
+                    android:layout_alignParentRight="true"
+                    android:text="0%"
+                    android:textColor="@color/color48"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <com.renyi.maxsin.view.CBProgressBar
+                    android:id="@+id/tv_study_typesetting_project_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_below="@+id/tv_study_typesetting_project_status"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    cb:isHorizonStroke="true"
+                    cb:percent_text_size="@dimen/percent_text_size_large"
+                    cb:progressBarBgColor="@color/colorec"
+                    cb:progressColor="#ff0000"
+                    cb:rect_round="@dimen/horizontal_corner"
+                    cb:showPercentSign="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</RelativeLayout>

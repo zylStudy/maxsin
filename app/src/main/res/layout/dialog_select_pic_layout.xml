@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_welcome"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout01"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_select_pic"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="选择更换图片方式"
+            android:textColor="@color/color6"
+            android:textSize="14sp"/>
+
+        <View
+            android:id="@+id/line02"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/text"
+            android:background="#C9C9CB"/>
+
+        <TextView
+            android:id="@+id/btn_camera"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/line02"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="拍照"
+            android:textColor="@color/color3"
+            android:textSize="15sp"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/btn_camera"
+            android:background="#C9C9CB"/>
+
+        <TextView
+            android:id="@+id/btn_photo"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_below="@+id/line"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="相册"
+            android:textColor="@color/color3"
+            android:textSize="15sp"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout01"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        >
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_select_pic"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/color9"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
