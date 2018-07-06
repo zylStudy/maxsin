@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
     protected void initIncludeView() {
-
+//cccc
 
         RelativeLayout contentView = (RelativeLayout) LayoutInflater.from(this).inflate(getLayoutId(), null);
         contentLayout.addView(contentView);
