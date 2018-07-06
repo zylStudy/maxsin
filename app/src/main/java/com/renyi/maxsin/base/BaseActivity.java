@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setOnClickListeners();
 
     }
-
+///////////////////////////
     protected void initIncludeView() {
 
 
