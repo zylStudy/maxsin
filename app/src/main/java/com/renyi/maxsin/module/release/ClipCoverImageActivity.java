@@ -74,10 +74,12 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
     //图片多选
     private static final int REQUEST_CODE_CHOOSE_PHOTO = 1;
     private File tempFile;
+    public static ClipCoverImageActivity clipCoverImageActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        clipCoverImageActivity = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_clip_cover_image);
@@ -251,7 +253,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
             case REQUEST_CAPTURE: //调用系统相机返回
                 if (resultCode == RESULT_OK) {
                     String cropImage = getRealFilePathFromUri(ClipCoverImageActivity.this, Uri.fromFile(tempFile));
-                    pathList.add(0,cropImage);
+                    pathList.add(0, cropImage);
                     adapter.notifyDataSetChanged();
 
 
@@ -264,7 +266,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
                 if (resultCode == RESULT_OK) {
                     Uri uri = intent.getData();
                     String cropImage = getRealFilePathFromUri(ClipCoverImageActivity.this, uri);
-                    pathList.add(0,cropImage);
+                    pathList.add(0, cropImage);
                     adapter.notifyDataSetChanged();
                     clipViewLayout2.setVisibility(View.GONE);
                     clipViewLayout2.setVisibility(View.VISIBLE);

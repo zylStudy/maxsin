@@ -114,6 +114,8 @@
         </activity>
         <activity android:name=".module.release.SelectTagTitleActivity">
         </activity>
+        <activity android:name=".module.release.SelectTypeActivity">
+        </activity>
     </application>
 
 </manifest>

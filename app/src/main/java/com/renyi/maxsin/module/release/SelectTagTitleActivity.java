@@ -2,11 +2,13 @@ package com.renyi.maxsin.module.release;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.shaohui.advancedluban.Luban;
 import rx.functions.Action1;
 
@@ -40,6 +43,8 @@ public class SelectTagTitleActivity extends BaseActivity {
     String htmlStr = "", coverImagePath = "";
     @BindView(R.id.et_title)
     EditText etTitle;
+    @BindView(R.id.et_info)
+    EditText etInfo;
     @BindView(R.id.et_tag)
     EditText etTag;
     @BindView(R.id.bt_clear_phone)
@@ -53,11 +58,13 @@ public class SelectTagTitleActivity extends BaseActivity {
     @BindView(R.id.tag_flowlayout_aways)
     TagFlowLayout tagFlowlayoutAways;
     TagAdapter adapter2, adapter;
+    @BindView(R.id.push_rel)
+    RelativeLayout pushRel;
+    String flage = "1", tage = "";
     private String[] mVals = new String[]
 
             {"平面设计", "UI设计", "插画", "摄影", "景观设计", "建筑设计"
             };
-    private String[] addVals = new String[5];
     private List<File> fileList = new ArrayList<>();
     private List<String> list = new ArrayList<>();
     private List<String> clearList = new ArrayList<>();
@@ -147,8 +154,28 @@ public class SelectTagTitleActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == 0) {
+            flage = data.getExtras().getString("flage");
+        }
+    }
+
     @Override
     protected void setOnClickListeners() {
+        pushRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectTagTitleActivity.this, SelectTypeActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("flage", flage);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, 0);
+            }
+        });
         adapter.setOnTagChangedListener(new TagPositionInterface() {
             @Override
             public void getTagPosition(int position) {
@@ -184,62 +211,68 @@ public class SelectTagTitleActivity extends BaseActivity {
         setclickListener(new ClickListener() {
             @Override
             public void getClickListener() {
-                postDate();
+
+                if (etTitle.getText().toString().isEmpty()) {
+                    //                    tage
+                    Toast.makeText(SelectTagTitleActivity.this, "标题不能为空", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    if (etInfo.getText().toString().isEmpty()) {
+                        Toast.makeText(SelectTagTitleActivity.this, "描述不能为空", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        if (list.size() == 0) {
+                            Toast.makeText(SelectTagTitleActivity.this, "标签不能为空", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+                            StringBuffer stringBuffer = new StringBuffer();
+                            for (int i = 0; i < list.size(); i++) {
+                                stringBuffer.append(list.get(i) + "，");
+                            }
+                            tage = new String(stringBuffer);
+                            tage = tage.substring(0, tage.length() - 1);
+                            postDate();
+                        }
+                    }
+                }
+
+
             }
         });
         btSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(etTag.getText().toString().trim())) {
+
                     if (list.size() < 5) {
-                        if (list.size() == 0) {
-                            list.add(etTag.getText().toString().trim());
-                            tvNum.setText("作品标签" + "(" + list.size() + "/5)");
-                            etTag.setText("");
-                            for (int i = 0; i < clearList.size(); i++) {
-                                if (clearList.get(i).equals(etTag.getText().toString().trim())) {
-                                    clearList.remove(i);
-                                }
-                            }
-                            adapter.notifyDataChanged();
-                            adapter2.notifyDataChanged();
-
-                        } else {
-
-
-                            for (int i = 0; i < list.size(); i++) {
-
-
-                                if (!list.get(i).equals(etTag.getText().toString().trim())) {
-                                    list.add(etTag.getText().toString().trim());
-                                    tvNum.setText("作品标签" + "(" + list.size() + "/5)");
-                                    etTag.setText("");
-
-                                    for (int j = 0; j < clearList.size(); j++) {
-                                        if (clearList.get(j).equals(etTag.getText().toString().trim())) {
-                                            clearList.remove(j);
-                                        }
-                                    }
-
-
-                                } else {
-                                    Toast.makeText(SelectTagTitleActivity.this, "标签已被添加", Toast.LENGTH_SHORT).show();
-                                    etTag.setText("");
-
-                                }
-
+                        for (int i = 0; i < clearList.size(); i++) {
+                            if (clearList.get(i).equals(etTag.getText().toString().trim())) {
+                                clearList.remove(i);
                             }
                         }
+
+                        for (int i = 0; i < list.size(); i++) {
+                            if (list.get(i).equals(etTag.getText().toString().trim())) {
+                                list.remove(i);
+                                Toast.makeText(SelectTagTitleActivity.this, "标签已被添加", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        list.add(etTag.getText().toString().trim());
+                        tvNum.setText("作品标签" + "(" + list.size() + "/5)");
+                        etTag.setText("");
                         adapter.notifyDataChanged();
                         adapter2.notifyDataChanged();
+
                     } else {
                         Toast.makeText(SelectTagTitleActivity.this, "最多只能添加5个标签", Toast.LENGTH_SHORT).show();
+
                     }
                 } else {
-                    Toast.makeText(SelectTagTitleActivity.this, "标签不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectTagTitleActivity.this, "输入标签不能为空", Toast.LENGTH_SHORT).show();
 
                 }
-
 
             }
         });
@@ -252,9 +285,9 @@ public class SelectTagTitleActivity extends BaseActivity {
         map.put("user_id", "1");
         map.put("key", Api.KEY);
         map.put("title", etTitle.getText().toString().trim());
-        map.put("description", "description");
-        map.put("type_id", "1");
-        map.put("tag_name", "tag_name");
+        map.put("description", etInfo.getText().toString().trim());
+        map.put("type_id", flage);
+        map.put("tag_name", tage);
         map.put("c_content", htmlStr);
         map.put("0cover_img", coverImagePath);
         for (int i = 0; i < pathListPost.size(); i++) {
@@ -274,7 +307,9 @@ public class SelectTagTitleActivity extends BaseActivity {
             @Override
             public void onSuccess(Response response, ReturnBean resultBean) {
                 if (resultBean.getCode().equals("800")) {
-
+                    ClipCoverImageActivity.clipCoverImageActivity.finish();
+                    ReleaseImageAndTextActivity.releaseImageAndTextActivity.finish();
+                    finish();
 
                 } else {
                 }
@@ -289,4 +324,10 @@ public class SelectTagTitleActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

@@ -72,9 +72,10 @@ public class ReleaseImageAndTextActivity extends BaseActivity {
     private static final int REQUEST_CODE_CHOOSE_PHOTO = 1;
     private File tempFile;
     ArrayList<String> selectedImages = new ArrayList<>();
-
+    public static ReleaseImageAndTextActivity releaseImageAndTextActivity;
     @Override
     protected int getLayoutId() {
+        releaseImageAndTextActivity=this;
         return R.layout.activity_release_image_and_text;
     }
 
