@@ -72,6 +72,8 @@ public class SelectTagTitleActivity extends BaseActivity {
         showTitleAndBack("编辑信息");
         showOrHideSearchBt(true, "发布");
         tvNum.setText("作品标签（0/5）");
+
+
         for (int i = 0; i < mVals.length; i++) {
             clearList.add(mVals[i]);
         }
