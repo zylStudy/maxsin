@@ -51,6 +51,8 @@ public class MeFragment extends Basefragment {
     ResultBean.DataBean resultBeanData;
     @BindView(R.id.push_rel)
     RelativeLayout pushRel;
+    @BindView(R.id.follow_rel)
+    RelativeLayout followRel;
 
 
     @Override
@@ -96,6 +98,13 @@ public class MeFragment extends Basefragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ReleaseImageAndTextActivity.class);
+                startActivity(intent);
+            }
+        });
+        followRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), FollowActivity.class);
                 startActivity(intent);
             }
         });

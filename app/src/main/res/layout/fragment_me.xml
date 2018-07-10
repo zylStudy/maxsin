@@ -196,6 +196,7 @@
                             android:background="@color/colore1"/>
 
                         <RelativeLayout
+                            android:id="@+id/follow_rel"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"

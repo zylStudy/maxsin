@@ -116,6 +116,8 @@
         </activity>
         <activity android:name=".module.release.SelectTypeActivity">
         </activity>
+        <activity android:name=".module.me.FollowActivity">
+        </activity>
     </application>
 
 </manifest>
