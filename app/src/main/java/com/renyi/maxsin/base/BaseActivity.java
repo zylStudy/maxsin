@@ -37,6 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_base);
         titleLayout = (RelativeLayout) findViewById(R.id.title_layout);
         contentLayout = (RelativeLayout) findViewById(R.id.content_layout);
