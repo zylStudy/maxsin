@@ -53,6 +53,8 @@ public class MeFragment extends Basefragment {
     RelativeLayout pushRel;
     @BindView(R.id.follow_rel)
     RelativeLayout followRel;
+    @BindView(R.id.fan_rel)
+    RelativeLayout fanRel;
 
 
     @Override
@@ -104,7 +106,20 @@ public class MeFragment extends Basefragment {
         followRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("flage", "1");
                 Intent intent = new Intent(getActivity(), FollowActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+        fanRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("flage", "2");
+                Intent intent = new Intent(getActivity(), FollowActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

@@ -30,6 +30,7 @@ public class FollowActivity extends BaseActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     CommonAdapter adapter;
     int page = 1;
+    String flage = "";
     List<FollowBeans.DataBeanX.DataBean> dataBeen = new ArrayList<>();
     List<FollowBeans.DataBeanX.DataBean> get_listAll = new ArrayList<>();
     FollowBeans.DataBeanX resultBeanData;
@@ -41,13 +42,21 @@ public class FollowActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        showTitleAndBack("我的关注");
+        flage = getIntent().getExtras().getString("flage");
+
+        if (flage.equals("1")) {
+            showTitleAndBack("关注");
+        } else {
+            showTitleAndBack("粉丝");
+        }
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        adapter = new CommonAdapter<FollowBeans.DataBeanX.DataBean>(this, R.layout.item_me_act_list, get_listAll) {
+        adapter = new CommonAdapter<FollowBeans.DataBeanX.DataBean>(this, R.layout.item_me_follow_list, get_listAll) {
             @Override
             protected void convert(ViewHolder viewHolder, FollowBeans.DataBeanX.DataBean item, int position) {
-                viewHolder.setText(R.id.title, item.getUser_name());
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getHead_url(), 10);
+                viewHolder.setText(R.id.name, item.getUser_name());
+                viewHolder.setText(R.id.project, "发布内容：" + item.getContent_count() + "  作品：" + item.getWork_count());
+                viewHolder.setImageViewNetUrl(R.id.cover_image, item.getHead_url());
             }
         };
         if (recyclerView != null) {
@@ -90,6 +99,27 @@ public class FollowActivity extends BaseActivity {
                 }, 500);
             }
         });
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (resultBeanData != null) {
+                    page++;
+                    int parseInt = Integer.parseInt(resultBeanData.getTotal_page());
+                    if (page <= parseInt) {
+                        loadDataFromSer();
+                    }
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     private void loadDataFromSer() {
@@ -99,6 +129,7 @@ public class FollowActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("u_id", "22");
+        map.put("get_flag", flage);
         map.put("current_page", page + "");
 
         mHttpHelper.post(Api.URL + "fans_list", map, new BaseCallback<FollowBeans>() {
