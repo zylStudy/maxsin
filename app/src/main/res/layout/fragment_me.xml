@@ -168,7 +168,7 @@
                             >
 
                             <TextView
-                                android:id="@+id/tv01"
+                                android:id="@+id/popularity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100"
@@ -180,7 +180,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv01"
+                                android:layout_below="@+id/popularity"
                                 android:layout_marginTop="6dp"
                                 android:text="人气"
                                 android:textColor="@color/color6"
@@ -204,7 +204,7 @@
                             >
 
                             <TextView
-                                android:id="@+id/tv02"
+                                android:id="@+id/follow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100"
@@ -215,7 +215,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv02"
+                                android:layout_below="@+id/follow"
                                 android:layout_marginTop="6dp"
                                 android:text="关注"
                                 android:textColor="@color/color6"
@@ -239,7 +239,7 @@
                             >
 
                             <TextView
-                                android:id="@+id/tv03"
+                                android:id="@+id/fan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100"
@@ -250,7 +250,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv03"
+                                android:layout_below="@+id/fan"
                                 android:layout_marginTop="6dp"
                                 android:text="粉丝"
                                 android:textColor="@color/color6"

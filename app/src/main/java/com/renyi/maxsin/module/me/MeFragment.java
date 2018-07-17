@@ -55,6 +55,12 @@ public class MeFragment extends Basefragment {
     RelativeLayout followRel;
     @BindView(R.id.fan_rel)
     RelativeLayout fanRel;
+    @BindView(R.id.popularity)
+    TextView popularity;
+    @BindView(R.id.fan)
+    TextView fan;
+    @BindView(R.id.follow)
+    TextView follow;
 
 
     @Override
@@ -107,7 +113,7 @@ public class MeFragment extends Basefragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("flage", "1");
+                bundle.putString("flage", "2");
                 Intent intent = new Intent(getActivity(), FollowActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -117,7 +123,7 @@ public class MeFragment extends Basefragment {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("flage", "2");
+                bundle.putString("flage", "1");
                 Intent intent = new Intent(getActivity(), FollowActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -215,6 +221,10 @@ public class MeFragment extends Basefragment {
 
                     resultBeanData = resultBean.getData();
                     tvName.setText(resultBeanData.getUser_name());
+
+                    follow.setText(resultBeanData.getFocus_num());
+                    fan.setText(resultBeanData.getFans_num());
+                    popularity.setText(resultBeanData.getRenqi());
 
                     Glide.with(getActivity()).load(resultBeanData.getHead_url()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImageView) {
                         @Override

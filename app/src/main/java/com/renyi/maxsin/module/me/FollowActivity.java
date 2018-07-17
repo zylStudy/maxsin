@@ -4,11 +4,13 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.BaseActivity;
+import com.renyi.maxsin.module.get.bean.ReturnBean;
 import com.renyi.maxsin.module.me.bean.FollowBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -44,7 +46,7 @@ public class FollowActivity extends BaseActivity {
     protected void initView() {
         flage = getIntent().getExtras().getString("flage");
 
-        if (flage.equals("1")) {
+        if (flage.equals("2")) {
             showTitleAndBack("关注");
         } else {
             showTitleAndBack("粉丝");
@@ -53,10 +55,38 @@ public class FollowActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = new CommonAdapter<FollowBeans.DataBeanX.DataBean>(this, R.layout.item_me_follow_list, get_listAll) {
             @Override
-            protected void convert(ViewHolder viewHolder, FollowBeans.DataBeanX.DataBean item, int position) {
+            protected void convert(final ViewHolder viewHolder, final FollowBeans.DataBeanX.DataBean item, final int position) {
                 viewHolder.setText(R.id.name, item.getUser_name());
                 viewHolder.setText(R.id.project, "发布内容：" + item.getContent_count() + "  作品：" + item.getWork_count());
                 viewHolder.setImageViewNetUrl(R.id.cover_image, item.getHead_url());
+
+                if (flage.equals("2")) {
+
+                    if (item.getFlag().equals("0")) {
+                        viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
+                    } else {
+                        viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
+                    }
+
+                } else {
+                    if (item.getFlag().equals("0")) {
+                        viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
+                    } else {
+                        viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
+                    }
+                }
+                viewHolder.setOnClickListener(R.id.followimage, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        postDate(item.getFlag(), item.getId(), position);
+                        if (item.getFlag().equals("0")) {
+                            viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
+                        } else {
+                            viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
+                        }
+                    }
+                });
+
             }
         };
         if (recyclerView != null) {
@@ -174,4 +204,52 @@ public class FollowActivity extends BaseActivity {
     //        super.onCreate(savedInstanceState);
     //        setContentView(R.layout.activity_follow);
     //    }
+
+    private void postDate(final String opt, String uid, final int position) {
+
+        OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
+        Map<String, String> map = new HashMap<>();
+        map.put("my_id", "22");
+        map.put("key", Api.KEY);
+        map.put("other_id", uid);
+        String url = "";
+        if (opt.equals("1")) {
+            url = "un_focus";
+        } else {
+            url = "focus_other";
+        }
+        mHttpHelper.post(Api.URL + url, map, new BaseCallback<ReturnBean>() {
+            @Override
+            public void onRequestBefore() {
+
+            }
+
+            @Override
+            public void onFailure(Request request, Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Response response, ReturnBean resultBean) {
+                if (resultBean.getCode().equals("800")) {
+                    if (opt.equals("1")) {
+                        resultBeanData.getData().get(position).setFlag("0");
+                    } else {
+                        resultBeanData.getData().get(position).setFlag("1");
+                    }
+                    adapter.notifyDataSetChanged();
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onError(Response response, int errorCode, Exception e) {
+
+            }
+        });
+    }
+
+
 }

@@ -58,6 +58,35 @@ public class ResultBean {
         private String code;
         private String stu_id;
 
+
+        private String focus_num;
+        private String fans_num;
+        private String renqi;
+
+        public String getFocus_num() {
+            return focus_num;
+        }
+
+        public void setFocus_num(String focus_num) {
+            this.focus_num = focus_num;
+        }
+
+        public String getFans_num() {
+            return fans_num;
+        }
+
+        public void setFans_num(String fans_num) {
+            this.fans_num = fans_num;
+        }
+
+        public String getRenqi() {
+            return renqi;
+        }
+
+        public void setRenqi(String renqi) {
+            this.renqi = renqi;
+        }
+
         public String getStu_id() {
             return stu_id;
         }
