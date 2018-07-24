@@ -73,7 +73,7 @@
                 android:layout_alignBottom="@+id/cover_image"
                 android:layout_toRightOf="@+id/cover_image"
                 android:text="2017.04.27"
-                android:maxLength="8"
+                android:maxLength="4"
                 android:textColor="@color/color8"
                 android:textSize="12sp"/>
 

@@ -10,11 +10,11 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GO"
+        android:text="MVP"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textColor="@color/color3"
         />
     <TextView

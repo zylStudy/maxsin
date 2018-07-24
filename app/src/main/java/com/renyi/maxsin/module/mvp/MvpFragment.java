@@ -1,4 +1,4 @@
-package com.renyi.maxsin.module.go;
+package com.renyi.maxsin.module.mvp;
 
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.Basefragment;
@@ -7,11 +7,11 @@ import com.renyi.maxsin.base.Basefragment;
  * Created by zhangyuliang on 2018/3/22.
  */
 
-public class GoFragment extends Basefragment {
+public class MvpFragment extends Basefragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_go;
+        return R.layout.fragment_mvp;
     }
 
     @Override

@@ -14,11 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.renyi.maxsin.module.Study.StudyFragment;
 import com.renyi.maxsin.module.get.GetFragment;
-import com.renyi.maxsin.module.go.GoFragment;
 import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
+import com.renyi.maxsin.module.mvp.MvpFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout threeRel;
     @BindView(R.id.three_tv)
     TextView threeTv;
-    @BindView(R.id.four_image_hl)
-    ImageView fourImageHl;
-    @BindView(R.id.four_image_nor)
-    ImageView fourImageNor;
-    @BindView(R.id.four_tv)
-    TextView fourTv;
-    @BindView(R.id.four_rel)
-    RelativeLayout fourRel;
+//    @BindView(R.id.four_image_hl)
+//    ImageView fourImageHl;
+//    @BindView(R.id.four_image_nor)
+//    ImageView fourImageNor;
+//    @BindView(R.id.four_tv)
+//    TextView fourTv;
+//    @BindView(R.id.four_rel)
+//    RelativeLayout fourRel;
     @BindView(R.id.five_image_hl)
     ImageView fiveImageHl;
     @BindView(R.id.five_image_nor)
@@ -79,15 +78,15 @@ public class MainActivity extends AppCompatActivity {
     private String currentFragment = "";
     private long firstTime = 0;
     private GetFragment getFragment;
-    private GoFragment goFragment;
+    private MvpFragment mvpFragment;
     private MaxsinFragment maxsinFragment;
-    private StudyFragment studyFragment;
+    //private StudyFragment studyFragment;
     private MeFragment meFragment;
 
     public static final String GET_FRAGMENT = "GETFRAGMENT";
     public static final String GO_FRAGMENT = "GOFRAGMENT";
     public static final String MAXSIN_FRAGMENT = "MAXSINFRAGMENT";
-    public static final String STUDY_FRAGMENT = "STUDYFRAGMENT";
+    //public static final String STUDY_FRAGMENT = "STUDYFRAGMENT";
     public static final String ME_FRAGMENT = "MEFRAGMENT";
     public static MainActivity mainActivity;
     @Override
@@ -103,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         getFragment = new GetFragment();
-        goFragment = new GoFragment();
+        mvpFragment = new MvpFragment();
         maxsinFragment = new MaxsinFragment();
-        studyFragment = new StudyFragment();
+        //studyFragment = new StudyFragment();
         meFragment = new MeFragment();
 
         mFragmentManager = getSupportFragmentManager();
@@ -121,21 +120,21 @@ public class MainActivity extends AppCompatActivity {
         iHlList.add(firstImageHl);
         iHlList.add(twoImageHl);
         iHlList.add(threeImageHl);
-        iHlList.add(fourImageHl);
+        //iHlList.add(fourImageHl);
         iHlList.add(fiveImageHl);
 
         iNorList = new ArrayList<>();
         iNorList.add(firstImageNor);
         iNorList.add(twoImageNor);
         iNorList.add(threeImageNor);
-        iNorList.add(fourImageNor);
+       // iNorList.add(fourImageNor);
         iNorList.add(fiveImageNor);
 
         tvList = new ArrayList<>();
         tvList.add(firstTv);
         tvList.add(twoTv);
         tvList.add(threeTv);
-        tvList.add(fourTv);
+       // tvList.add(fourTv);
         tvList.add(fiveTv);
     }
 
@@ -176,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.two_rel:
                 menuTagShowOrHide(1);
-                checkedFragment(goFragment, null, GO_FRAGMENT);
+                checkedFragment(mvpFragment, null, GO_FRAGMENT);
                 break;
             case R.id.three_rel:
                 menuTagShowOrHide(2);
@@ -184,11 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-            case R.id.four_rel:
-                menuTagShowOrHide(3);
-                checkedFragment(studyFragment, null, STUDY_FRAGMENT);
-
-                break;
+//            case R.id.four_rel:
+//                menuTagShowOrHide(3);
+//                checkedFragment(studyFragment, null, STUDY_FRAGMENT);
+//
+//                break;
             case R.id.five_rel:
                 menuTagShowOrHide(4);
                 checkedFragment(meFragment, null, ME_FRAGMENT);
@@ -203,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void menuTagShowOrHide(int a) {
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             if (i == a) {
                 iNorList.get(i).setVisibility(iNorList.get(i).INVISIBLE);
                 iHlList.get(i).setVisibility(iHlList.get(i).VISIBLE);

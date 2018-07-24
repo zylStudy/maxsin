@@ -172,6 +172,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100"
+                                android:layout_centerHorizontal="true"
                                 android:textColor="@color/color3"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
@@ -183,6 +184,7 @@
                                 android:layout_below="@+id/popularity"
                                 android:layout_marginTop="6dp"
                                 android:text="人气"
+                                android:layout_centerHorizontal="true"
                                 android:textColor="@color/color6"
                                 android:textSize="16sp"/>
 
@@ -210,6 +212,7 @@
                                 android:text="100"
                                 android:textColor="@color/color3"
                                 android:textSize="20sp"
+                                android:layout_centerHorizontal="true"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -218,6 +221,7 @@
                                 android:layout_below="@+id/follow"
                                 android:layout_marginTop="6dp"
                                 android:text="关注"
+                                android:layout_centerHorizontal="true"
                                 android:textColor="@color/color6"
                                 android:textSize="16sp"/>
 
@@ -243,6 +247,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="100"
+                                android:layout_centerHorizontal="true"
                                 android:textColor="@color/color3"
                                 android:textSize="20sp"
                                 android:textStyle="bold"/>
@@ -253,6 +258,7 @@
                                 android:layout_below="@+id/fan"
                                 android:layout_marginTop="6dp"
                                 android:text="粉丝"
+                                android:layout_centerHorizontal="true"
                                 android:textColor="@color/color6"
                                 android:textSize="16sp"/>
 
