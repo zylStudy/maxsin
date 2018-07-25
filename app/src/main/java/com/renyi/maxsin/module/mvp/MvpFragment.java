@@ -2,10 +2,12 @@ package com.renyi.maxsin.module.mvp;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.Basefragment;
@@ -16,7 +18,9 @@ import com.renyi.maxsin.net.OkHttpHelper;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -32,6 +36,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
     @BindView(R.id.viewPagerContainer)
     RelativeLayout viewPagerContainer;
     MyPagerAdapter adapter;
+    List<MvpRecommendBean.DataBean> list = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -40,6 +45,8 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
     @Override
     protected void initView() {
+
+        loadDataFromSer();
         viewpager.setClipChildren(false);
         //父容器一定要设置这个，否则看不出效果
         viewPagerContainer.setClipChildren(false);
@@ -48,14 +55,14 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
         if (viewpager != null) {
             viewpager.setAdapter(adapter);
         }
-
+        viewpager.setCurrentItem(2);
         //设置ViewPager切换效果，即实现画廊效果
         viewpager.setPageTransformer(true, new ZoomOutPageTransformer());
         //设置预加载数量
         viewpager.setOffscreenPageLimit(2);
         //设置每页之间的左右间隔
         viewpager.addOnPageChangeListener(this);
-        loadDataFromSer();
+
 
     }
 
@@ -88,8 +95,9 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
         @Override
         public int getCount() {
-            //return list == null ? 0 : list.size();
-            return 10;
+            Log.i("-----Log------", "" + list.size());
+            return list == null ? 0 : list.size();
+
         }
 
         @Override
@@ -99,16 +107,14 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_get_act_list, null);
-            //            TextView time = (TextView) view.findViewById(R.id.time);
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_mvp_recom_follow_list, null);
+            TextView time = (TextView) view.findViewById(R.id.name);
             //            TextView info = (TextView) view.findViewById(R.id.info);
             //            TextView teacher = (TextView) view.findViewById(R.id.teacher);
             //            TextView tv04 = (TextView) view.findViewById(R.id.tv04);
             //            RelativeLayout tv = (RelativeLayout) view.findViewById(R.id.rel03);
             //
-            //            time.setText(list.get(position).getEvaluat_time());
-            //            info.setText(list.get(position).getEvaluat_result());
-            //            teacher.setText(list.get(position).getEvaluat_teacher());
+            time.setText(list.get(position).getNickname());
 
 
             //            view.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +128,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
             //                }
             //            });
             //
-                    ((ViewPager) container).addView(view);
+            ((ViewPager) container).addView(view);
             return view;
             //
         }
@@ -136,7 +142,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
     class ZoomOutPageTransformer implements ViewPager.PageTransformer {
         private static final float MAX_SCALE = 1f;
-        private static final float MIN_SCALE = 0.8f;//0.85f
+        private static final float MIN_SCALE = 0.85f;//0.85f
 
         @Override
         public void transformPage(View view, float position) {
@@ -191,11 +197,13 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
             public void onSuccess(Response response, MvpRecommendBean resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-                    //                    resultBeanData = resultBean.getData();
+                    list = resultBean.getData();
                     //                    get_list = resultBean.getData().getGet_list();
                     //                    get_listAll.addAll(get_list);
                     //                    if (get_listAll.size() != 0) {
-                    //                        adapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
+
+                    Log.i("-----Log------", "--------------------");
                     //                        showEmpty(false);
                     //                    } else {
                     //                        showEmpty(true);
