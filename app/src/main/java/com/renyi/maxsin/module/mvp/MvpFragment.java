@@ -1,20 +1,29 @@
 package com.renyi.maxsin.module.mvp;
 
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
+import com.renyi.maxsin.adapter.FragmentVPagerAdapter;
+import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
+import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.get.ActivityFragment;
 import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.view.DecoratorViewPager;
+import com.renyi.maxsin.view.galleryview.CardScaleHelper;
+import com.renyi.maxsin.view.galleryview.SpeedRecyclerView;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -25,18 +34,40 @@ import java.util.Map;
 
 import butterknife.BindView;
 
+;
+
 /**
  * Created by zhangyuliang on 2018/3/22.
  */
 
 public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeListener {
 
-    @BindView(R.id.viewpager)
-    ViewPager viewpager;
-    @BindView(R.id.viewPagerContainer)
-    RelativeLayout viewPagerContainer;
-    MyPagerAdapter adapter;
     List<MvpRecommendBean.DataBean> list = new ArrayList<>();
+    @BindView(R.id.blurView)
+    ImageView mBlurView;
+    @BindView(R.id.recyclerView)
+    SpeedRecyclerView recyclerView;
+    @BindView(R.id.newrecyclerView)
+    RecyclerView newrecyclerView;
+
+    @BindView(R.id.tab_line01)
+    View tabLine01;
+    @BindView(R.id.tab_line02)
+    View tabLine02;
+    @BindView(R.id.vp)
+    DecoratorViewPager vp;
+    @BindView(R.id.tv_title1)
+    TextView tvTitle1;
+    @BindView(R.id.tv_title2)
+    TextView tvTitle2;
+
+
+    private CardScaleHelper mCardScaleHelper = null;
+    CardsAdapter adapter;
+    CommonAdapter commonAdapter;
+    private List<String> titleList = new ArrayList<>();
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+
 
     @Override
     protected int getLayoutId() {
@@ -45,25 +76,50 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
     @Override
     protected void initView() {
+        titleList.add("人气最旺");
+        titleList.add("粉丝最多");
 
+        mFragments.add(ActivityFragment.getInstance("3"));
+        mFragments.add(FansNumFragment.getInstance("2"));
+        FragmentVPagerAdapter mAdapter = new FragmentVPagerAdapter(getFragmentManager(), mFragments);
+
+        vp.setAdapter(mAdapter);
+        vp.addOnPageChangeListener(this);
+        vp.setCurrentItem(0);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        Glide.with(getActivity())
+                .load(R.mipmap.ic_me_bg)
+                .asBitmap()
+                .into(new BitmapImageViewTarget(mBlurView));
         loadDataFromSer();
-        viewpager.setClipChildren(false);
-        //父容器一定要设置这个，否则看不出效果
-        viewPagerContainer.setClipChildren(false);
 
-        adapter = new MyPagerAdapter();
-        if (viewpager != null) {
-            viewpager.setAdapter(adapter);
+
+    }
+
+    private void initNewProjectRecl() {
+
+
+        newrecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        commonAdapter = new CommonAdapter<MvpRecommendBean.DataBean>(getActivity(), R.layout.item_mvp_recom_follow_list, list) {
+            @Override
+            protected void convert(ViewHolder viewHolder, MvpRecommendBean.DataBean item, int position) {
+                //    viewHolder.setText(R.id.type, item.getCatname());
+                viewHolder.setText(R.id.name, item.getNickname());
+
+
+                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
+                viewHolder.setCornerRadiusImageViewNetUrl(R.id.head_image, item.getHead_url(), 10);
+
+                //viewHolder.setText(R.id.share, item.getC_name());
+
+
+            }
+        };
+        if (newrecyclerView != null) {
+            newrecyclerView.setAdapter(commonAdapter);
+
         }
-        viewpager.setCurrentItem(2);
-        //设置ViewPager切换效果，即实现画廊效果
-        viewpager.setPageTransformer(true, new ZoomOutPageTransformer());
-        //设置预加载数量
-        viewpager.setOffscreenPageLimit(2);
-        //设置每页之间的左右间隔
-        viewpager.addOnPageChangeListener(this);
-
-
     }
 
     @Override
@@ -73,106 +129,36 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
     @Override
     protected void setOnclickListeners() {
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    class MyPagerAdapter extends PagerAdapter {
-
-        @Override
-        public int getCount() {
-            Log.i("-----Log------", "" + list.size());
-            return list == null ? 0 : list.size();
-
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return (view == object);
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-            View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_mvp_recom_follow_list, null);
-            TextView time = (TextView) view.findViewById(R.id.name);
-            //            TextView info = (TextView) view.findViewById(R.id.info);
-            //            TextView teacher = (TextView) view.findViewById(R.id.teacher);
-            //            TextView tv04 = (TextView) view.findViewById(R.id.tv04);
-            //            RelativeLayout tv = (RelativeLayout) view.findViewById(R.id.rel03);
-            //
-            time.setText(list.get(position).getNickname());
-
-
-            //            view.setOnClickListener(new View.OnClickListener() {
-            //                @Override
-            //                public void onClick(View v) {
-            //                    //
-            //                    //                    Intent intent = new Intent(MyAssessActivity.this,
-            //                    //                            ProjectAssessDetailsActivity.class);
-            //                    //                    intent.putExtras(bundle);
-            //                    //                    startActivity(intent);
-            //                }
-            //            });
-            //
-            ((ViewPager) container).addView(view);
-            return view;
-            //
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView((View) object);
-        }
-    }
-
-
-    class ZoomOutPageTransformer implements ViewPager.PageTransformer {
-        private static final float MAX_SCALE = 1f;
-        private static final float MIN_SCALE = 0.85f;//0.85f
-
-        @Override
-        public void transformPage(View view, float position) {
-            //setScaleY只支持api11以上
-            if (position < -1) {
-                view.setScaleX(MIN_SCALE);
-                view.setScaleY(MIN_SCALE);
-            } else if (position <= 1) //a页滑动至b页 ； a页从 0.0 -1 ；b页从1 ~ 0.0
-            { // [-1,1]
-                //              Log.e("TAG", view + " , " + position + "");
-                float scaleFactor = MIN_SCALE + (1 - Math.abs(position)) * (MAX_SCALE - MIN_SCALE);
-                view.setScaleX(scaleFactor);
-                //每次滑动后进行微小的移动目的是为了防止在三星的某些手机上出现两边的页面为显示的情况
-                if (position > 0) {
-                    view.setTranslationX(-scaleFactor * 2);
-                } else if (position < 0) {
-                    view.setTranslationX(scaleFactor * 2);
-                }
-                view.setScaleY(scaleFactor);
-
-            } else { // (1,+Infinity]
-
-                view.setScaleX(MIN_SCALE);
-                view.setScaleY(MIN_SCALE);
-
+        tvTitle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vp.setCurrentItem(0);
+                setTextViewInlarge(0);
             }
-        }
-
+        });
+        tvTitle2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vp.setCurrentItem(1);
+                setTextViewInlarge(1);
+            }
+        });
     }
 
+    private void setTextViewInlarge(int position) {
+        if (position == 0) {
+            tabLine01.setVisibility(tabLine01.VISIBLE);
+            tabLine02.setVisibility(tabLine02.INVISIBLE);
+            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
+        }
+        if (position == 1) {
+            tabLine01.setVisibility(tabLine01.INVISIBLE);
+            tabLine02.setVisibility(tabLine02.VISIBLE);
+            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
+            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+        }
+    }
 
     private void loadDataFromSer() {
 
@@ -198,16 +184,19 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
 
                 if (resultBean.getCode().equals("800")) {
                     list = resultBean.getData();
-                    //                    get_list = resultBean.getData().getGet_list();
-                    //                    get_listAll.addAll(get_list);
-                    //                    if (get_listAll.size() != 0) {
+                    adapter = new CardsAdapter(list, getActivity());
+                    recyclerView.setAdapter(adapter);
+                    mCardScaleHelper = new CardScaleHelper();
+                    mCardScaleHelper.setCurrentItemPos(1);
+                    //                    mCardScaleHelper.setPagePadding(10);
+                    //                    mCardScaleHelper.setScale(0.8f);
+                    //                    mCardScaleHelper.setShowLeftCardWidth(30);
+                    mCardScaleHelper.attachToRecyclerView(recyclerView);
                     adapter.notifyDataSetChanged();
 
-                    Log.i("-----Log------", "--------------------");
-                    //                        showEmpty(false);
-                    //                    } else {
-                    //                        showEmpty(true);
-                    //                    }
+                    initNewProjectRecl();
+                    commonAdapter.notifyDataSetChanged();
+
                 } else {
 
                 }
@@ -220,5 +209,22 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
             }
         });
     }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+        setTextViewInlarge(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
 
 }
