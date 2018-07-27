@@ -16,7 +16,6 @@ import com.renyi.maxsin.adapter.FragmentVPagerAdapter;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
-import com.renyi.maxsin.module.get.ActivityFragment;
 import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -79,7 +78,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
         titleList.add("人气最旺");
         titleList.add("粉丝最多");
 
-        mFragments.add(ActivityFragment.getInstance("3"));
+        mFragments.add(FansNumFragment.getInstance("1"));
         mFragments.add(FansNumFragment.getInstance("2"));
         FragmentVPagerAdapter mAdapter = new FragmentVPagerAdapter(getFragmentManager(), mFragments);
 
@@ -186,6 +185,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
                     list = resultBean.getData();
                     adapter = new CardsAdapter(list, getActivity());
                     recyclerView.setAdapter(adapter);
+
                     mCardScaleHelper = new CardScaleHelper();
                     mCardScaleHelper.setCurrentItemPos(1);
                     //                    mCardScaleHelper.setPagePadding(10);

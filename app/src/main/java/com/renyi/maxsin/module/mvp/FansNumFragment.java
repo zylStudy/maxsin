@@ -3,7 +3,6 @@ package com.renyi.maxsin.module.mvp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,6 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
-import com.renyi.maxsin.module.get.ActivityDetailsActivity;
 import com.renyi.maxsin.module.get.NewsDetailsActivity;
 import com.renyi.maxsin.module.get.bean.GetBeans;
 import com.renyi.maxsin.net.Api;
@@ -72,46 +70,16 @@ public class FansNumFragment extends Basefragment {
     @Override
     protected void initView() {
 
-        swipeRefreshLayout.setColorSchemeResources(
 
-                android.R.color.holo_red_light,
-                android.R.color.black,
-                android.R.color.holo_green_light);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-
-//                        if (get_listAll != null && get_listAll.size() != 0) {
-//                            get_listAll.clear();
-//                            adapter.notifyDataSetChanged();
-//                        }
-//
-//                        page = 1;
-//                        loadDataFromSer();
-
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 300);
-            }
-        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         adapter = new CommonAdapter<GetBeans.DataBean.GetListBean>(getActivity(), R.layout.item_get_news_list, get_listAll) {
             @Override
             protected void convert(ViewHolder viewHolder, GetBeans.DataBean.GetListBean item, int position) {
-            //    viewHolder.setText(R.id.type, item.getCatname());
                 viewHolder.setText(R.id.title, item.getTitle());
                 viewHolder.setText(R.id.time, item.getInputtime());
                 viewHolder.setText(R.id.lookNum, item.getHits());
 
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getThumb(), 10);
-
-                //viewHolder.setText(R.id.share, item.getC_name());
-
 
             }
         };
@@ -134,15 +102,7 @@ public class FansNumFragment extends Basefragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("id", get_listAll.get(position).getId());
-                //进入课程详情
-                Intent intent = null;
-                if (get_listAll.get(position).getLeibie().equals("2")) {
-                    intent = new Intent(getActivity(), NewsDetailsActivity.class);
-                }
-                if (get_listAll.get(position).getLeibie().equals("3")) {
-                    intent = new Intent(getActivity(), ActivityDetailsActivity.class);
-                }
-
+                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -150,27 +110,6 @@ public class FansNumFragment extends Basefragment {
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
                 return false;
-            }
-        });
-//
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-
-                if (resultBeanData != null) {
-                    page++;
-                    int parseInt = Integer.parseInt(resultBeanData.getTotal_page());
-                    if (page <= parseInt) {
-                        loadDataFromSer();
-                    }
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
             }
         });
     }
@@ -182,9 +121,8 @@ public class FansNumFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("type", type);
-        map.put("current_page", page + "");
 
-        mHttpHelper.post(Api.URL + "show_list", map, new BaseCallback<GetBeans>() {
+        mHttpHelper.post(Api.URL + "mvplist", map, new BaseCallback<GetBeans>() {
             @Override
             public void onRequestBefore() {
 

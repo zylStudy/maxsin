@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewPagerContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="@android:color/white"
+    android:clipChildren="false"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:background="@mipmap/ic_me_bg"
+        android:scaleType="centerCrop"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_below="@+id/title"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:clipChildren="false">
+    </android.support.v4.view.ViewPager>
+
+
+</RelativeLayout>

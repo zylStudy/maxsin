@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.renyi.maxsin.module.get.GetFragment;
 import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
-import com.renyi.maxsin.module.mvp.MvpFragment;
+import com.renyi.maxsin.module.mvp.MvpFirstPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentFragment = "";
     private long firstTime = 0;
     private GetFragment getFragment;
-    private MvpFragment mvpFragment;
+    private MvpFirstPageFragment mvpFragment;
     private MaxsinFragment maxsinFragment;
     //private StudyFragment studyFragment;
     private MeFragment meFragment;
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         getFragment = new GetFragment();
-        mvpFragment = new MvpFragment();
+        mvpFragment = new MvpFirstPageFragment();
         maxsinFragment = new MaxsinFragment();
         //studyFragment = new StudyFragment();
         meFragment = new MeFragment();

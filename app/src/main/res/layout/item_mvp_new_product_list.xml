@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/rellayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        >
+
+
+        <ImageView
+            android:id="@+id/cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_below="@+id/head_rel"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/head_rel"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/head_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:background="@mipmap/ic_zhedang"
+                android:scaleType="fitCenter"
+                />
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="2dp"
+                android:layout_toLeftOf="@+id/followimage"
+                android:layout_toRightOf="@+id/head_image"
+                android:text="基础课"
+                android:textColor="@color/color48"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+
+            <ImageView
+                android:id="@+id/followimage"
+                android:layout_width="60dp"
+                android:layout_height="21dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@mipmap/ic_follow_yes_bg"
+                android:scaleType="fitCenter"
+                />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cover_image"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="2"
+            android:text="基础课"
+            android:textColor="@color/color48"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+
+        <RelativeLayout
+            android:id="@+id/timerel"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="4dp"
+                android:text="2017.04.27"
+                android:textColor="@color/color8"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="102"
+                android:textColor="@color/color8"
+                android:textSize="12sp"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/timerel"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/colore1"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>
