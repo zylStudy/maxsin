@@ -58,6 +58,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
     Uri uri;
     CommonAdapter adapter;
     ArrayList<String> pathList;
+    ArrayList<String> pathListAll=new ArrayList<>();
     String htmlStr = "";
     private int a = 0;
     private Dialog dialog;
@@ -85,8 +86,9 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_clip_cover_image);
         ButterKnife.bind(this);
         pathList = getIntent().getStringArrayListExtra("pathList");
+        pathListAll.addAll(pathList);
         htmlStr = getIntent().getExtras().getString("result");
-        uri = Uri.parse(pathList.get(0));
+        uri = Uri.parse(pathListAll.get(0));
         initView();
         setSelectImageView();
 
@@ -94,7 +96,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
 
     private void setSelectImageView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        adapter = new CommonAdapter<String>(this, R.layout.item_release_cover_image_list, pathList) {
+        adapter = new CommonAdapter<String>(this, R.layout.item_release_cover_image_list, pathListAll) {
             @Override
             protected void convert(ViewHolder viewHolder, String item, final int position) {
 
@@ -112,7 +114,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
                         a = position;
                         clipViewLayout2.setVisibility(View.GONE);
                         clipViewLayout2.setVisibility(View.VISIBLE);
-                        clipViewLayout2.setImageSrc(Uri.parse(pathList.get(position)));
+                        clipViewLayout2.setImageSrc(Uri.parse(pathListAll.get(position)));
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -253,7 +255,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
             case REQUEST_CAPTURE: //调用系统相机返回
                 if (resultCode == RESULT_OK) {
                     String cropImage = getRealFilePathFromUri(ClipCoverImageActivity.this, Uri.fromFile(tempFile));
-                    pathList.add(0, cropImage);
+                    pathListAll.add(0, cropImage);
                     adapter.notifyDataSetChanged();
 
 
@@ -266,7 +268,7 @@ public class ClipCoverImageActivity extends AppCompatActivity implements View.On
                 if (resultCode == RESULT_OK) {
                     Uri uri = intent.getData();
                     String cropImage = getRealFilePathFromUri(ClipCoverImageActivity.this, uri);
-                    pathList.add(0, cropImage);
+                    pathListAll.add(0, cropImage);
                     adapter.notifyDataSetChanged();
                     clipViewLayout2.setVisibility(View.GONE);
                     clipViewLayout2.setVisibility(View.VISIBLE);

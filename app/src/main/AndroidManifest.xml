@@ -118,6 +118,11 @@
         </activity>
         <activity android:name=".module.me.FollowActivity">
         </activity>
+
+        <activity android:name=".module.me.ReleaseDetailsActivity">
+        </activity>
+        <activity android:name=".module.Study.StudyActivity">
+        </activity>
     </application>
 
 </manifest>

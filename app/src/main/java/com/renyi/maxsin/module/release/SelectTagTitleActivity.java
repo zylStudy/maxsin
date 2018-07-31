@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import me.shaohui.advancedluban.Luban;
 import rx.functions.Action1;
 
@@ -53,6 +52,8 @@ public class SelectTagTitleActivity extends BaseActivity {
     TextView btSure;
     @BindView(R.id.tv1)
     TextView tvNum;
+    @BindView(R.id.type)
+    TextView type;
     @BindView(R.id.tag_flowlayout)
     TagFlowLayout tagFlowlayout;
     @BindView(R.id.tag_flowlayout_aways)
@@ -160,6 +161,11 @@ public class SelectTagTitleActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0 && resultCode == 0) {
             flage = data.getExtras().getString("flage");
+            if (flage.equals("1")) {
+                type.setText("我的发布");
+            } else {
+                type.setText("我的作品");
+            }
         }
     }
 
@@ -293,6 +299,7 @@ public class SelectTagTitleActivity extends BaseActivity {
         for (int i = 0; i < pathListPost.size(); i++) {
             map.put("0" + i, pathListPost.get(i).getPath());
         }
+
         mHttpHelper.post(Api.URL + "up_contents", map, new BaseCallback<ReturnBean>() {
             @Override
             public void onRequestBefore() {
@@ -324,10 +331,4 @@ public class SelectTagTitleActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

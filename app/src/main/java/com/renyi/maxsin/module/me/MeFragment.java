@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.Study.StudyActivity;
 import com.renyi.maxsin.module.login.ResultBean;
 import com.renyi.maxsin.module.release.ReleaseImageAndTextActivity;
 import com.renyi.maxsin.net.Api;
@@ -40,6 +41,8 @@ public class MeFragment extends Basefragment {
     TextView tvName;
     @BindView(R.id.image_go)
     ImageView tvMsg;
+    @BindView(R.id.study_rel)
+    RelativeLayout studyRel;
     @BindView(R.id.act_rel)
     RelativeLayout actRel;
     @BindView(R.id.collection_rel)
@@ -99,6 +102,13 @@ public class MeFragment extends Basefragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MyReleaseActivity.class);
+                startActivity(intent);
+            }
+        });
+        studyRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), StudyActivity.class);
                 startActivity(intent);
             }
         });

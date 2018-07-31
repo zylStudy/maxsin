@@ -1,6 +1,8 @@
 package com.renyi.maxsin.module.mvp;
 
 import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.PagerAdapter;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
+import com.renyi.maxsin.adapter.FragmentVPagerAdapter;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -45,7 +48,7 @@ import static com.renyi.maxsin.R.id.viewpager;
  * Created by zhangyuliang on 2018/3/22.
  */
 
-public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPageChangeListener{
+public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPageChangeListener {
 
     List<MvpRecommendBean.DataBean> listAll = new ArrayList<>();
     List<PopularBeans.DataBean.ListBean> popularListAll = new ArrayList<>();
@@ -58,6 +61,13 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
     CommonAdapter commonAdapter;
     HeaderAndFooterWrapper mHeaderAndFooterWrapper;
     LoadMoreWrapper mLoadMoreWrapper;
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+
+
+    View tabLine01;
+    View tabLine02;
+    TextView tvTitle1;
+    TextView tvTitle2;
 
     @Override
     protected int getLayoutId() {
@@ -87,6 +97,7 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
             }
         };
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(commonAdapter);
+        mLoadMoreWrapper = new LoadMoreWrapper(mHeaderAndFooterWrapper);
 
     }
 
@@ -140,8 +151,6 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
             public void onError(Response response, int errorCode, Exception e) {
 
             }
-
-
         });
     }
 
@@ -195,6 +204,7 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
     private void initHeaderAndFooter() {
 
 
+
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_header_layout, null);
         mViewPager = view.findViewById(viewpager);
         viewPagerContainer = view.findViewById(R.id.viewPagerContainer);
@@ -202,7 +212,6 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         viewPagerContainer.setClipChildren(false);
         recyclerView.setClipChildren(false);
         mViewPager.addOnPageChangeListener(this);
-        View popularityView = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_popularity_list, null);
 
 
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
@@ -212,10 +221,56 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
 
         mViewPager.setAdapter(mvpBannerAdapter);
         mHeaderAndFooterWrapper.addHeaderView(view);
+
+        View popularityView = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_popularity_list, null);
+
+        final ViewPager popularViewPager = popularityView.findViewById(R.id.viewpager_popularity);
+        tabLine01 = popularityView.findViewById(R.id.tab_line01);
+        tabLine02 = popularityView.findViewById(R.id.tab_line02);
+        tvTitle1 = popularityView.findViewById(R.id.tv_title1);
+        tvTitle2 = popularityView.findViewById(R.id.tv_title2);
+        mFragments.add(FansNumFragment.getInstance("1"));
+        mFragments.add(FansNumFragment.getInstance("2"));
+        FragmentVPagerAdapter mAdapter = new FragmentVPagerAdapter(getFragmentManager(), mFragments);
+
+        popularViewPager.setAdapter(mAdapter);
+        popularViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                popularViewPager.setCurrentItem(position);
+                setTextViewInlarge(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        popularViewPager.setCurrentItem(0);
+        tvTitle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popularViewPager.setCurrentItem(0);
+                setTextViewInlarge(0);
+            }
+        });
+        tvTitle2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popularViewPager.setCurrentItem(1);
+                setTextViewInlarge(1);
+            }
+        });
+
         mHeaderAndFooterWrapper.addHeaderView(popularityView);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
-        mLoadMoreWrapper = new LoadMoreWrapper(mHeaderAndFooterWrapper);
+
         mLoadMoreWrapper.setLoadMoreView(R.layout.tv);
         mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
             @Override
@@ -232,6 +287,21 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
             }
         });
         recyclerView.setAdapter(mLoadMoreWrapper);
+    }
+
+    private void setTextViewInlarge(int position) {
+        if (position == 0) {
+            tabLine01.setVisibility(tabLine01.VISIBLE);
+            tabLine02.setVisibility(tabLine02.INVISIBLE);
+            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
+        }
+        if (position == 1) {
+            tabLine01.setVisibility(tabLine01.INVISIBLE);
+            tabLine02.setVisibility(tabLine02.VISIBLE);
+            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
+            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+        }
     }
 
     @Override
@@ -299,7 +369,7 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
                 }
             });
 
-         container.addView(view);
+            container.addView(view);
             return view;
 
         }

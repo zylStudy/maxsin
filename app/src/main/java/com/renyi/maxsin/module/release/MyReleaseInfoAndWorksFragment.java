@@ -1,6 +1,7 @@
 package com.renyi.maxsin.module.release;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +13,7 @@ import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
 import com.renyi.maxsin.module.release.bean.RelesseInfoAndWorksBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -91,7 +93,7 @@ public class MyReleaseInfoAndWorksFragment extends Basefragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         adapter = new CommonAdapter<RelesseInfoAndWorksBean.DataBean.GetListBean>(getActivity(), R.layout.item_me_rele_list, get_listAll) {
             @Override
-            protected void convert(final ViewHolder viewHolder, RelesseInfoAndWorksBean.DataBean.GetListBean item,final int position) {
+            protected void convert(final ViewHolder viewHolder, RelesseInfoAndWorksBean.DataBean.GetListBean item, final int position) {
 
                 ((SwipeMenuLayout) viewHolder.itemView).setIos(true).setLeftSwipe(true);
                 viewHolder.setText(R.id.title, item.getTitle());
@@ -113,19 +115,27 @@ public class MyReleaseInfoAndWorksFragment extends Basefragment {
                             //mAdapter.notifyDataSetChanged();
                             delteData(get_listAll.get(pos).getId());
                             get_listAll.remove(pos);
+                            if (resultBeanData != null) {
+                                page++;
+                                int parseInt = Integer.parseInt(resultBeanData.getTotal_page());
+                                if (page <= parseInt) {
+                                    loadDataFromSer();
+                                }
+                            }
+
                         }
                     }
                 });
                 viewHolder.setOnClickListener(R.id.rellayout, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString("id", get_listAll.get(position).getId());
-//
-//                        Intent intent = null;
-//                        intent = new Intent(getActivity(), ActivityDetailsActivity.class);
-//                        intent.putExtras(bundle);
-//                        startActivity(intent);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id", get_listAll.get(position).getId());
+
+                        Intent intent = null;
+                        intent = new Intent(getActivity(), ReleaseDetailsActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 });
 

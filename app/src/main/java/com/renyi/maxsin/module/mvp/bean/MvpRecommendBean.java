@@ -55,6 +55,15 @@ public class MvpRecommendBean {
         private String head_url;
         private String cover_img;
         private String is_focus;
+        private String total;
+
+        public String getTotal() {
+            return total;
+        }
+
+        public void setTotal(String total) {
+            this.total = total;
+        }
 
         public String getId() {
             return id;

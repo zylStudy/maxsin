@@ -1,11 +1,9 @@
 package com.renyi.maxsin.module.mvp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.renyi.maxsin.R;
@@ -13,8 +11,7 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
-import com.renyi.maxsin.module.get.NewsDetailsActivity;
-import com.renyi.maxsin.module.get.bean.GetBeans;
+import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
@@ -36,15 +33,12 @@ import butterknife.BindView;
 public class FansNumFragment extends Basefragment {
     Bundle bundle;
     String type = "";
-    @BindView(R.id.swipe_container)
-    SwipeRefreshLayout swipeRefreshLayout;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private CommonAdapter adapter;
-    private int page = 1;
-    private List<GetBeans.DataBean.GetListBean> get_list;
-    private List<GetBeans.DataBean.GetListBean> get_listAll = new ArrayList<>();
-    private GetBeans.DataBean resultBeanData;
+
+    private List<MvpRecommendBean.DataBean> get_listAll = new ArrayList<>();
 
     public static FansNumFragment getInstance(String type) {
         FansNumFragment ewsFragment = new FansNumFragment();
@@ -64,22 +58,30 @@ public class FansNumFragment extends Basefragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_activity;
+        return R.layout.fragment_popul;
     }
 
     @Override
     protected void initView() {
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        adapter = new CommonAdapter<GetBeans.DataBean.GetListBean>(getActivity(), R.layout.item_get_news_list, get_listAll) {
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
+        adapter = new CommonAdapter<MvpRecommendBean.DataBean>(getActivity(), R.layout.item_mvp_popu_list, get_listAll) {
             @Override
-            protected void convert(ViewHolder viewHolder, GetBeans.DataBean.GetListBean item, int position) {
-                viewHolder.setText(R.id.title, item.getTitle());
-                viewHolder.setText(R.id.time, item.getInputtime());
-                viewHolder.setText(R.id.lookNum, item.getHits());
+            protected void convert(ViewHolder viewHolder, MvpRecommendBean.DataBean item, int position) {
+                viewHolder.setText(R.id.name, item.getNickname());
+                if (item.getHead_url() == null || item.getHead_url().equals("")) {
 
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getThumb(), 10);
+                } else {
+                    viewHolder.setCornerRadiusImageViewNetUrl(R.id.head_image, item.getHead_url(),75);
+                }
+                if (position == 0) {
+                    viewHolder.setBackgroundRes(R.id.hide_image, R.mipmap.ic_mvp_fans_num01);
+                }
+                if (position == 1) {
+                    viewHolder.setBackgroundRes(R.id.hide_image, R.mipmap.ic_mvp_fans_num02);
+                }
+                if (position == 2) {
+                    viewHolder.setBackgroundRes(R.id.hide_image, R.mipmap.ic_mvp_fans_num03);
+                }
 
             }
         };
@@ -100,11 +102,11 @@ public class FansNumFragment extends Basefragment {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString("id", get_listAll.get(position).getId());
-                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                //                Bundle bundle = new Bundle();
+                //                bundle.putString("id", get_listAll.get(position).getId());
+                //                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+                //                intent.putExtras(bundle);
+                //                startActivity(intent);
             }
 
             @Override
@@ -121,8 +123,7 @@ public class FansNumFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("type", type);
-
-        mHttpHelper.post(Api.URL + "mvplist", map, new BaseCallback<GetBeans>() {
+        mHttpHelper.post(Api.URL + "mvplist", map, new BaseCallback<MvpRecommendBean>() {
             @Override
             public void onRequestBefore() {
 
@@ -134,14 +135,10 @@ public class FansNumFragment extends Basefragment {
             }
 
             @Override
-            public void onSuccess(Response response, GetBeans resultBean) {
+            public void onSuccess(Response response, MvpRecommendBean resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-
-                    resultBeanData = resultBean.getData();
-
-                    get_list = resultBean.getData().getGet_list();
-                    get_listAll.addAll(get_list);
+                    get_listAll.addAll(resultBean.getData());
                     if (get_listAll.size() != 0) {
                         adapter.notifyDataSetChanged();
                     }
