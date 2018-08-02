@@ -13,6 +13,7 @@ import com.renyi.maxsin.module.login.ResultBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -91,7 +92,7 @@ public class MyChangePsdActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("mobile", phone);
-        map.put("uid", "1");
+        map.put("uid", (String) SPUtils.get("uid",""));
         map.put("code", etCode.getText().toString().trim());
         map.put("passwd", etPsdf.getText().toString().trim());
 

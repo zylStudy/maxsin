@@ -1,6 +1,8 @@
 package com.renyi.maxsin.module.mvp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -25,11 +27,15 @@ import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.renyi.maxsin.adapter.recyclerview.wrapper.LoadMoreWrapper;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.get.bean.ReturnBean;
+import com.renyi.maxsin.module.me.MeCenterActivity;
+import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
 import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.module.mvp.bean.PopularBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.viewpagergallery.ScalePageTransformer;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -57,6 +63,7 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
     @BindView(R.id.viewpager_include)
     RelativeLayout viewpagerInclude;
     int page = 1;
+
     PopularBeans popularBeans;
     CommonAdapter commonAdapter;
     HeaderAndFooterWrapper mHeaderAndFooterWrapper;
@@ -87,13 +94,52 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         commonAdapter = new CommonAdapter<PopularBeans.DataBean.ListBean>(getActivity(), R.layout.item_mvp_new_product_list, popularListAll) {
 
             @Override
-            protected void convert(ViewHolder viewHolder, PopularBeans.DataBean.ListBean item, int position) {
+            protected void convert(final ViewHolder viewHolder, final PopularBeans.DataBean.ListBean item, final int position) {
                 viewHolder.setText(R.id.name, item.getNickname());
                 viewHolder.setText(R.id.title, item.getTitle());
                 viewHolder.setText(R.id.time, item.getAdd_time());
                 viewHolder.setText(R.id.type, item.getTag_name());
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
                 viewHolder.setImageViewNetUrl(R.id.head_image, item.getHead_url());
+
+                if (item.getIs_focus().equals("0")) {
+                    viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
+
+                } else {
+                    viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
+
+                }
+
+                viewHolder.setOnClickListener(R.id.followimage, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (item.getIs_focus().equals("1")) {
+                            viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
+                            postFollowDate("1", popularListAll.get(position - 2).getId());
+                            popularListAll.get(position - 2).setIs_focus("0");
+                        } else {
+                            viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
+                            postFollowDate("2", popularListAll.get(position - 2).getId());
+                            popularListAll.get(position - 2).setIs_focus("1");
+                        }
+
+
+                    }
+                });
+
+                viewHolder.setOnClickListener(R.id.cover_image, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        readyGo(ReleaseDetailsActivity.class, popularListAll.get(position - 2).getZp_id());
+                    }
+                });
+                viewHolder.setOnClickListener(R.id.head_image, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        readyGo(MeCenterActivity.class, popularListAll.get(position - 2).getId());
+                    }
+                });
+
             }
         };
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(commonAdapter);
@@ -108,6 +154,15 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         loadPopularDataFromSer();
     }
 
+    protected void readyGo(Class<?> clazz, String id) {
+        Intent intent = new Intent(getActivity(), clazz);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+    }
+
     @Override
     protected void setOnclickListeners() {
 
@@ -120,12 +175,11 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", "1");
+        map.put("u_id", (String) SPUtils.get("uid",""));
 
         mHttpHelper.post(Api.URL + "tuijian", map, new BaseCallback<MvpRecommendBean>() {
             @Override
             public void onRequestBefore() {
-
             }
 
             @Override
@@ -159,13 +213,12 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", "1");
+        map.put("u_id",  (String) SPUtils.get("uid",""));
         map.put("page", page + "");
 
         mHttpHelper.post(Api.URL + "newlist", map, new BaseCallback<PopularBeans>() {
             @Override
             public void onRequestBefore() {
-
             }
 
             @Override
@@ -198,11 +251,56 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         });
     }
 
+    private void postFollowDate(String opt, String uid) {
+        System.out.println("-------------------"+uid);
+        OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
+        Map<String, String> map = new HashMap<>();
+        map.put("my_id", (String) SPUtils.get("uid",""));
+        map.put("key", Api.KEY);
+        map.put("other_id", uid);
+        String url = "";
+        if (opt.equals("1")) {
+            url = "un_focus";
+        } else {
+            url = "focus_other";
+        }
+        mHttpHelper.post(Api.URL + url, map, new BaseCallback<ReturnBean>() {
+            @Override
+            public void onRequestBefore() {
+
+            }
+
+            @Override
+            public void onFailure(Request request, Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Response response, ReturnBean resultBean) {
+                if (resultBean.getCode().equals("800")) {
+                    //                    if (opt.equals("1")) {
+                    //                        resultBeanData.getData().get(position).setFlag("0");
+                    //                    } else {
+                    //                        resultBeanData.getData().get(position).setFlag("1");
+                    //                    }
+                    commonAdapter.notifyDataSetChanged();
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onError(Response response, int errorCode, Exception e) {
+
+            }
+        });
+    }
+
     private ViewPager mViewPager;
     private RelativeLayout viewPagerContainer;
 
     private void initHeaderAndFooter() {
-
 
 
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_header_layout, null);
@@ -211,17 +309,18 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         mViewPager.setClipChildren(false);
         viewPagerContainer.setClipChildren(false);
         recyclerView.setClipChildren(false);
-        mViewPager.addOnPageChangeListener(this);
 
 
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
-        mViewPager.setOffscreenPageLimit(2);
-        mViewPager.setCurrentItem(2);
+        mViewPager.setOffscreenPageLimit(4);
+
         MvpBannerAdapter mvpBannerAdapter = new MvpBannerAdapter();
 
         mViewPager.setAdapter(mvpBannerAdapter);
         mHeaderAndFooterWrapper.addHeaderView(view);
+        mViewPager.setCurrentItem(1);
 
+        mViewPager.addOnPageChangeListener(this);
         View popularityView = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_popularity_list, null);
 
         final ViewPager popularViewPager = popularityView.findViewById(R.id.viewpager_popularity);
@@ -319,6 +418,7 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
 
     }
 
+
     public class MvpBannerAdapter extends PagerAdapter {
 
         @Override
@@ -362,9 +462,18 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
             name.setText(listAll.get(position).getNickname());
 
 
-            view.setOnClickListener(new View.OnClickListener() {
+            head_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    readyGo(MeCenterActivity.class, listAll.get(position).getId());
+
+
+                }
+            });
+            cover_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    readyGo(ReleaseDetailsActivity.class, listAll.get(position).getZp_id());
 
                 }
             });
@@ -378,6 +487,8 @@ public class MvpFirstPageFragment extends Basefragment implements ViewPager.OnPa
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
         }
+
+
     }
 
     //

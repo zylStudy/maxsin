@@ -20,6 +20,7 @@ import com.renyi.maxsin.module.Study.bean.CoursesListBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -167,7 +168,7 @@ public class CourseFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("student_id", "1");
+        map.put("student_id", (String) SPUtils.get("uid",""));
 
         map.put("current_page", page + "");
         if (!c_type.equals("-1")) {

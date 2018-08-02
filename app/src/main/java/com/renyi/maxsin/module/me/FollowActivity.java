@@ -15,6 +15,7 @@ import com.renyi.maxsin.module.me.bean.FollowBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -158,7 +159,7 @@ public class FollowActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", "22");
+        map.put("u_id", (String) SPUtils.get("uid",""));
         map.put("get_flag", flage);
         map.put("current_page", page + "");
 
@@ -199,17 +200,12 @@ public class FollowActivity extends BaseActivity {
         });
     }
 
-    //    @Override
-    //    protected void onCreate(Bundle savedInstanceState) {
-    //        super.onCreate(savedInstanceState);
-    //        setContentView(R.layout.activity_follow);
-    //    }
 
     private void postDate(final String opt, String uid, final int position) {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", "22");
+        map.put("my_id", (String) SPUtils.get("uid",""));
         map.put("key", Api.KEY);
         map.put("other_id", uid);
         String url = "";

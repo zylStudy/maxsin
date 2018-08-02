@@ -18,6 +18,7 @@ import com.renyi.maxsin.module.release.bean.RelesseInfoAndWorksBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.swipe.SwipeMenuLayout;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -184,7 +185,7 @@ public class MyReleaseInfoAndWorksFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("cat_id", type);
-        map.put("uid", "1");
+        map.put("uid", (String) SPUtils.get("uid",""));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "work_list", map, new BaseCallback<RelesseInfoAndWorksBean>() {

@@ -137,6 +137,22 @@ public class PopularBeans {
             private String maxdate;
             private String is_focus;
 
+            @Override
+            public String toString() {
+                return "ListBean{" +
+                        "id='" + id + '\'' +
+                        ", zp_id='" + zp_id + '\'' +
+                        ", nickname='" + nickname + '\'' +
+                        ", head_url='" + head_url + '\'' +
+                        ", title='" + title + '\'' +
+                        ", add_time='" + add_time + '\'' +
+                        ", tag_name='" + tag_name + '\'' +
+                        ", cover_img='" + cover_img + '\'' +
+                        ", maxdate='" + maxdate + '\'' +
+                        ", is_focus='" + is_focus + '\'' +
+                        '}';
+            }
+
             public String getId() {
                 return id;
             }

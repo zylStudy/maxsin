@@ -56,6 +56,15 @@ public class MvpRecommendBean {
         private String cover_img;
         private String is_focus;
         private String total;
+        private String zp_id;
+
+        public String getZp_id() {
+            return zp_id;
+        }
+
+        public void setZp_id(String zp_id) {
+            this.zp_id = zp_id;
+        }
 
         public String getTotal() {
             return total;

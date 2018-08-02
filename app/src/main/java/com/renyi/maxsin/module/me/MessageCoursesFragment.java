@@ -16,6 +16,7 @@ import com.renyi.maxsin.module.me.bean.MessageCourseBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.swipe.SwipeMenuLayout;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -181,7 +182,7 @@ public class MessageCoursesFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("uid", "1");
+        map.put("uid", (String) SPUtils.get("uid",""));
         map.put("current_page", page + "");
 
         mHttpHelper.post(Api.URL + "course_info_list", map, new BaseCallback<MessageCourseBean>() {

@@ -20,6 +20,7 @@ import com.renyi.maxsin.module.release.interfaces.TagPositionInterface;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.tagview.FlowLayout;
 import com.renyi.maxsin.view.tagview.TagAdapter;
 import com.renyi.maxsin.view.tagview.TagFlowLayout;
@@ -288,7 +289,7 @@ public class SelectTagTitleActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", "1");
+        map.put("user_id", (String) SPUtils.get("uid",""));
         map.put("key", Api.KEY);
         map.put("title", etTitle.getText().toString().trim());
         map.put("description", etInfo.getText().toString().trim());

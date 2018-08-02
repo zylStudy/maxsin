@@ -1,6 +1,7 @@
 package com.renyi.maxsin.module.mvp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -11,6 +12,7 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.me.MeCenterActivity;
 import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -71,7 +73,7 @@ public class FansNumFragment extends Basefragment {
                 if (item.getHead_url() == null || item.getHead_url().equals("")) {
 
                 } else {
-                    viewHolder.setCornerRadiusImageViewNetUrl(R.id.head_image, item.getHead_url(),75);
+                    viewHolder.setImageCircular(R.id.head_image, item.getHead_url());
                 }
                 if (position == 0) {
                     viewHolder.setBackgroundRes(R.id.hide_image, R.mipmap.ic_mvp_fans_num01);
@@ -102,11 +104,11 @@ public class FansNumFragment extends Basefragment {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
-                //                Bundle bundle = new Bundle();
-                //                bundle.putString("id", get_listAll.get(position).getId());
-                //                Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
-                //                intent.putExtras(bundle);
-                //                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", get_listAll.get(position).getId());
+                Intent intent = new Intent(getActivity(), MeCenterActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
 
             @Override
@@ -126,7 +128,6 @@ public class FansNumFragment extends Basefragment {
         mHttpHelper.post(Api.URL + "mvplist", map, new BaseCallback<MvpRecommendBean>() {
             @Override
             public void onRequestBefore() {
-
             }
 
             @Override

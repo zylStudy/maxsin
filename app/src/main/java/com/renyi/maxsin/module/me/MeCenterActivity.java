@@ -32,6 +32,7 @@ import com.renyi.maxsin.module.release.bean.MeCenterBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.utils.StatusBarCompat;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -148,8 +149,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         titles.add("他的发布");
         titles.add("他的作品");
 
-        fragments.add(ReleaseInfoAndWorksFragment.getInstance("1"));
-        fragments.add(ReleaseInfoAndWorksFragment.getInstance("2"));
+        fragments.add(ReleaseInfoAndWorksFragment.getInstance("1",getIntent().getExtras().getString("id")));
+        fragments.add(ReleaseInfoAndWorksFragment.getInstance("2",getIntent().getExtras().getString("id")));
 
 
         FragmentAdapter adatper = new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
@@ -198,8 +199,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("id", "1");
-        map.put("my_id", "1");
+        map.put("id", getIntent().getExtras().getString("id"));
+        map.put("my_id", (String) SPUtils.get("uid",""));
 
         mHttpHelper.post(Api.URL + "other_view", map, new BaseCallback<MeCenterBean>() {
             @Override
@@ -274,9 +275,9 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", "1");
+        map.put("my_id", (String) SPUtils.get("uid",""));
         map.put("key", Api.KEY);
-        map.put("other_id", "1");
+        map.put("other_id", getIntent().getExtras().getString("id"));
         String url = "";
         if (flage.equals("1")) {
             url = "un_focus";

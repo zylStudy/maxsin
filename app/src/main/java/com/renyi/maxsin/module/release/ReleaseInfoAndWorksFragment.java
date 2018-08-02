@@ -45,10 +45,11 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
     private List<RelesseInfoAndWorksBean.DataBean.GetListBean> get_listAll = new ArrayList<>();
     RelesseInfoAndWorksBean.DataBean resultBeanData;
 
-    public static ReleaseInfoAndWorksFragment getInstance(String type) {
+    public static ReleaseInfoAndWorksFragment getInstance(String type, String id) {
         ReleaseInfoAndWorksFragment ewsFragment = new ReleaseInfoAndWorksFragment();
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
+        bundle.putString("id", id);
         ewsFragment.setArguments(bundle);
         return ewsFragment;
     }
@@ -97,7 +98,6 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
                 viewHolder.setText(R.id.lookNum, item.getAdd_time());
 
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
-
 
 
             }
@@ -169,7 +169,7 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("cat_id", type);
-        map.put("uid", "1");
+        map.put("uid", getArguments().getString("id"));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "work_list", map, new BaseCallback<RelesseInfoAndWorksBean>() {

@@ -20,6 +20,7 @@ import com.renyi.maxsin.module.release.ReleaseImageAndTextActivity;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -87,8 +88,8 @@ public class MeFragment extends Basefragment {
         headImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MeCenterActivity.class);
-                startActivity(intent);
+                //                Intent intent = new Intent(getActivity(), MeCenterActivity.class);
+                //                startActivity(intent);
             }
         });
         msgRel.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +212,7 @@ public class MeFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("id", "1");
+        map.put("id", (String) SPUtils.get("uid", ""));
 
         mHttpHelper.post(Api.URL + "my", map, new BaseCallback<ResultBean>() {
             @Override

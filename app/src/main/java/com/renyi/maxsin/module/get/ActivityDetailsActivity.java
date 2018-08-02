@@ -22,6 +22,7 @@ import com.renyi.maxsin.module.get.bean.ReturnBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -170,7 +171,7 @@ public class ActivityDetailsActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("user_id", "1");
+        map.put("user_id", (String) SPUtils.get("uid",""));
         map.put("content_id", id);
 
         mHttpHelper.post(Api.URL + "activity_info", map, new BaseCallback<ActivityBean>() {

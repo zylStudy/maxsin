@@ -9,6 +9,7 @@ import com.renyi.maxsin.module.get.bean.ReturnBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -65,7 +66,7 @@ public class SuggestionActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("uid", "1");
+        map.put("uid", (String) SPUtils.get("uid",""));
         map.put("content", etInfo.getText().toString().trim());
         map.put("key", Api.KEY);
 

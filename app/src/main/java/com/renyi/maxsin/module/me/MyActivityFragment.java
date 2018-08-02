@@ -19,6 +19,7 @@ import com.renyi.maxsin.module.get.bean.GetBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -176,7 +177,7 @@ public class MyActivityFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("active_flag", type);
-        map.put("u_id", "1");
+        map.put("u_id", (String) SPUtils.get("uid",""));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "active_list", map, new BaseCallback<GetBeans>() {

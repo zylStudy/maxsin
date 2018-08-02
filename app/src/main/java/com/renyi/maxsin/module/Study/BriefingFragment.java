@@ -15,6 +15,7 @@ import com.renyi.maxsin.module.get.bean.BriefingBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.CBProgressBar;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -119,7 +120,7 @@ public class BriefingFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("stu_id", "1");
+        map.put("stu_id", (String) SPUtils.get("uid",""));
 
         mHttpHelper.post(Api.URL + "learn_brief", map, new BaseCallback<BriefingBean>() {
             @Override

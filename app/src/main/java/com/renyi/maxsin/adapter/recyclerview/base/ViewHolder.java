@@ -121,6 +121,20 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         view.setImageDrawable(drawable);
         return this;
     }
+    public ViewHolder setImageCircular(int viewId, String imageUrl) {
+        ImageView view = getView(viewId);
+        Glide.with(mContext).load(imageUrl).asBitmap().centerCrop().into(new BitmapImageViewTarget(view) {
+            @Override
+            protected void setResource(Bitmap resource) {
+                RoundedBitmapDrawable circularBitmapDrawable =
+                        RoundedBitmapDrawableFactory.create(mContext.getResources(), resource);
+                circularBitmapDrawable.setCircular(true);
+                //    circularBitmapDrawable.setCornerRadius(5);设置图片圆角
+                view.setImageDrawable(circularBitmapDrawable);
+            }
+        });
+        return this;
+    }
 
     //设置图片圆角
     public ViewHolder setCornerRadiusImageViewNetUrl(int viewId, String imageUrl, final float a) {
