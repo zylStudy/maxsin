@@ -1,5 +1,6 @@
 package com.renyi.maxsin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -175,10 +176,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.two_rel:
                 menuTagShowOrHide(1);
+
+                Intent intent = new Intent("broadcast.update1");
+                sendBroadcast(intent);
                 checkedFragment(mvpFragment, null, GO_FRAGMENT);
                 break;
             case R.id.three_rel:
                 menuTagShowOrHide(2);
+
+
                 checkedFragment(maxsinFragment, null, MAXSIN_FRAGMENT);
 
                 break;

@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -31,6 +29,7 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.renyi.maxsin.adapter.recyclerview.wrapper.LoadMoreWrapper;
+import com.renyi.maxsin.base.Basefragment;
 import com.renyi.maxsin.module.get.bean.ReturnBean;
 import com.renyi.maxsin.module.me.MeCenterActivity;
 import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
@@ -50,7 +49,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.renyi.maxsin.R.id.viewpager;
 
@@ -59,7 +57,7 @@ import static com.renyi.maxsin.R.id.viewpager;
  * Created by zhangyuliang on 2018/3/22.
  */
 
-public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageChangeListener {
+public class MvpPageFragment extends Basefragment implements ViewPager.OnPageChangeListener {
 
     List<MvpRecommendBean.DataBean> listAll = new ArrayList<>();
     List<PopularBeans.DataBean.ListBean> popularListAll = new ArrayList<>();
@@ -80,34 +78,21 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
     View tabLine02;
     TextView tvTitle1;
     TextView tvTitle2;
-    View view;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_firstmvp, null);
+    protected int getLayoutId() {
 
-        ButterKnife.bind(this, view);
 
-        return view;
+        return R.layout.fragment_firstmvp;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initView();
-        loadData();
-
-    }
-
-
     protected void initView() {
-        IntentFilter filter1 = new IntentFilter("broadcast.update1");
-        getActivity().registerReceiver(broadcastReceiverUpdate1, filter1);
         IntentFilter filter = new IntentFilter("broadcast.update");
         getActivity().registerReceiver(broadcastReceiverUpdate, filter);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setHasFixedSize(true);
+
 
         //        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -170,6 +155,7 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
     }
 
 
+    @Override
     protected void loadData() {
         loadDataFromSer();
         loadPopularDataFromSer();
@@ -181,6 +167,12 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
         bundle.putString("id", id);
         intent.putExtras(bundle);
         startActivity(intent);
+
+    }
+
+    @Override
+    protected void setOnclickListeners() {
+
 
     }
 
@@ -348,40 +340,24 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
 
         }
     };
-    BroadcastReceiver broadcastReceiverUpdate1 = new BroadcastReceiver() {
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    commonAdapter.notifyDataSetChanged();
-                    mvpBannerAdapter.notifyDataSetChanged();
-                }
-            }, 1000);
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!listAll.isEmpty()) {
+            getActivity().runOnUiThread(new Refresh());
         }
-    };
-    //    @Override
-    //    public void onResume() {
-    //        super.onResume();
-    //        if (!listAll.isEmpty()) {
-    //            getActivity().runOnUiThread(new Refresh());
-    //
-    //        }
-    //
-    //    }
-    //
-    //
-    //    class Refresh implements Runnable {
-    //        @Override
-    //        public void run() {
-    //
-    //            commonAdapter.notifyDataSetChanged();
-    //            mvpBannerAdapter.notifyDataSetChanged();
-    //        }
-    //    }
+
+    }
+
+
+    class Refresh implements Runnable {
+        @Override
+        public void run() {
+            commonAdapter.notifyDataSetChanged();
+            mvpBannerAdapter.notifyDataSetChanged();
+        }
+    }
 
     private ViewPager mViewPager;
     private RelativeLayout viewPagerContainer;
@@ -603,7 +579,6 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
     public void onDestroy() {
         super.onDestroy();
         getActivity().unregisterReceiver(broadcastReceiverUpdate);
-        getActivity().unregisterReceiver(broadcastReceiverUpdate1);
 
     }
 

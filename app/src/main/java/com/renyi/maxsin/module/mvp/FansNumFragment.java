@@ -120,7 +120,6 @@ public class FansNumFragment extends Basefragment {
 
     private void loadDataFromSer() {
 
-
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);

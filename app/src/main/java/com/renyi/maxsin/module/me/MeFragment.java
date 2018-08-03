@@ -127,7 +127,7 @@ public class MeFragment extends Basefragment {
                 bundle.putString("flage", "2");
                 Intent intent = new Intent(getActivity(), FollowActivity.class);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, 2);
             }
         });
         fanRel.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class MeFragment extends Basefragment {
                 bundle.putString("flage", "1");
                 Intent intent = new Intent(getActivity(), FollowActivity.class);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivityForResult(intent, 2);
             }
         });
 

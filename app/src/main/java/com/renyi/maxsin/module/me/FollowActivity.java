@@ -1,5 +1,7 @@
 package com.renyi.maxsin.module.me;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -201,7 +203,7 @@ public class FollowActivity extends BaseActivity {
     }
 
 
-    private void postDate(final String opt, String uid, final int position) {
+    private void postDate(final String opt, final String uid, final int position) {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
@@ -233,6 +235,11 @@ public class FollowActivity extends BaseActivity {
                     } else {
                         resultBeanData.getData().get(position).setFlag("1");
                     }
+                    Intent intent = new Intent("broadcast.update");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("uid", uid);
+                    intent.putExtras(bundle);
+                     sendBroadcast(intent);
                     adapter.notifyDataSetChanged();
                 } else {
 
@@ -246,6 +253,11 @@ public class FollowActivity extends BaseActivity {
             }
         });
     }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent();
+        setResult(2, intent);
+    }
 
 }
