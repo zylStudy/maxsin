@@ -1,6 +1,5 @@
 package com.renyi.maxsin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 import com.renyi.maxsin.module.get.GetFragment;
 import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
-import com.renyi.maxsin.module.mvp.MvpFirstPageFragment;
+import com.renyi.maxsin.module.mvp.MvpPageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout threeRel;
     @BindView(R.id.three_tv)
     TextView threeTv;
-//    @BindView(R.id.four_image_hl)
-//    ImageView fourImageHl;
-//    @BindView(R.id.four_image_nor)
-//    ImageView fourImageNor;
-//    @BindView(R.id.four_tv)
-//    TextView fourTv;
-//    @BindView(R.id.four_rel)
-//    RelativeLayout fourRel;
+    //    @BindView(R.id.four_image_hl)
+    //    ImageView fourImageHl;
+    //    @BindView(R.id.four_image_nor)
+    //    ImageView fourImageNor;
+    //    @BindView(R.id.four_tv)
+    //    TextView fourTv;
+    //    @BindView(R.id.four_rel)
+    //    RelativeLayout fourRel;
     @BindView(R.id.five_image_hl)
     ImageView fiveImageHl;
     @BindView(R.id.five_image_nor)
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentFragment = "";
     private long firstTime = 0;
     private GetFragment getFragment;
-    private MvpFirstPageFragment mvpFragment;
+    private MvpPageFragment mvpFragment;
     private MaxsinFragment maxsinFragment;
     //private StudyFragment studyFragment;
     private MeFragment meFragment;
@@ -90,11 +89,12 @@ public class MainActivity extends AppCompatActivity {
     //public static final String STUDY_FRAGMENT = "STUDYFRAGMENT";
     public static final String ME_FRAGMENT = "MEFRAGMENT";
     public static MainActivity mainActivity;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainActivity=this;
+        mainActivity = this;
         ButterKnife.bind(this);
         initView();
         setOnClickListeners();
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         getFragment = new GetFragment();
-        mvpFragment = new MvpFirstPageFragment();
+        mvpFragment = new MvpPageFragment();
         maxsinFragment = new MaxsinFragment();
         //studyFragment = new StudyFragment();
         meFragment = new MeFragment();
@@ -128,14 +128,14 @@ public class MainActivity extends AppCompatActivity {
         iNorList.add(firstImageNor);
         iNorList.add(twoImageNor);
         iNorList.add(threeImageNor);
-       // iNorList.add(fourImageNor);
+        // iNorList.add(fourImageNor);
         iNorList.add(fiveImageNor);
 
         tvList = new ArrayList<>();
         tvList.add(firstTv);
         tvList.add(twoTv);
         tvList.add(threeTv);
-       // tvList.add(fourTv);
+        // tvList.add(fourTv);
         tvList.add(fiveTv);
     }
 
@@ -176,9 +176,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.two_rel:
                 menuTagShowOrHide(1);
-
-                Intent intent = new Intent("broadcast.update1");
-                sendBroadcast(intent);
                 checkedFragment(mvpFragment, null, GO_FRAGMENT);
                 break;
             case R.id.three_rel:
@@ -189,11 +186,11 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
-//            case R.id.four_rel:
-//                menuTagShowOrHide(3);
-//                checkedFragment(studyFragment, null, STUDY_FRAGMENT);
-//
-//                break;
+            //            case R.id.four_rel:
+            //                menuTagShowOrHide(3);
+            //                checkedFragment(studyFragment, null, STUDY_FRAGMENT);
+            //
+            //                break;
             case R.id.five_rel:
                 menuTagShowOrHide(4);
                 checkedFragment(meFragment, null, ME_FRAGMENT);

@@ -65,8 +65,6 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
     List<PopularBeans.DataBean.ListBean> popularListAll = new ArrayList<>();
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.viewpager_include)
-    RelativeLayout viewpagerInclude;
     int page = 1;
 
     PopularBeans popularBeans;

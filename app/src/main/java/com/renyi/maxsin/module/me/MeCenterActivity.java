@@ -76,11 +76,14 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     CollapsingToolbarLayout collaps;
     @BindView(R.id.appbarlayout)
     AppBarLayout appbarlayout;
-    String is_fans = "";
+    String is_fans = "", id = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        id = getIntent().getExtras().getString("id");
+
         setContentView(R.layout.activity_me_center);
         StatusBarCompat.translucentStatusBar(this);
         ButterKnife.bind(this);
@@ -149,8 +152,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         titles.add("他的发布");
         titles.add("他的作品");
 
-        fragments.add(ReleaseInfoAndWorksFragment.getInstance("1",getIntent().getExtras().getString("id")));
-        fragments.add(ReleaseInfoAndWorksFragment.getInstance("2",getIntent().getExtras().getString("id")));
+        fragments.add(ReleaseInfoAndWorksFragment.getInstance("1", getIntent().getExtras().getString("id")));
+        fragments.add(ReleaseInfoAndWorksFragment.getInstance("2", getIntent().getExtras().getString("id")));
 
 
         FragmentAdapter adatper = new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
@@ -200,7 +203,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("id", getIntent().getExtras().getString("id"));
-        map.put("my_id", (String) SPUtils.get("uid",""));
+        map.put("my_id", (String) SPUtils.get("uid", ""));
 
         mHttpHelper.post(Api.URL + "other_view", map, new BaseCallback<MeCenterBean>() {
             @Override
@@ -275,9 +278,9 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", (String) SPUtils.get("uid",""));
+        map.put("my_id", (String) SPUtils.get("uid", ""));
         map.put("key", Api.KEY);
-        map.put("other_id", getIntent().getExtras().getString("id"));
+        map.put("other_id", id);
         String url = "";
         if (flage.equals("1")) {
             url = "un_focus";
@@ -298,12 +301,18 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
             @Override
             public void onSuccess(Response response, ReturnBean resultBean) {
                 if (resultBean.getCode().equals("800")) {
+                    Intent intent = new Intent("broadcast.update");
+                    Bundle bundle = new Bundle();
+                    bundle.putString("uid", id);
+                    intent.putExtras(bundle);
+                    sendBroadcast(intent);
                     if (flage.equals("1")) {
-                        is_fans="0";
-                    }else{
-                        is_fans="1";
+                        is_fans = "0";
+                    } else {
+                        is_fans = "1";
                     }
                     setFollowBut(is_fans);
+
                 } else {
 
                 }
@@ -319,11 +328,13 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
 
     private void setFollowBut(String s) {
         if (s.equals("1")) {
-            follow.setBackgroundResource(R.drawable.shape_bt_hl);
-            follow.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.white));
-        } else {
+            follow.setText("已关注");
             follow.setBackgroundResource(R.drawable.shap_null_center_layout);
             follow.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.colorOuteb4161));
+        } else {
+            follow.setText("关注");
+            follow.setBackgroundResource(R.drawable.shape_bt_hl);
+            follow.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.white));
         }
     }
 }

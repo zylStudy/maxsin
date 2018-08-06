@@ -1,6 +1,9 @@
 package com.renyi.maxsin.module.me;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
@@ -74,8 +77,17 @@ public class MeFragment extends Basefragment {
 
     @Override
     protected void initView() {
-
+        IntentFilter filter = new IntentFilter("broadcast.updateMe");
+        getActivity().registerReceiver(broadcastReceiverUpdate, filter);
     }
+
+    BroadcastReceiver broadcastReceiverUpdate = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            loadDataString();
+        }
+    };
 
     @Override
     protected void loadData() {
@@ -205,6 +217,13 @@ public class MeFragment extends Basefragment {
         if (requestCode == 2 && resultCode == 0) {
             loadDataString();
         }
+
+    }
+
+
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(broadcastReceiverUpdate);
 
     }
 

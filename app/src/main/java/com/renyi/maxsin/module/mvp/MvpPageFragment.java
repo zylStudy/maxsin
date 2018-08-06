@@ -12,12 +12,11 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,10 +24,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentVPagerAdapter;
-import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
-import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
-import com.renyi.maxsin.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
-import com.renyi.maxsin.adapter.recyclerview.wrapper.LoadMoreWrapper;
+import com.renyi.maxsin.adapter.listview.CommonAdapter;
+import com.renyi.maxsin.adapter.listview.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
 import com.renyi.maxsin.module.get.bean.ReturnBean;
 import com.renyi.maxsin.module.me.MeCenterActivity;
@@ -62,15 +59,11 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
     List<MvpRecommendBean.DataBean> listAll = new ArrayList<>();
     List<PopularBeans.DataBean.ListBean> popularListAll = new ArrayList<>();
     @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.viewpager_include)
-    RelativeLayout viewpagerInclude;
+    ListView recyclerView;
     int page = 1;
 
     PopularBeans popularBeans;
     CommonAdapter commonAdapter;
-    HeaderAndFooterWrapper mHeaderAndFooterWrapper;
-    LoadMoreWrapper mLoadMoreWrapper;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     MvpBannerAdapter mvpBannerAdapter;
 
@@ -83,21 +76,13 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
     protected int getLayoutId() {
 
 
-        return R.layout.fragment_firstmvp;
+        return R.layout.fragment_page_mvp;
     }
 
     @Override
     protected void initView() {
         IntentFilter filter = new IntentFilter("broadcast.update");
         getActivity().registerReceiver(broadcastReceiverUpdate, filter);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
-
-        //        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        //        //        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        //        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         commonAdapter = new CommonAdapter<PopularBeans.DataBean.ListBean>(getActivity(), R.layout.item_mvp_new_product_list, popularListAll) {
 
             @Override
@@ -120,14 +105,17 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
                 viewHolder.setOnClickListener(R.id.followimage, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        System.out.println("--------1111----" + position);
+
                         if (item.getIs_focus().equals("1")) {
                             viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
-                            postFollowDate("1", popularListAll.get(position - 2).getId());
-                            popularListAll.get(position - 2).setIs_focus("0");
+                            postFollowDate("1", popularListAll.get(position).getId());
+                            popularListAll.get(position).setIs_focus("0");
                         } else {
                             viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_no_bg);
-                            postFollowDate("2", popularListAll.get(position - 2).getId());
-                            popularListAll.get(position - 2).setIs_focus("1");
+                            postFollowDate("2", popularListAll.get(position).getId());
+                            popularListAll.get(position).setIs_focus("1");
                         }
 
 
@@ -137,20 +125,20 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
                 viewHolder.setOnClickListener(R.id.cover_image, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        readyGo(ReleaseDetailsActivity.class, popularListAll.get(position - 2).getZp_id());
+                        readyGo(ReleaseDetailsActivity.class, popularListAll.get(position).getZp_id());
                     }
                 });
                 viewHolder.setOnClickListener(R.id.head_image, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        readyGo(MeCenterActivity.class, popularListAll.get(position - 2).getId());
+                        readyGo(MeCenterActivity.class, popularListAll.get(position).getId());
                     }
                 });
-
             }
         };
-        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(commonAdapter);
-        mLoadMoreWrapper = new LoadMoreWrapper(mHeaderAndFooterWrapper);
+
+        recyclerView.setAdapter(commonAdapter);
+
 
     }
 
@@ -240,7 +228,6 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
                     popularBeans = resultBean;
                     popularListAll.addAll(popularBeans.getData().getList());
                     commonAdapter.notifyDataSetChanged();
-                    mLoadMoreWrapper.notifyDataSetChanged();
 
 
                 } else {
@@ -284,12 +271,8 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
             @Override
             public void onSuccess(Response response, ReturnBean resultBean) {
                 if (resultBean.getCode().equals("800")) {
-                    //                    Intent intent = new Intent("broadcast.update");
-                    ////                    Bundle bundle = new Bundle();
-                    ////                    bundle.putString("uid", uid);
-                    ////                    intent.putExtras(bundle);
-                    //                    getActivity().sendBroadcast(intent);
-
+                    Intent intent = new Intent("broadcast.updateMe");
+                    getActivity().sendBroadcast(intent);
                     commonAdapter.notifyDataSetChanged();
                     mvpBannerAdapter.notifyDataSetChanged();
                 } else {
@@ -310,13 +293,10 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            int position = -1;
             String uid = intent.getExtras().getString("uid");
-
-            System.out.println("-------uid------" + uid);
             for (int i = 0; i < popularListAll.size(); i++) {
                 if (popularListAll.get(i).getId().equals(uid)) {
-                    System.out.println("-------uid2------" + uid);
                     if (popularListAll.get(i).getIs_focus().equals("1")) {
                         popularListAll.get(i).setIs_focus("0");
                     } else {
@@ -327,7 +307,7 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
             }
             for (int i = 0; i < listAll.size(); i++) {
                 if (listAll.get(i).getId().equals(uid)) {
-                    System.out.println("-------uid3------" + uid);
+                    position = i;
                     if (listAll.get(i).getIs_focus().equals("1")) {
                         listAll.get(i).setIs_focus("0");
                     } else {
@@ -336,28 +316,18 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
                 }
             }
+            commonAdapter.notifyDataSetChanged();
+
+            if (mvpBannerAdapter != null) {
+                mViewPager.setAdapter(mvpBannerAdapter);
+                mViewPager.setCurrentItem(position);
+                mvpBannerAdapter.setOnNotifyChanged();
+            }
 
 
         }
     };
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (!listAll.isEmpty()) {
-            getActivity().runOnUiThread(new Refresh());
-        }
-
-    }
-
-
-    class Refresh implements Runnable {
-        @Override
-        public void run() {
-            commonAdapter.notifyDataSetChanged();
-            mvpBannerAdapter.notifyDataSetChanged();
-        }
-    }
 
     private ViewPager mViewPager;
     private RelativeLayout viewPagerContainer;
@@ -371,7 +341,7 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         mViewPager.setClipChildren(false);
         viewPagerContainer.setClipChildren(false);
         recyclerView.setClipChildren(false);
-
+        recyclerView.addHeaderView(view);
 
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
         mViewPager.setOffscreenPageLimit(4);
@@ -379,12 +349,11 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         mvpBannerAdapter = new MvpBannerAdapter();
 
         mViewPager.setAdapter(mvpBannerAdapter);
-        mHeaderAndFooterWrapper.addHeaderView(view);
         mViewPager.setCurrentItem(1);
 
         mViewPager.addOnPageChangeListener(this);
         View popularityView = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_popularity_list, null);
-
+        recyclerView.addHeaderView(popularityView);
         final ViewPager popularViewPager = popularityView.findViewById(R.id.viewpager_popularity);
         tabLine01 = popularityView.findViewById(R.id.tab_line01);
         tabLine02 = popularityView.findViewById(R.id.tab_line02);
@@ -428,26 +397,6 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
             }
         });
 
-        mHeaderAndFooterWrapper.addHeaderView(popularityView);
-        recyclerView.setAdapter(mHeaderAndFooterWrapper);
-        mHeaderAndFooterWrapper.notifyDataSetChanged();
-
-        mLoadMoreWrapper.setLoadMoreView(R.layout.tv);
-        mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                if (popularBeans != null) {
-                    page++;
-                    int parseInt = popularBeans.getData().getPageInfo().getTotal_page();
-                    if (page <= parseInt) {
-                        loadPopularDataFromSer();
-
-                    }
-                }
-
-            }
-        });
-        recyclerView.setAdapter(mLoadMoreWrapper);
     }
 
     private void setTextViewInlarge(int position) {
@@ -486,6 +435,10 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         @Override
         public int getCount() {
             return listAll == null ? 0 : listAll.size();
+        }
+
+        public void setOnNotifyChanged() {
+            notifyDataSetChanged();
         }
 
         @Override
