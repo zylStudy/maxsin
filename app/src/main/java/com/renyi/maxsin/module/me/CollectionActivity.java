@@ -38,7 +38,7 @@ public class CollectionActivity extends BaseActivity implements OnTabSelectListe
         showTitleAndBack("我的收藏");
         list.add("资讯");
         list.add("作品");
-
+//
 
         mFragments.add(NewsFragment.getInstance("1"));
         mFragments.add(CollectionFragment.getInstance("2"));
