@@ -211,6 +211,11 @@ public class MyReleaseInfoAndWorksFragment extends Basefragment {
                     if (get_listAll.size() != 0) {
                         adapter.notifyDataSetChanged();
                     }
+                    if (get_listAll.size() != 0) {
+                        showEmpty(false);
+                    } else {
+                        showEmpty(true);
+                    }
                 } else {
 
                 }

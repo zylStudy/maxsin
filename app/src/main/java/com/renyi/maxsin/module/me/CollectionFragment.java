@@ -1,6 +1,7 @@
-package com.renyi.maxsin.module.release;
+package com.renyi.maxsin.module.me;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,10 +14,11 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
-import com.renyi.maxsin.module.release.bean.RelesseInfoAndWorksBean;
+import com.renyi.maxsin.module.get.bean.GetBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -26,30 +28,32 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.Unbinder;
 
 /**
- * Created by zhangyuliang on 2018/3/22.他的作品和内容
+ * Created by zhangyuliang on 2018/3/22.我收藏的作品
  * 课程
  */
 
-public class ReleaseInfoAndWorksFragment extends Basefragment {
+public class CollectionFragment extends Basefragment {
     Bundle bundle;
     String type = "";
-    @BindView(R.id.swipe_container)
-    SwipeRefreshLayout swipeRefreshLayout;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeRefreshLayout;
+    Unbinder unbinder;
     private CommonAdapter adapter;
     private int page = 1;
-    private List<RelesseInfoAndWorksBean.DataBean.GetListBean> get_list;
-    private List<RelesseInfoAndWorksBean.DataBean.GetListBean> get_listAll = new ArrayList<>();
-    RelesseInfoAndWorksBean.DataBean resultBeanData;
+    private List<GetBeans.DataBean.GetListBean> get_list;
+    private List<GetBeans.DataBean.GetListBean> get_listAll = new ArrayList<>();
+    private GetBeans.DataBean resultBeanData;
 
-    public static ReleaseInfoAndWorksFragment getInstance(String type, String id) {
-        ReleaseInfoAndWorksFragment ewsFragment = new ReleaseInfoAndWorksFragment();
+    public static CollectionFragment getInstance(String type) {
+        CollectionFragment ewsFragment = new CollectionFragment();
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
-        bundle.putString("id", id);
         ewsFragment.setArguments(bundle);
         return ewsFragment;
     }
@@ -69,37 +73,16 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
 
     @Override
     protected void initView() {
-
-        swipeRefreshLayout.setColorSchemeResources(
-
-                android.R.color.holo_red_light,
-                android.R.color.black,
-                android.R.color.holo_green_light);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-
-
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 300);
-            }
-        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        adapter = new CommonAdapter<RelesseInfoAndWorksBean.DataBean.GetListBean>(getActivity(), R.layout.item_release_info_list, get_listAll) {
+        adapter = new CommonAdapter<GetBeans.DataBean.GetListBean>(getActivity(), R.layout.item_me_coll_list, get_listAll) {
             @Override
-            protected void convert(ViewHolder viewHolder, RelesseInfoAndWorksBean.DataBean.GetListBean item, int position) {
+            protected void convert(ViewHolder viewHolder, GetBeans.DataBean.GetListBean item, int position) {
                 viewHolder.setText(R.id.title, item.getTitle());
-                viewHolder.setText(R.id.time, item.getTag_name());
-                viewHolder.setText(R.id.lookNum, item.getAdd_time());
+                viewHolder.setText(R.id.info, item.getDescription());
+                viewHolder.setText(R.id.likenum, item.getTag_name());
+                viewHolder.setText(R.id.joinnum, item.getAdd_time());
 
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
-
-
+                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover, item.getCover_img(), 10);
             }
         };
         if (recyclerView != null) {
@@ -115,23 +98,43 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
 
     @Override
     protected void setOnclickListeners() {
+
+        swipeRefreshLayout.setColorSchemeResources(
+
+                android.R.color.holo_red_light,
+                android.R.color.black,
+                android.R.color.holo_green_light);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        if (get_listAll != null && get_listAll.size() != 0) {
+                            get_listAll.clear();
+                            adapter.notifyDataSetChanged();
+                            page = 1;
+                            loadDataFromSer();
+                        }
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 500);
+            }
+        });
+
         adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
-                //                Bundle bundle = new Bundle();
-                //                bundle.putString("id", get_listAll.get(position).getId());
-                //                //进入课程详情
-                //                Intent intent = null;
-                //                if (get_listAll.get(position).getLeibie().equals("2")) {
-                //                    intent = new Intent(getActivity(), NewsDetailsActivity.class);
-                //                }
-                //                if (get_listAll.get(position).getLeibie().equals("3")) {
-                //                    intent = new Intent(getActivity(), ActivityDetailsActivity.class);
-                //                }
-                //
-                //                intent.putExtras(bundle);
-                //                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", get_listAll.get(position).getId());
+                //进入活动详情
+                Intent intent = null;
+                intent = new Intent(getActivity(), ReleaseDetailsActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
 
             @Override
@@ -139,7 +142,7 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
                 return false;
             }
         });
-        //
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -168,11 +171,10 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("cat_id", type);
-        map.put("uid", getArguments().getString("id"));
+        map.put("uid", (String) SPUtils.get("uid", ""));
         map.put("cur_page", page + "");
 
-        mHttpHelper.post(Api.URL + "work_list", map, new BaseCallback<RelesseInfoAndWorksBean>() {
+        mHttpHelper.post(Api.URL + "sc_work_list", map, new BaseCallback<GetBeans>() {
             @Override
             public void onRequestBefore() {
 
@@ -184,17 +186,14 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
             }
 
             @Override
-            public void onSuccess(Response response, RelesseInfoAndWorksBean resultBean) {
+            public void onSuccess(Response response, GetBeans resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-
                     resultBeanData = resultBean.getData();
+                    get_list = resultBean.getData().getGet_list();
+                    get_listAll.addAll(get_list);
+                    adapter.notifyDataSetChanged();
 
-                    get_list = resultBeanData.getGet_list();
-                    get_listAll.addAll(ReleaseInfoAndWorksFragment.this.get_list);
-                    if (get_listAll.size() != 0) {
-                        adapter.notifyDataSetChanged();
-                    }
                     if (get_listAll.size() != 0) {
                         showEmpty(false);
                     } else {

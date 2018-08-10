@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search_mvp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.renyi.maxsin.module.mvp.SearchMvpActivity">
+
+    <RelativeLayout
+        android:id="@+id/head_view_title"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/white"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/cancle_tv"
+            android:background="@drawable/shape_select_pic"
+            >
+
+            <RelativeLayout
+                android:id="@+id/search_rellayout"
+                android:layout_width="40dp"
+                android:layout_height="44dp"
+                android:layout_centerVertical="true"
+                >
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:background="@mipmap/ic_search_mvp_bg"
+                    />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edit_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/search_rellayout"
+                android:background="@null"
+                android:gravity="center_vertical|left"
+                android:hint="搜索"
+                android:inputType="text"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/color6"
+                android:textSize="15sp"/>
+
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/cancle_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="取消"
+            />
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colore1"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head_view_title"
+        android:divider="@null"
+        android:scrollbars="none"/>
+
+
+</RelativeLayout>

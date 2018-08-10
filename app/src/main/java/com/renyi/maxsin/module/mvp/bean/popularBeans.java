@@ -136,6 +136,15 @@ public class PopularBeans {
             private String cover_img;
             private String maxdate;
             private String is_focus;
+            private String user_name;
+
+            public String getUser_name() {
+                return user_name;
+            }
+
+            public void setUser_name(String user_name) {
+                this.user_name = user_name;
+            }
 
             @Override
             public String toString() {

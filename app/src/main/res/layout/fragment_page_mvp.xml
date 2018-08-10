@@ -6,33 +6,48 @@
     android:background="@color/white"
     >
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="MVP"
-        android:textColor="@color/color3"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/line"
+    <RelativeLayout
+        android:id="@+id/heade_rel"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/tv"
-        android:layout_marginTop="5dp"
-        />
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="MVP"
+            android:textColor="@color/color3"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_width="21dp"
+            android:layout_height="19dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/ic_search_mvp_bg"/>
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colore1"
+            />
+    </RelativeLayout>
 
 
     <ListView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/viewpager_include"
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/heade_rel"
+        android:layout_marginTop="2dp"
         android:divider="@null"
         android:scrollbars="none"/>
 

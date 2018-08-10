@@ -60,6 +60,8 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
     List<PopularBeans.DataBean.ListBean> popularListAll = new ArrayList<>();
     @BindView(R.id.recyclerView)
     ListView recyclerView;
+    @BindView(R.id.search_image)
+    ImageView searchImage;
     int page = 1;
 
     PopularBeans popularBeans;
@@ -74,7 +76,6 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
     @Override
     protected int getLayoutId() {
-
 
         return R.layout.fragment_page_mvp;
     }
@@ -106,7 +107,6 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
                     @Override
                     public void onClick(View v) {
 
-                        System.out.println("--------1111----" + position);
 
                         if (item.getIs_focus().equals("1")) {
                             viewHolder.setBackgroundRes(R.id.followimage, R.mipmap.ic_follow_yes_bg);
@@ -160,7 +160,12 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
     @Override
     protected void setOnclickListeners() {
-
+        searchImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    readyGo(SearchMvpActivity.class,"");
+            }
+        });
 
     }
 

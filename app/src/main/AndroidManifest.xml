@@ -33,10 +33,10 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
+        android:name=".AppConfigApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:name=".AppConfigApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon, label, theme">
@@ -119,10 +119,13 @@
         </activity>
         <activity android:name=".module.me.FollowActivity">
         </activity>
-
         <activity android:name=".module.me.ReleaseDetailsActivity">
         </activity>
+        <activity android:name=".module.me.CollectionActivity">
+        </activity>
         <activity android:name=".module.Study.StudyActivity">
+        </activity>
+        <activity android:name=".module.mvp.SearchMvpActivity">
         </activity>
     </application>
 

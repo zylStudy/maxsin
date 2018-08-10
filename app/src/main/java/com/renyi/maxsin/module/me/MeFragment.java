@@ -175,7 +175,7 @@ public class MeFragment extends Basefragment {
             public void onClick(View v) {
 
                 if (resultBeanData.getUser_name() != null) {
-                    Intent intent = new Intent(getActivity(), MyCollectionActivity.class);
+                    Intent intent = new Intent(getActivity(), CollectionActivity.class);
                     startActivity(intent);
                 }
 

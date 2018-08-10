@@ -120,6 +120,44 @@ public class GetBeans {
             private String keywords;
             private String catid;
 
+
+            private String cover_img;
+            private String description;
+            private String tag_name;
+            private String add_time;
+
+            public String getCover_img() {
+                return cover_img;
+            }
+
+            public void setCover_img(String cover_img) {
+                this.cover_img = cover_img;
+            }
+
+            public String getAdd_time() {
+                return add_time;
+            }
+
+            public void setAdd_time(String add_time) {
+                this.add_time = add_time;
+            }
+
+            public String getTag_name() {
+                return tag_name;
+            }
+
+            public void setTag_name(String tag_name) {
+                this.tag_name = tag_name;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
+
             public String getCatid() {
                 return catid;
             }
