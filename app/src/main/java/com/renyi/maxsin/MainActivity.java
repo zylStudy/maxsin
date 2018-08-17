@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentFragment = "";
     private long firstTime = 0;
     private GetFragment getFragment;
-    private MvpPageFragment mvpFragment;
+    private MvpPageFragment mvpPageFragment;
     private MaxsinFragment maxsinFragment;
     //private StudyFragment studyFragment;
     private MeFragment meFragment;
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragment() {
         getFragment = new GetFragment();
-        mvpFragment = new MvpPageFragment();
+        mvpPageFragment = new MvpPageFragment();
         maxsinFragment = new MaxsinFragment();
         //studyFragment = new StudyFragment();
         meFragment = new MeFragment();
@@ -176,12 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.two_rel:
                 menuTagShowOrHide(1);
-                checkedFragment(mvpFragment, null, GO_FRAGMENT);
+                checkedFragment(mvpPageFragment, null, GO_FRAGMENT);
                 break;
             case R.id.three_rel:
                 menuTagShowOrHide(2);
-
-
                 checkedFragment(maxsinFragment, null, MAXSIN_FRAGMENT);
 
                 break;

@@ -22,10 +22,6 @@ public class MyActivityActivity extends BaseActivity implements OnTabSelectListe
     ViewPager vp;
     int a = 0;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {
-            "感兴趣", "已报名"
-
-    };
     private List<String> list = new ArrayList<>();
     @Override
     protected int getLayoutId() {

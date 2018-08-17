@@ -22,10 +22,7 @@ public class CollectionActivity extends BaseActivity implements OnTabSelectListe
     ViewPager vp;
     int a = 0;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {
-            "资讯", "作品"
 
-    };
     private List<String> list = new ArrayList<>();
 
     @Override
@@ -38,7 +35,7 @@ public class CollectionActivity extends BaseActivity implements OnTabSelectListe
         showTitleAndBack("我的收藏");
         list.add("资讯");
         list.add("作品");
-//
+
 
         mFragments.add(NewsFragment.getInstance("1"));
         mFragments.add(CollectionFragment.getInstance("2"));
