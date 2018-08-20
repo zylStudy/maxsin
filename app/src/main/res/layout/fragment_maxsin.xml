@@ -108,6 +108,7 @@
                         android:orientation="horizontal">
 
                         <RelativeLayout
+                            android:id="@+id/rank"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -303,7 +304,7 @@
         android:id="@+id/srl_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_contlayout"

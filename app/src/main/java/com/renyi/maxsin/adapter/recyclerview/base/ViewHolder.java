@@ -29,6 +29,8 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.Target;
+import com.renyi.maxsin.utils.DensityUtil;
+import com.renyi.maxsin.utils.RoundCornersTransformation;
 import com.renyi.maxsin.view.CBProgressBar;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
@@ -156,6 +158,21 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView view = getView(viewId);
         //view.setImageResource(resId);
         Glide.with(mContext).load(imageUrl).asBitmap()
+                .into(view);
+
+        return this;
+    }
+    //设置网络图片
+    public ViewHolder setImageViewNetUrlRound(int viewId, String imageUrl,int radius) {
+        ImageView view = getView(viewId);
+        //view.setImageResource(resId);
+        RoundCornersTransformation transformation =
+                new RoundCornersTransformation(mContext,
+                        DensityUtil.dip2px(mContext, radius),
+                        RoundCornersTransformation.CornerType.ALL);
+        Glide.with(mContext)
+                .load(imageUrl)
+                .bitmapTransform(transformation)
                 .into(view);
 
         return this;

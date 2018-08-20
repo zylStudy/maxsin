@@ -127,6 +127,12 @@
         </activity>
         <activity android:name=".module.mvp.SearchMvpActivity">
         </activity>
+        <activity android:name=".module.maxsin.StudentExampleactivity">
+        </activity>
+        <activity android:name=".module.maxsin.StudentExampleDetailsactivity">
+        </activity>
+        <activity android:name=".module.maxsin.UniversitiesRankingActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -15,7 +15,6 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
-import com.renyi.maxsin.module.me.MeCenterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +38,8 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
     SlidingTabLayout tab;
     @BindView(R.id.case_rel)
     RelativeLayout caseRel;
+    @BindView(R.id.rank)
+    RelativeLayout rankRel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -84,7 +85,13 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
         caseRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(MeCenterActivity.class, "");
+                readyGo(StudentExampleactivity.class, "");
+            }
+        });
+        rankRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(UniversitiesRankingActivity.class, "");
             }
         });
     }
