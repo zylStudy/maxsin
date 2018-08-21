@@ -144,6 +144,7 @@ public class SearchMvpActivity extends BaseActivity {
             public void onClick(View v) {
                 if (!editInfo.getText().toString().trim().equals("")) {
                     popularListAll.clear();
+                    page = 1;
                     loadSearchDataFromSer(editInfo.getText().toString().trim());
                 }
             }

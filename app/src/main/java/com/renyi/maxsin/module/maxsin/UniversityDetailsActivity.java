@@ -20,7 +20,7 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
-import com.renyi.maxsin.module.maxsin.bean.StudentExampleDetailsBeans;
+import com.renyi.maxsin.module.maxsin.bean.UniversityDetailsBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
@@ -37,7 +37,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StudentExampleDetailsactivity extends AppCompatActivity implements OnTabSelectListener {
+public class UniversityDetailsActivity extends AppCompatActivity implements OnTabSelectListener {
+
     @BindView(R.id.image_bg)
     ImageView imageBg;
     @BindView(R.id.head_image)
@@ -52,14 +53,12 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     TextView nature;
     @BindView(R.id.difficulty)
     TextView difficulty;
-    @BindView(R.id.school_tv)
-    TextView school_tv;
-    @BindView(R.id.education)
-    TextView education;
+    @BindView(R.id.language)
+    TextView language;
     @BindView(R.id.address)
     TextView address;
-    @BindView(R.id.graduation)
-    TextView graduation;
+    @BindView(R.id.major)
+    TextView major;
     @BindView(R.id.info_rel)
     RelativeLayout infoRel;
     @BindView(R.id.back_rel)
@@ -68,37 +67,33 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     SlidingTabLayout tab;
     @BindView(R.id.vp_contlayout)
     ViewPager vpContlayout;
-    String case_id = "";
-
+    String college_id = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_student_example_detailsactivity);
-
-        case_id = getIntent().getExtras().getString("id");
+        setContentView(R.layout.activity_university_details);
+        college_id = getIntent().getExtras().getString("id");
         ButterKnife.bind(this);
         initView();
         loadData();
         setOnClickListeners();
     }
-
-    private void setViewBindData(StudentExampleDetailsBeans resultBean) {
+    private void setViewBindData(UniversityDetailsBeans resultBean) {
         if (resultBean != null) {
-            StudentExampleDetailsBeans.DataBean dataBean = resultBean.getData();
+            UniversityDetailsBeans.DataBean dataBean = resultBean.getData().get(0);
             setFragmentViewBindData(dataBean);
             school.setText(dataBean.getTitle());
-            eschool.setText(dataBean.getKeywords());
-            money.setText(dataBean.getJiangxuejin());
-            nature.setText(dataBean.getKeywords());
-            difficulty.setText("零基础");
-            school_tv.setText(dataBean.getLuquyuanxiao());
-            address.setText("北京");
-            graduation.setText(dataBean.getShenqingxuewei());
-            education.setText(dataBean.getShenqingxuewei());
+            eschool.setText(dataBean.getEnname());
+            money.setText(dataBean.getTuition());
+            nature.setText(dataBean.getNature());
+            difficulty.setText(dataBean.getApplydifficulty());
+            language.setText("TOEFL:" + dataBean.getToefl() + " | IELTS:" + dataBean.getIelts());
+            address.setText(dataBean.getLocation());
+            major.setText(dataBean.getMajor());
 
 
-            Glide.with(this).load(dataBean.getThumb()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImage) {
+            Glide.with(this).load(dataBean.getLogopic()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImage) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable =
@@ -111,33 +106,37 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
 
     }
 
-    private void setFragmentViewBindData(StudentExampleDetailsBeans.DataBean dataBean) {
+    private void setFragmentViewBindData(UniversityDetailsBeans.DataBean dataBean) {
 
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
-            titles.add("Offer展示");
-            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
+        if (dataBean.getContent() != null && !dataBean.getContent().equals("")) {
+            titles.add("院校简介");
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getContent()));
         }
-        if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
-            titles.add("作品集展示");
-            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
+        if (dataBean.getProsetting() != null && !dataBean.getProsetting().equals("")) {
+            titles.add("专业设置");
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getProsetting()));
         }
-        if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
-            titles.add("学员故事");
-            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
+        if (dataBean.getRequirements() != null && !dataBean.getRequirements().equals("")) {
+            titles.add("申请要求");
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getRequirements()));
         }
-
+        if (dataBean.getStrategy() != null && !dataBean.getStrategy().equals("")) {
+            titles.add("申请攻略");
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getStrategy()));
+        }
         if (titles.size() != 0) {
             FragmentAdapter adatper = new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
             vpContlayout.setAdapter(adatper);
             tab.setViewPager(vpContlayout);
             tab.setOnTabSelectListener(this);
             vpContlayout.setCurrentItem(0);
-            vpContlayout.setOffscreenPageLimit(3);
+            vpContlayout.setOffscreenPageLimit(4);
         }
 
     }
+
 
 
     private void setOnClickListeners() {
@@ -155,6 +154,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
 
     private void initView() {
 
+
         ShadowDrawable shadowDrawable = new ShadowDrawable();
         shadowDrawable.setColor(ContextCompat.getColor(this, R.color.colora))    //shadowcolor
                 .setOffsetY(DensityUtil.dip2px(this, 5))    //阴影下偏移--offset of the shadow
@@ -162,7 +162,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
                 .setEdgeShadowWidth(DensityUtil.dip2px(this, 8))   //四周阴影半径-- the shadow of each edge of the rectangle
                 .setFilterColor(0x56ffffff)                 //中间值，越大阴影越接近设置的值-- the slot to said how close to the shadowcolor
                 .setTopMargin(DensityUtil.dip2px(this, 3))  //上间距--top margin
-                .setParentHeight(DensityUtil.dip2px(this, 280))  //设置要依附的View的高度 -- the height of parent view
+                .setParentHeight(DensityUtil.dip2px(this, 200))  //设置要依附的View的高度 -- the height of parent view
                 .attach(infoRel)                                 //要在哪个View上面加阴影-- the shadow parent.※
                 .build();
 
@@ -174,8 +174,8 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
 
-        map.put("case_id", case_id);
-        mHttpHelper.post(Api.URL + "case_info", map, new BaseCallback<StudentExampleDetailsBeans>() {
+        map.put("college_id", college_id);
+        mHttpHelper.post(Api.URL + "college_info", map, new BaseCallback<UniversityDetailsBeans>() {
             @Override
             public void onRequestBefore() {
             }
@@ -186,7 +186,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
             }
 
             @Override
-            public void onSuccess(Response response, StudentExampleDetailsBeans resultBean) {
+            public void onSuccess(Response response, UniversityDetailsBeans resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
                     setViewBindData(resultBean);

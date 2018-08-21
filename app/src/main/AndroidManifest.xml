@@ -133,6 +133,12 @@
         </activity>
         <activity android:name=".module.maxsin.UniversitiesRankingActivity">
         </activity>
+        <activity android:name=".module.maxsin.SearchUniversityActivity">
+        </activity>
+        <activity android:name=".module.maxsin.UniversityDetailsActivity">
+        </activity>
+        <activity android:name=".module.maxsin.SearchStudentExampleActivity">
+        </activity>
     </application>
 
 </manifest>

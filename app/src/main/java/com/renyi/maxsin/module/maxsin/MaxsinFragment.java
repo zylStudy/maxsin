@@ -62,10 +62,14 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
 
-        titles.add("他的发布");
-        titles.add("他的作品");
+        titles.add("工业设计");
+        titles.add("景观设计");
+        titles.add("平面设计");
+        titles.add("插画设计");
 
         fragments.add(MaxsinListFragment.getInstance("1", "1"));
+        fragments.add(MaxsinListFragment.getInstance("2", "1"));
+        fragments.add(MaxsinListFragment.getInstance("2", "1"));
         fragments.add(MaxsinListFragment.getInstance("2", "1"));
         FragmentAdapter adatper = new FragmentAdapter(getChildFragmentManager(), fragments, titles);
 

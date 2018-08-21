@@ -42,7 +42,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/search_rel"
+            android:id="@+id/search"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"

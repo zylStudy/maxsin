@@ -101,7 +101,7 @@
                     <RelativeLayout
                         android:id="@+id/info_rel"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
+                        android:layout_height="200dp"
                         android:layout_below="@+id/eschool"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="15dp"
@@ -143,7 +143,7 @@
                                     android:layout_below="@+id/money"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="6dp"
-                                    android:text="奖学金"
+                                    android:text="学费"
                                     android:textColor="@color/color6"
                                     android:textSize="12sp"/>
 
@@ -175,7 +175,7 @@
                                     android:layout_below="@+id/nature"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="6dp"
-                                    android:text="培训时间"
+                                    android:text="学校性质"
                                     android:textColor="@color/color6"
                                     android:textSize="12sp"/>
 
@@ -206,7 +206,7 @@
                                     android:layout_below="@+id/difficulty"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="6dp"
-                                    android:text="本人基础"
+                                    android:text="申请难度"
                                     android:textColor="@color/color6"
                                     android:textSize="12sp"/>
 
@@ -228,8 +228,9 @@
                             android:textColor="@color/colore1"
                             />
 
+
                         <RelativeLayout
-                            android:id="@+id/layout0"
+                            android:id="@+id/layout01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/line01"
@@ -240,46 +241,15 @@
                             >
 
                             <TextView
-                                android:id="@+id/tv03"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="录取院校："
-                                android:textColor="@color/color3"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/school_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/tv03"
-                                android:text="服装设"
-                                android:textColor="@color/color48"
-                                android:textSize="15sp"/>
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/layout01"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/layout0"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                            <TextView
                                 android:id="@+id/sch_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="申请学历："
+                                android:text="语言要求："
                                 android:textColor="@color/color3"
                                 android:textSize="15sp"/>
 
                             <TextView
-                                android:id="@+id/education"
+                                android:id="@+id/language"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/sch_tv"
@@ -339,12 +309,12 @@
                                 android:id="@+id/tv01"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="毕业院校："
+                                android:text="优势专业："
                                 android:textColor="@color/color3"
                                 android:textSize="15sp"/>
 
                             <TextView
-                                android:id="@+id/graduation"
+                                android:id="@+id/major"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_toRightOf="@+id/tv01"
@@ -384,7 +354,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:text="学员详情"
+                        android:text="院校详情"
                         android:textColor="@color/color3"
                         android:textSize="24sp"
                         android:textStyle="bold"

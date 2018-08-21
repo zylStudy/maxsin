@@ -7,10 +7,11 @@ import java.util.List;
  */
 
 public class MaxsinUniversityRankBeans {
+
     /**
      * code : 800
      * message : 成功
-     * data : {"total":"313","total_page":63,"per_page":5,"current_page":"1","colleglist":[{"id":"940","chname":"帕森斯设计学院","enname":"Parsons The New School for Design","location":"美国纽约州纽约西12街66号","country":"美国_United States","applydifficulty":"困难","major":"服装设计|室内设计|插画设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/312.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/29.jpg","applyendtime":"11月1日、常规：1月15日","degree":"学士,硕士","toefl":"92","ielts":"7.0"},{"id":"937","chname":"罗德岛设计学院","enname":"Rhode Island School of Design","location":"美国罗德岛州普罗维登斯市学院路2号","country":"美国_United States","applydifficulty":"困难","major":"工业设计|多媒体设计|陶艺|摄影|建筑设...","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/300.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201612/298.jpg","applyendtime":"11月1日 常规：2月1日","degree":"学士,硕士","toefl":"93","ielts":"6.5"},{"id":"931","chname":"中央圣马丁艺术与设计学院","enname":"Central Saint Martins","location":"英国伦敦国王十字格拉纳里广场一号格拉纳里大楼","country":"英国_United Kingdom","applydifficulty":"困难","major":"服装设计|室内设计|插画设计|平面设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/276.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/107.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"},{"id":"900","chname":"皇家艺术学院","enname":"Royal College of Art","location":"英国伦敦肯辛顿戈尔","country":"英国_United Kingdom","applydifficulty":"困难","major":"服装设计|室内设计|工业设计|动画设计|...","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/130.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/21.jpg","applyendtime":"1月13日","degree":"硕士","toefl":"","ielts":"6.5"},{"id":"941","chname":"纽约时装学院","enname":"Fashion Institute of Technology","location":"美国纽约州纽约市第7大道27街","country":"美国_United States","applydifficulty":"困难","major":"服装设计|插画设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/316.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/25.jpg","applyendtime":"10月1日、常规：1月1日","degree":"学士,硕士","toefl":"80","ielts":"6.5"}]}
+     * data : {"pageInfo":{"count":181,"per_page":5,"current_page":1,"total_page":37},"colleglist":[{"id":"881","chname":"纽卡斯尔大学","enname":"Newcastle University","location":"英国英格兰泰恩河畔纽卡斯尔市","country":"英国_United Kingdom","applydifficulty":"困难","major":"建筑设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/57.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/91.jpg","applyendtime":"12月31日","degree":"学士,硕士","toefl":"","ielts":"6.5-7.5"},{"id":"882","chname":"雷丁大学","enname":"University of Reading","location":"伯克郡雷丁市","country":"英国_United Kingdom","applydifficulty":"困难","major":"平面设计|影视制作","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/53.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201612/51.jpg","applyendtime":"1月1日","degree":"学士,硕士","toefl":"","ielts":"6.5-7.0"},{"id":"883","chname":"伦敦大学学院","enname":"University College London","location":"英国伦敦高尔街","country":"英国_United Kingdom","applydifficulty":"困难","major":"景观设计|纯艺术","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/61.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/137.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"92","ielts":"6.5"},{"id":"884","chname":"金斯顿大学","enname":"Kingston University","location":"英国伦敦泰晤士河畔","country":"英国_United Kingdom","applydifficulty":"困难","major":"室内设计|摄影","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/67.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/101.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"},{"id":"885","chname":"考文垂大学","enname":"Coventry University","location":"英国考文垂普里奥里街","country":"英国_United Kingdom","applydifficulty":"困难","major":"平面设计|纯艺术|展示设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/71.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/135.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"}]}
      */
 
     private String code;
@@ -43,26 +44,12 @@ public class MaxsinUniversityRankBeans {
 
     public static class DataBean {
         /**
-         * total : 313
-         * total_page : 63
-         * per_page : 5
-         * current_page : 1
-         * colleglist : [{"id":"940","chname":"帕森斯设计学院","enname":"Parsons The New School for Design","location":"美国纽约州纽约西12街66号","country":"美国_United States","applydifficulty":"困难","major":"服装设计|室内设计|插画设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/312.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/29.jpg","applyendtime":"11月1日、常规：1月15日","degree":"学士,硕士","toefl":"92","ielts":"7.0"},{"id":"937","chname":"罗德岛设计学院","enname":"Rhode Island School of Design","location":"美国罗德岛州普罗维登斯市学院路2号","country":"美国_United States","applydifficulty":"困难","major":"工业设计|多媒体设计|陶艺|摄影|建筑设...","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/300.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201612/298.jpg","applyendtime":"11月1日 常规：2月1日","degree":"学士,硕士","toefl":"93","ielts":"6.5"},{"id":"931","chname":"中央圣马丁艺术与设计学院","enname":"Central Saint Martins","location":"英国伦敦国王十字格拉纳里广场一号格拉纳里大楼","country":"英国_United Kingdom","applydifficulty":"困难","major":"服装设计|室内设计|插画设计|平面设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/276.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/107.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"},{"id":"900","chname":"皇家艺术学院","enname":"Royal College of Art","location":"英国伦敦肯辛顿戈尔","country":"英国_United Kingdom","applydifficulty":"困难","major":"服装设计|室内设计|工业设计|动画设计|...","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/130.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/21.jpg","applyendtime":"1月13日","degree":"硕士","toefl":"","ielts":"6.5"},{"id":"941","chname":"纽约时装学院","enname":"Fashion Institute of Technology","location":"美国纽约州纽约市第7大道27街","country":"美国_United States","applydifficulty":"困难","major":"服装设计|插画设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/316.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/25.jpg","applyendtime":"10月1日、常规：1月1日","degree":"学士,硕士","toefl":"80","ielts":"6.5"}]
+         * pageInfo : {"count":181,"per_page":5,"current_page":1,"total_page":37}
+         * colleglist : [{"id":"881","chname":"纽卡斯尔大学","enname":"Newcastle University","location":"英国英格兰泰恩河畔纽卡斯尔市","country":"英国_United Kingdom","applydifficulty":"困难","major":"建筑设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/57.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/91.jpg","applyendtime":"12月31日","degree":"学士,硕士","toefl":"","ielts":"6.5-7.5"},{"id":"882","chname":"雷丁大学","enname":"University of Reading","location":"伯克郡雷丁市","country":"英国_United Kingdom","applydifficulty":"困难","major":"平面设计|影视制作","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/53.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201612/51.jpg","applyendtime":"1月1日","degree":"学士,硕士","toefl":"","ielts":"6.5-7.0"},{"id":"883","chname":"伦敦大学学院","enname":"University College London","location":"英国伦敦高尔街","country":"英国_United Kingdom","applydifficulty":"困难","major":"景观设计|纯艺术","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/61.png","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/137.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"92","ielts":"6.5"},{"id":"884","chname":"金斯顿大学","enname":"Kingston University","location":"英国伦敦泰晤士河畔","country":"英国_United Kingdom","applydifficulty":"困难","major":"室内设计|摄影","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/67.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/101.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"},{"id":"885","chname":"考文垂大学","enname":"Coventry University","location":"英国考文垂普里奥里街","country":"英国_United Kingdom","applydifficulty":"困难","major":"平面设计|纯艺术|展示设计","logopic":"http://www.mxsyzen.com/uploadfiles/image/201612/71.jpg","showpic":"http://www.mxsyzen.com/uploadfiles/image/201702/135.jpg","applyendtime":"1月15日","degree":"学士,硕士","toefl":"","ielts":"6.0"}]
          */
-
-        private String total;
         private int total_page;
-        private int per_page;
-        private String current_page;
+        private PageInfoBean pageInfo;
         private List<ColleglistBean> colleglist;
-
-        public String getTotal() {
-            return total;
-        }
-
-        public void setTotal(String total) {
-            this.total = total;
-        }
 
         public int getTotal_page() {
             return total_page;
@@ -72,20 +59,12 @@ public class MaxsinUniversityRankBeans {
             this.total_page = total_page;
         }
 
-        public int getPer_page() {
-            return per_page;
+        public PageInfoBean getPageInfo() {
+            return pageInfo;
         }
 
-        public void setPer_page(int per_page) {
-            this.per_page = per_page;
-        }
-
-        public String getCurrent_page() {
-            return current_page;
-        }
-
-        public void setCurrent_page(String current_page) {
-            this.current_page = current_page;
+        public void setPageInfo(PageInfoBean pageInfo) {
+            this.pageInfo = pageInfo;
         }
 
         public List<ColleglistBean> getColleglist() {
@@ -96,21 +75,67 @@ public class MaxsinUniversityRankBeans {
             this.colleglist = colleglist;
         }
 
+        public static class PageInfoBean {
+            /**
+             * count : 181
+             * per_page : 5
+             * current_page : 1
+             * total_page : 37
+             */
+
+            private int count;
+            private int per_page;
+            private int current_page;
+            private int total_page;
+
+            public int getCount() {
+                return count;
+            }
+
+            public void setCount(int count) {
+                this.count = count;
+            }
+
+            public int getPer_page() {
+                return per_page;
+            }
+
+            public void setPer_page(int per_page) {
+                this.per_page = per_page;
+            }
+
+            public int getCurrent_page() {
+                return current_page;
+            }
+
+            public void setCurrent_page(int current_page) {
+                this.current_page = current_page;
+            }
+
+            public int getTotal_page() {
+                return total_page;
+            }
+
+            public void setTotal_page(int total_page) {
+                this.total_page = total_page;
+            }
+        }
+
         public static class ColleglistBean {
             /**
-             * id : 940
-             * chname : 帕森斯设计学院
-             * enname : Parsons The New School for Design
-             * location : 美国纽约州纽约西12街66号
-             * country : 美国_United States
+             * id : 881
+             * chname : 纽卡斯尔大学
+             * enname : Newcastle University
+             * location : 英国英格兰泰恩河畔纽卡斯尔市
+             * country : 英国_United Kingdom
              * applydifficulty : 困难
-             * major : 服装设计|室内设计|插画设计
-             * logopic : http://www.mxsyzen.com/uploadfiles/image/201612/312.jpg
-             * showpic : http://www.mxsyzen.com/uploadfiles/image/201702/29.jpg
-             * applyendtime : 11月1日、常规：1月15日
+             * major : 建筑设计
+             * logopic : http://www.mxsyzen.com/uploadfiles/image/201612/57.jpg
+             * showpic : http://www.mxsyzen.com/uploadfiles/image/201702/91.jpg
+             * applyendtime : 12月31日
              * degree : 学士,硕士
-             * toefl : 92
-             * ielts : 7.0
+             * toefl :
+             * ielts : 6.5-7.5
              */
 
             private String id;

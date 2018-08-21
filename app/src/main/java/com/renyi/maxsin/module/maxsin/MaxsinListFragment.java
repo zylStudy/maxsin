@@ -3,13 +3,15 @@ package com.renyi.maxsin.module.maxsin;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.renyi.maxsin.R;
-import com.renyi.maxsin.adapter.listview.CommonAdapter;
+import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
+import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.module.release.bean.RelesseInfoAndWorksBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -34,8 +36,8 @@ public class MaxsinListFragment extends Fragment {
     Bundle bundle;
     String type = "";
     CommonAdapter commonAdapter;
-    @BindView(R.id.listView)
-    ListView listView;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     private int page = 1;
     private List<RelesseInfoAndWorksBean.DataBean.GetListBean> get_list;
@@ -73,25 +75,23 @@ public class MaxsinListFragment extends Fragment {
 
 
     protected void initView() {
-
-        commonAdapter = new CommonAdapter<RelesseInfoAndWorksBean.DataBean.GetListBean>(getActivity(), R.layout.item_release_info_list, get_listAll) {
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        commonAdapter = new com.renyi.maxsin.adapter.recyclerview.CommonAdapter<RelesseInfoAndWorksBean.DataBean.GetListBean>(getActivity(), R.layout.item_release_info_list, get_listAll) {
             @Override
-            protected void convert(final com.renyi.maxsin.adapter.listview.ViewHolder viewHolder, final RelesseInfoAndWorksBean.DataBean.GetListBean item, final int position) {
+            protected void convert(ViewHolder viewHolder, RelesseInfoAndWorksBean.DataBean.GetListBean item, int position) {
                 viewHolder.setText(R.id.title, item.getTitle());
-                viewHolder.setText(R.id.time, item.getTag_name());
-                viewHolder.setText(R.id.lookNum, item.getAdd_time());
+                                viewHolder.setText(R.id.time, item.getTag_name());
+                                viewHolder.setText(R.id.lookNum, item.getAdd_time());
 
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
-
+                                viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
 
             }
         };
-
-        if (listView != null) {
-            listView.setAdapter(commonAdapter);
+        if (recyclerView != null) {
+            recyclerView.setAdapter(commonAdapter);
 
         }
+//
     }
 
 

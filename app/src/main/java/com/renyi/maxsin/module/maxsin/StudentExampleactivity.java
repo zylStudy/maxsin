@@ -58,7 +58,7 @@ public class StudentExampleactivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.back_rel_layout)
     RelativeLayout backRel;
-    @BindView(R.id.search_rel)
+    @BindView(R.id.search)
     RelativeLayout searchRel;
     @BindView(R.id.type03)
     TextView type03;
@@ -303,6 +303,15 @@ public class StudentExampleactivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+
+        searchRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentExampleactivity.this, SearchStudentExampleActivity.class);
+                startActivity(intent);
             }
         });
     }

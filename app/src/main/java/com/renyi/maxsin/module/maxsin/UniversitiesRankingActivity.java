@@ -58,7 +58,7 @@ public class UniversitiesRankingActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.back_rel_layout)
     RelativeLayout backRel;
-    @BindView(R.id.search_rel)
+    @BindView(R.id.search)
     RelativeLayout searchRel;
     @BindView(R.id.type03)
     TextView type03;
@@ -88,14 +88,18 @@ public class UniversitiesRankingActivity extends BaseActivity {
         type03.setText("不限专业");
         headTitle.setText("院校排名");
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        listAdapter = new CommonAdapter<MaxsinUniversityRankBeans.DataBean.ColleglistBean>(this, R.layout.item_study_example_list, course_listAll) {
+        listAdapter = new CommonAdapter<MaxsinUniversityRankBeans.DataBean.ColleglistBean>(this, R.layout.item_rank_list, course_listAll) {
             @Override
             protected void convert(ViewHolder viewHolder, MaxsinUniversityRankBeans.DataBean.ColleglistBean item, int position) {
-                viewHolder.setText(R.id.name, item.getChname());
-                viewHolder.setText(R.id.major, item.getEnname());
-                viewHolder.setText(R.id.money, item.getMajor());
-                viewHolder.setText(R.id.school, item.getLocation());
-                viewHolder.setImageViewNetUrl(R.id.head_image, item.getLogopic());
+                viewHolder.setText(R.id.school, item.getChname());
+                viewHolder.setText(R.id.eschool, item.getEnname());
+                viewHolder.setText(R.id.major, item.getMajor());
+                viewHolder.setText(R.id.address, item.getLocation());
+                viewHolder.setText(R.id.time, item.getApplyendtime());
+                viewHolder.setText(R.id.difficulty, item.getApplydifficulty());
+                viewHolder.setShadowDrawable(R.id.head_rel);
+                viewHolder.setText(R.id.language, "TOEFL:" + item.getToefl() + " | IELTS:" + item.getIelts());
+                viewHolder.setCornerRadiusImageViewNetUrl(R.id.head_image, item.getLogopic(), 10);
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.image_cover, item.getShowpic(), 10);
                 // viewHolder.setImageViewNetUrlRound(R.id.image_cover, item.getCover(),40);
 
@@ -305,8 +309,7 @@ public class UniversitiesRankingActivity extends BaseActivity {
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 Bundle bundle = new Bundle();
                 bundle.putString("id", course_listAll.get(position).getId());
-                //进入课程详情
-                Intent intent = new Intent(UniversitiesRankingActivity.this, StudentExampleDetailsactivity.class);
+                Intent intent = new Intent(UniversitiesRankingActivity.this, UniversityDetailsActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -322,6 +325,14 @@ public class UniversitiesRankingActivity extends BaseActivity {
                 finish();
             }
         });
+        searchRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UniversitiesRankingActivity.this, SearchUniversityActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initPopu() {

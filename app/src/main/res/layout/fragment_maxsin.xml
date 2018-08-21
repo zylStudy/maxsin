@@ -6,43 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-    <RelativeLayout
-        android:id="@+id/heade_rel"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed"
-        >
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="MVP"
-            android:textColor="@color/color3"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            />
-
-        <ImageView
-            android:id="@+id/search_image"
-            android:layout_width="21dp"
-            android:layout_height="19dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:background="@mipmap/ic_search_mvp_bg"/>
-
-        <TextView
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colore1"
-            />
-    </RelativeLayout>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -259,7 +223,7 @@
                                 android:layout_below="@+id/image04"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="3dp"
-                                android:text="学院案例"
+                                android:text="学员案例"
                                 android:textColor="@color/color6"
                                 android:textSize="12sp"/>
 
@@ -274,6 +238,54 @@
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:title="@null">
+
+                <RelativeLayout
+                    android:id="@+id/heade_rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/color3"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+
+                    <ImageView
+                        android:id="@+id/search_image"
+                        android:layout_width="21dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@mipmap/ic_search_mvp_bg"/>
+
+                    <TextView
+                        android:id="@+id/line"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/colore1"
+                        />
+                </RelativeLayout>
+
+                </android.support.v7.widget.Toolbar>
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
 
