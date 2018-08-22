@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -100,6 +101,15 @@ public class SearchUniversityActivity extends BaseActivity {
                 }
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                readyGo(UniversityDetailsActivity.class, course_listAll.get(position).getId());
+            }
+        });
+
         cancleTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

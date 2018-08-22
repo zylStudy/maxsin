@@ -10,6 +10,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -56,8 +57,6 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     TextView school_tv;
     @BindView(R.id.education)
     TextView education;
-    @BindView(R.id.address)
-    TextView address;
     @BindView(R.id.graduation)
     TextView graduation;
     @BindView(R.id.info_rel)
@@ -78,8 +77,8 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
 
         case_id = getIntent().getExtras().getString("id");
         ButterKnife.bind(this);
-        initView();
         loadData();
+
         setOnClickListeners();
     }
 
@@ -90,43 +89,43 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
             school.setText(dataBean.getTitle());
             eschool.setText(dataBean.getKeywords());
             money.setText(dataBean.getJiangxuejin());
-            nature.setText(dataBean.getKeywords());
-            difficulty.setText("零基础");
+            nature.setText(dataBean.getTraintime());
+            difficulty.setText(dataBean.getIbase());
             school_tv.setText(dataBean.getLuquyuanxiao());
-            address.setText("北京");
-            graduation.setText(dataBean.getShenqingxuewei());
             education.setText(dataBean.getShenqingxuewei());
-
-
+            graduation.setText(dataBean.getGraduatschool());
             Glide.with(this).load(dataBean.getThumb()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImage) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable =
-                            RoundedBitmapDrawableFactory.create(getResources(), resource);
-                    circularBitmapDrawable.setCornerRadius(10);
+                            RoundedBitmapDrawableFactory.create( getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    //    circularBitmapDrawable.setCornerRadius(5);设置图片圆角
                     headImage.setImageDrawable(circularBitmapDrawable);
                 }
             });
-        }
 
+        }
+        initView();
     }
 
     private void setFragmentViewBindData(StudentExampleDetailsBeans.DataBean dataBean) {
 
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
-        if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
+        if (dataBean.getOffershow() != null && !dataBean.getOffershow().equals("")) {
             titles.add("Offer展示");
-            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getOffershow()));
         }
-        if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
+        if (dataBean.getShow() != null && !dataBean.getShow().equals("")) {
             titles.add("作品集展示");
-            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
+            fragments.add(UniversityDetailsFragment.getInstance(dataBean.getShow()));
         }
         if (dataBean.getCaseDetail() != null && !dataBean.getCaseDetail().equals("")) {
             titles.add("学员故事");
             fragments.add(UniversityDetailsFragment.getInstance(dataBean.getCaseDetail()));
         }
+
 
         if (titles.size() != 0) {
             FragmentAdapter adatper = new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
@@ -154,7 +153,26 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     }
 
     private void initView() {
+        int intw=View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
+        int inth=View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
+        school_tv.measure(intw, inth);
+        int intheight = school_tv.getMeasuredHeight();
+        ViewTreeObserver vto = infoRel.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                infoRel.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                shadowDrawable( infoRel.getHeight());
+            }
+        });
 
+
+
+    }
+
+
+
+    private void shadowDrawable(int Height) {
         ShadowDrawable shadowDrawable = new ShadowDrawable();
         shadowDrawable.setColor(ContextCompat.getColor(this, R.color.colora))    //shadowcolor
                 .setOffsetY(DensityUtil.dip2px(this, 5))    //阴影下偏移--offset of the shadow
@@ -162,13 +180,17 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
                 .setEdgeShadowWidth(DensityUtil.dip2px(this, 8))   //四周阴影半径-- the shadow of each edge of the rectangle
                 .setFilterColor(0x56ffffff)                 //中间值，越大阴影越接近设置的值-- the slot to said how close to the shadowcolor
                 .setTopMargin(DensityUtil.dip2px(this, 3))  //上间距--top margin
-                .setParentHeight(DensityUtil.dip2px(this, 280))  //设置要依附的View的高度 -- the height of parent view
-                .attach(infoRel)                                 //要在哪个View上面加阴影-- the shadow parent.※
+                .setParentHeight(DensityUtil.dip2px(this, 240))  //设置要依附的View的高度 -- the height of parent view
+                .attach(infoRel)                                 //要在哪个View上面加阴影-- the shadow parent.
                 .build();
+
 
     }
 
+
     private void loadDataFromSer() {
+
+
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();

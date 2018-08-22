@@ -151,6 +151,60 @@ public class MaxsinUniversityRankBeans {
             private String degree;
             private String toefl;
             private String ielts;
+            private String title;
+            private String thumb;
+            private String keywords;
+            private String luquyuanxiao;
+            private String jiangxuejin;
+            private String cover;
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getCover() {
+                return cover;
+            }
+
+            public void setCover(String cover) {
+                this.cover = cover;
+            }
+
+            public String getJiangxuejin() {
+                return jiangxuejin;
+            }
+
+            public void setJiangxuejin(String jiangxuejin) {
+                this.jiangxuejin = jiangxuejin;
+            }
+
+            public String getLuquyuanxiao() {
+                return luquyuanxiao;
+            }
+
+            public void setLuquyuanxiao(String luquyuanxiao) {
+                this.luquyuanxiao = luquyuanxiao;
+            }
+
+            public String getKeywords() {
+                return keywords;
+            }
+
+            public void setKeywords(String keywords) {
+                this.keywords = keywords;
+            }
+
+            public String getThumb() {
+                return thumb;
+            }
+
+            public void setThumb(String thumb) {
+                this.thumb = thumb;
+            }
 
             public String getId() {
                 return id;

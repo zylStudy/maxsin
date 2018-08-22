@@ -66,7 +66,6 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="张三"
                     android:textColor="@color/color48"
                     android:textSize="18sp"/>
 
@@ -76,7 +75,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/name"
                     android:layout_marginTop="5dp"
-                    android:text="计算机专业"
                     android:textColor="@color/colora3"
                     android:textSize="14sp"/>
 
@@ -120,7 +118,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/course_type"
                 android:layout_toRightOf="@+id/course_type"
-                android:text="服装设计课"
                 android:textColor="@color/color48"
                 android:textSize="15sp"/>
 
@@ -153,7 +150,6 @@
                 android:layout_height="wrap_content"
 
                 android:layout_toRightOf="@+id/sch_tv"
-                android:text="服装设"
                 android:textColor="@color/color48"
                 android:textSize="15sp"/>
 

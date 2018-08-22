@@ -64,7 +64,43 @@ public class StudentExampleDetailsBeans {
         private String cover;
         private String offer;
         private String show;
+        private String offershow;
         private String caseDetail;
+        private String traintime;
+        private String graduatschool;
+        private String ibase;
+
+        public String getOffershow() {
+            return offershow;
+        }
+
+        public void setOffershow(String offershow) {
+            this.offershow = offershow;
+        }
+
+        public String getIbase() {
+            return ibase;
+        }
+
+        public void setIbase(String ibase) {
+            this.ibase = ibase;
+        }
+
+        public String getTraintime() {
+            return traintime;
+        }
+
+        public void setTraintime(String traintime) {
+            this.traintime = traintime;
+        }
+
+        public String getGraduatschool() {
+            return graduatschool;
+        }
+
+        public void setGraduatschool(String graduatschool) {
+            this.graduatschool = graduatschool;
+        }
 
         public String getTitle() {
             return title;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -59,20 +60,16 @@ public class SearchStudentExampleActivity extends BaseActivity {
         editInfo.setHint("请输入院校名称");
         hideTitleAndBack();
 
-        commonAdapter = new CommonAdapter<MaxsinUniversityRankBeans.DataBean.ColleglistBean>(this, R.layout.item_rank_list, course_listAll) {
+        commonAdapter = new CommonAdapter<MaxsinUniversityRankBeans.DataBean.ColleglistBean>(this, R.layout.item_study_example_list, course_listAll) {
 
             @Override
             protected void convert(final ViewHolder viewHolder, final MaxsinUniversityRankBeans.DataBean.ColleglistBean item, final int position) {
-                viewHolder.setText(R.id.school, item.getChname());
-                viewHolder.setText(R.id.eschool, item.getEnname());
-                viewHolder.setText(R.id.major, item.getMajor());
-                viewHolder.setText(R.id.address, item.getLocation());
-                viewHolder.setText(R.id.time, item.getApplyendtime());
-                viewHolder.setText(R.id.difficulty, item.getApplydifficulty());
-                viewHolder.setShadowDrawable(R.id.head_rel);
-                viewHolder.setText(R.id.language, "TOEFL:" + item.getToefl() + " | IELTS:" + item.getIelts());
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.head_image, item.getLogopic(), 10);
-                viewHolder.setCornerRadiusImageViewNetUrl(R.id.image_cover, item.getShowpic(), 10);
+                viewHolder.setText(R.id.name, item.getTitle());
+                viewHolder.setText(R.id.major, item.getKeywords());
+                viewHolder.setText(R.id.money, item.getJiangxuejin());
+                viewHolder.setText(R.id.school, item.getLuquyuanxiao());
+                viewHolder.setImageViewNetUrl(R.id.head_image, item.getThumb());
+                viewHolder.setCornerRadiusImageViewNetUrl(R.id.image_cover, item.getCover(), 10);
             }
         };
 
@@ -98,6 +95,15 @@ public class SearchStudentExampleActivity extends BaseActivity {
                     page = 1;
                     loadDataFromSer(editInfo.getText().toString().trim());
                 }
+            }
+        });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                readyGo(StudentExampleDetailsactivity.class, course_listAll.get(position).getId());
             }
         });
         cancleTv.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +158,7 @@ public class SearchStudentExampleActivity extends BaseActivity {
         map.put("keywords", str);
 
 
-        mHttpHelper.post(Api.URL + "searchCollege", map, new BaseCallback<MaxsinUniversityRankBeans>() {
+        mHttpHelper.post(Api.URL + "search_stucase", map, new BaseCallback<MaxsinUniversityRankBeans>() {
             @Override
             public void onRequestBefore() {
             }

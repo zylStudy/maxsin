@@ -51,7 +51,7 @@
                     android:id="@+id/image_bg"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="70dp"
                     android:background="@mipmap/ic_maxsin_universit_details_bg"
                     android:scaleType="centerCrop"/>
 
@@ -66,7 +66,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="65dp"
+                        android:layout_marginTop="85dp"
                         android:scaleType="centerCrop"
                         />
 
@@ -80,7 +80,6 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         android:maxLines="1"
-                        android:text="张三"
                         android:textColor="@color/white"
                         android:textSize="18sp"/>
 
@@ -94,272 +93,243 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="5dp"
                         android:maxLines="1"
-                        android:text="计算机专业"
                         android:textColor="@color/white"
                         android:textSize="14sp"/>
 
                     <RelativeLayout
                         android:id="@+id/info_rel"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
+                        android:layout_height="240dp"
                         android:layout_below="@+id/eschool"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:background="@color/white"
                         >
 
-                        <LinearLayout
-                            android:id="@+id/layout"
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:orientation="horizontal">
+                            android:layout_centerVertical="true">
+
+
+                            <LinearLayout
+                                android:id="@+id/layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RelativeLayout
+                                    android:id="@+id/rank"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    >
+
+
+                                    <TextView
+                                        android:id="@+id/money"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="3dp"
+                                        android:maxLines="1"
+                                        android:layout_marginLeft="4dp"
+                                        android:textColor="@color/color3"
+                                        android:textSize="15sp"/>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/money"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="6dp"
+                                        android:text="奖学金"
+                                        android:textColor="@color/color6"
+                                        android:textSize="12sp"/>
+
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    >
+
+
+                                    <TextView
+                                        android:id="@+id/nature"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="3dp"
+                                        android:maxLines="1"
+                                        android:textColor="@color/color3"
+                                        android:textSize="15sp"/>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/nature"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="6dp"
+                                        android:text="培训时间"
+                                        android:textColor="@color/color6"
+                                        android:textSize="12sp"/>
+
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/difficulty"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="3dp"
+                                        android:maxLines="1"
+                                        android:textColor="@color/color3"
+                                        android:textSize="15sp"/>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/difficulty"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="6dp"
+                                        android:text="本人基础"
+                                        android:textColor="@color/color6"
+                                        android:textSize="12sp"/>
+
+
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/line01"
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_below="@+id/layout"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="10dp"
+                                android:textColor="@color/colore1"
+                                />
 
                             <RelativeLayout
-                                android:id="@+id/rank"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center"
+                                android:id="@+id/layout0"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/line01"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="10dp"
                                 >
 
-
                                 <TextView
-                                    android:id="@+id/money"
+                                    android:id="@+id/tv03"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="3dp"
-                                    android:text="$8868"
+                                    android:text="录取院校："
                                     android:textColor="@color/color3"
                                     android:textSize="15sp"/>
 
-
                                 <TextView
+                                    android:id="@+id/school_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/money"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="6dp"
-                                    android:text="奖学金"
-                                    android:textColor="@color/color6"
-                                    android:textSize="12sp"/>
+                                    android:layout_toRightOf="@+id/tv03"
+                                    android:maxLines="4"
+                                    android:textColor="@color/color48"
+                                    android:textSize="15sp"/>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/layout01"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/layout0"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="10dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/sch_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="申请学历："
+                                    android:textColor="@color/color3"
+                                    android:textSize="15sp"/>
+
+                                <TextView
+                                    android:id="@+id/education"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/color48"
+                                    android:textSize="15sp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toEndOf="@+id/sch_tv"/>
+
 
                             </RelativeLayout>
 
 
                             <RelativeLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                >
-
-
-                                <TextView
-                                    android:id="@+id/nature"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="3dp"
-                                    android:text="私立"
-                                    android:textColor="@color/color3"
-                                    android:textSize="15sp"/>
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/nature"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="6dp"
-                                    android:text="培训时间"
-                                    android:textColor="@color/color6"
-                                    android:textSize="12sp"/>
-
-                            </RelativeLayout>
-
-
-                            <RelativeLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center"
+                                android:id="@+id/sch_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/layout01"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="10dp"
                                 >
 
                                 <TextView
-                                    android:id="@+id/difficulty"
+                                    android:id="@+id/tv01"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="3dp"
-                                    android:text="困难"
+                                    android:text="毕业院校："
                                     android:textColor="@color/color3"
                                     android:textSize="15sp"/>
 
-
                                 <TextView
+                                    android:id="@+id/graduation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/difficulty"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="6dp"
-                                    android:text="本人基础"
-                                    android:textColor="@color/color6"
-                                    android:textSize="12sp"/>
+                                    android:layout_toRightOf="@+id/tv01"
+                                    android:textColor="@color/color48"
+                                    android:textSize="15sp"/>
 
 
                             </RelativeLayout>
 
 
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/line01"
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:layout_below="@+id/layout"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            android:textColor="@color/colore1"
-                            />
-
-                        <RelativeLayout
-                            android:id="@+id/layout0"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/line01"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                            <TextView
-                                android:id="@+id/tv03"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="录取院校："
-                                android:textColor="@color/color3"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/school_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/tv03"
-                                android:text="服装设"
-                                android:textColor="@color/color48"
-                                android:textSize="15sp"/>
-
-
                         </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/layout01"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/layout0"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                            <TextView
-                                android:id="@+id/sch_tv"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="申请学历："
-                                android:textColor="@color/color3"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/education"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/sch_tv"
-                                android:text="服装设"
-                                android:textColor="@color/color48"
-                                android:textSize="15sp"/>
-
-
-                        </RelativeLayout>
-
-
-                        <RelativeLayout
-                            android:id="@+id/type_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/layout01"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                            <TextView
-                                android:id="@+id/course_type"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="地址："
-                                android:textColor="@color/color3"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/address"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/course_type"
-                                android:layout_toRightOf="@+id/course_type"
-                                android:text="服装设计课"
-                                android:textColor="@color/color48"
-                                android:textSize="15sp"/>
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/sch_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/type_layout"
-                            android:layout_centerVertical="true"
-                            android:layout_marginBottom="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginTop="10dp"
-                            >
-
-                            <TextView
-                                android:id="@+id/tv01"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="毕业院校："
-                                android:textColor="@color/color3"
-                                android:textSize="15sp"/>
-
-                            <TextView
-                                android:id="@+id/graduation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/tv01"
-                                android:text="服装设"
-                                android:textColor="@color/color48"
-                                android:textSize="15sp"/>
-
-
-                        </RelativeLayout>
-
-
                     </RelativeLayout>
+
                 </RelativeLayout>
-
-
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
@@ -386,7 +356,7 @@
                         android:layout_centerVertical="true"
                         android:text="学员详情"
                         android:textColor="@color/color3"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         />
 
