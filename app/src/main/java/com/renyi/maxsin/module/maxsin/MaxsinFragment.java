@@ -38,8 +38,12 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
     SlidingTabLayout tab;
     @BindView(R.id.case_rel)
     RelativeLayout caseRel;
+    @BindView(R.id.teacher_rel)
+    RelativeLayout teacherRel;
     @BindView(R.id.rank)
     RelativeLayout rankRel;
+    @BindView(R.id.product_rel)
+    RelativeLayout productRel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,6 +97,18 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
             }
         });
         rankRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(UniversitiesRankingActivity.class, "");
+            }
+        });
+        teacherRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(TeacherActivity.class, "");
+            }
+        });
+        productRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 readyGo(UniversitiesRankingActivity.class, "");

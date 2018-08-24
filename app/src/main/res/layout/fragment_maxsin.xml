@@ -8,13 +8,24 @@
     android:fitsSystemWindows="true">
 
 
+    <RelativeLayout
+        android:id="@+id/srl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_contlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -29,7 +40,6 @@
             app:expandedTitleGravity="center|bottom"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
-
 
 
             <RelativeLayout
@@ -114,6 +124,7 @@
 
 
                         <RelativeLayout
+                            android:id="@+id/teacher_rel"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -155,6 +166,7 @@
 
 
                         <RelativeLayout
+                            android:id="@+id/product_rel"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -238,6 +250,7 @@
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -284,7 +297,7 @@
                         />
                 </RelativeLayout>
 
-                </android.support.v7.widget.Toolbar>
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -310,19 +323,6 @@
 
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/srl_refresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_contlayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

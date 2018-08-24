@@ -137,6 +137,22 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                 .build();
         return this;
     }
+    //添加阴影
+    public ViewHolder setShadowDrawable(int viewId,int a) {
+        View vw= getView(viewId);
+
+        ShadowDrawable shadowDrawable = new ShadowDrawable();
+        shadowDrawable.setColor(ContextCompat.getColor(mContext, R.color.colora))    //shadowcolor
+                .setOffsetY(DensityUtil.dip2px(mContext, 5))    //阴影下偏移--offset of the shadow
+                .setRadius(DensityUtil.dip2px(mContext, 8))     //四角半径--concern of the rectangle
+                .setEdgeShadowWidth(DensityUtil.dip2px(mContext, 8))   //四周阴影半径-- the shadow of each edge of the rectangle
+                .setFilterColor(0x56ffffff)                 //中间值，越大阴影越接近设置的值-- the slot to said how close to the shadowcolor
+                .setTopMargin(DensityUtil.dip2px(mContext, 3))  //上间距--top margin
+                .setParentHeight(DensityUtil.dip2px(mContext, a))  //设置要依附的View的高度 -- the height of parent view
+                .attach(vw)                                 //要在哪个View上面加阴影-- the shadow parent.※
+                .build();
+        return this;
+    }
 
     public ViewHolder setImageDrawable(int viewId, Drawable drawable) {
         ImageView view = getView(viewId);
@@ -157,6 +173,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
         return this;
     }
+
+
 
     //设置图片圆角
     public ViewHolder setCornerRadiusImageViewNetUrl(int viewId, String imageUrl, final float a) {
