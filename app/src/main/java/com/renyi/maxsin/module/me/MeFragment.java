@@ -19,7 +19,6 @@ import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.Basefragment;
 import com.renyi.maxsin.module.Study.StudyActivity;
 import com.renyi.maxsin.module.login.ResultBean;
-import com.renyi.maxsin.module.release.ReleaseImageAndTextActivity;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
@@ -125,13 +124,13 @@ public class MeFragment extends Basefragment {
                 startActivity(intent);
             }
         });
-        tvName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ReleaseImageAndTextActivity.class);
-                startActivity(intent);
-            }
-        });
+//        tvName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ReleaseImageAndTextActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         followRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

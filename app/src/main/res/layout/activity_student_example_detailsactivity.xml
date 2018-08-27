@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="70dp"
-                    android:background="@mipmap/ic_maxsin_universit_details_bg"
+                    android:background="@mipmap/ic_student_info_bg"
                     android:scaleType="centerCrop"/>
 
                 <RelativeLayout
@@ -133,9 +133,9 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_centerHorizontal="true"
+                                        android:layout_marginLeft="4dp"
                                         android:layout_marginTop="3dp"
                                         android:maxLines="1"
-                                        android:layout_marginLeft="4dp"
                                         android:textColor="@color/color3"
                                         android:textSize="15sp"/>
 
@@ -285,10 +285,10 @@
                                     android:id="@+id/education"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/color48"
-                                    android:textSize="15sp"
                                     android:layout_alignParentTop="true"
-                                    android:layout_toEndOf="@+id/sch_tv"/>
+                                    android:layout_toEndOf="@+id/sch_tv"
+                                    android:textColor="@color/color48"
+                                    android:textSize="15sp"/>
 
 
                             </RelativeLayout>

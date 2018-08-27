@@ -5,7 +5,7 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    >
 
 
     <RelativeLayout
@@ -89,36 +89,14 @@
                             android:gravity="center"
                             >
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                />
-
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:background="@color/colore1"/>
 
                             <ImageView
                                 android:id="@+id/image01"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="100dp"
+                                android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_launcher"/>
+                                android:background="@mipmap/ic_school_bg"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/image01"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="3dp"
-                                android:text="院校排名"
-                                android:textColor="@color/color6"
-                                android:textSize="12sp"/>
 
                         </RelativeLayout>
 
@@ -131,36 +109,14 @@
                             android:gravity="center"
                             >
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                />
-
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:background="@color/colore1"/>
 
                             <ImageView
                                 android:id="@+id/image02"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="100dp"
+                                android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_launcher"/>
+                                android:background="@mipmap/ic_teacher_bg"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/image02"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="3dp"
-                                android:text="艺术导师"
-                                android:textColor="@color/color6"
-                                android:textSize="12sp"/>
 
                         </RelativeLayout>
 
@@ -173,36 +129,14 @@
                             android:gravity="center"
                             >
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                />
-
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:background="@color/colore1"/>
 
                             <ImageView
                                 android:id="@+id/image03"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="100dp"
+                                android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_launcher"/>
+                                android:background="@mipmap/ic_maxsin_bg"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/image03"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="3dp"
-                                android:text="作品集"
-                                android:textColor="@color/color6"
-                                android:textSize="12sp"/>
 
                         </RelativeLayout>
 
@@ -215,36 +149,14 @@
                             android:gravity="center"
                             >
 
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                />
 
                             <ImageView
                                 android:id="@+id/image04"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="100dp"
+                                android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_launcher"/>
+                                android:background="@mipmap/ic_student_bg"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/image04"
-                                android:layout_centerHorizontal="true"
-                                android:layout_marginTop="3dp"
-                                android:text="学员案例"
-                                android:textColor="@color/color6"
-                                android:textSize="12sp"/>
-
-                            <TextView
-                                android:layout_width="1dp"
-                                android:layout_height="30dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:background="@color/colore1"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -275,7 +187,7 @@
                         android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="@color/color3"
-                        android:textSize="24sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         />
 
@@ -311,15 +223,26 @@
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_toLeftOf="@+id/add_image"
                 app:tl_tab_width="90dp"
                 app:tl_textBold="BOTH"
+                android:layout_marginRight="15dp"
                 tl:tl_indicator_color="@color/colorOuteb4161"
                 tl:tl_indicator_width="25dp"
                 tl:tl_tab_space_equal="true"
                 tl:tl_textSelectColor="@color/color3"
                 tl:tl_textUnselectColor="@color/color9"
-                tl:tl_textsize="16sp"
+                tl:tl_textsize="18sp"
                 tl:tl_underline_height="3dp"/>
+
+            <ImageView
+                android:id="@+id/add_image"
+                android:layout_width="21dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@mipmap/ic_first_add_type_bg"/>
 
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>

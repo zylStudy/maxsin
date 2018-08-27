@@ -143,6 +143,10 @@
         </activity>
         <activity android:name=".module.maxsin.TeacherDetailsActivity">
         </activity>
+        <activity android:name=".module.maxsin.SearchTeacherActivity">
+        </activity>
+        <activity android:name=".module.maxsin.ComprehensiveSearchActivity">
+        </activity>
     </application>
 
 </manifest>

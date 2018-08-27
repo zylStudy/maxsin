@@ -80,12 +80,10 @@ public abstract class TagAdapter<T> {
 
 
     public void onSelected(int position, View view) {
-        Log.i("-------11111111", "onSelected " + position);
         tagPositionInterface.getTagPosition(position);
     }
 
     public void unSelected(int position, View view) {
-        Log.i("-------222222222", "unSelected " + position);
         tagPositionInterface.getClearTagPosition(position);
     }
 

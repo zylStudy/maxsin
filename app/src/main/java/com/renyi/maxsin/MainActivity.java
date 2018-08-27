@@ -1,5 +1,6 @@
 package com.renyi.maxsin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,6 +21,7 @@ import com.renyi.maxsin.module.get.GetFragment;
 import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
 import com.renyi.maxsin.module.mvp.MvpPageFragment;
+import com.renyi.maxsin.module.release.ReleaseImageAndTextActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout threeRel;
     @BindView(R.id.three_tv)
     TextView threeTv;
-    //    @BindView(R.id.four_image_hl)
-    //    ImageView fourImageHl;
-    //    @BindView(R.id.four_image_nor)
-    //    ImageView fourImageNor;
+    @BindView(R.id.four_image_hl)
+    ImageView fourImageHl;
+    @BindView(R.id.four_image_nor)
+    ImageView fourImageNor;
     //    @BindView(R.id.four_tv)
     //    TextView fourTv;
-    //    @BindView(R.id.four_rel)
-    //    RelativeLayout fourRel;
+    @BindView(R.id.four_rel)
+    RelativeLayout fourRel;
     @BindView(R.id.five_image_hl)
     ImageView fiveImageHl;
     @BindView(R.id.five_image_nor)
@@ -93,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//隐藏标题
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         setContentView(R.layout.activity_main);
         mainActivity = this;
         ButterKnife.bind(this);
@@ -110,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         mFragmentManager = getSupportFragmentManager();
 
-        checkedFragment(getFragment, null, GET_FRAGMENT);
+        checkedFragment(maxsinFragment, null, MAXSIN_FRAGMENT);
     }
 
 
@@ -172,23 +179,22 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.first_rel:
                 menuTagShowOrHide(0);
-                checkedFragment(getFragment, null, GET_FRAGMENT);
+                checkedFragment(maxsinFragment, null, MAXSIN_FRAGMENT);
                 break;
             case R.id.two_rel:
                 menuTagShowOrHide(1);
-                checkedFragment(mvpPageFragment, null, GO_FRAGMENT);
+                checkedFragment(getFragment, null, GET_FRAGMENT);
                 break;
             case R.id.three_rel:
                 menuTagShowOrHide(2);
-                checkedFragment(maxsinFragment, null, MAXSIN_FRAGMENT);
-
+                checkedFragment(mvpPageFragment, null, GO_FRAGMENT);
                 break;
 
-            //            case R.id.four_rel:
-            //                menuTagShowOrHide(3);
-            //                checkedFragment(studyFragment, null, STUDY_FRAGMENT);
-            //
-            //                break;
+            case R.id.four_rel:
+                Intent intent = new Intent(MainActivity.this, ReleaseImageAndTextActivity.class);
+                startActivity(intent);
+
+                break;
             case R.id.five_rel:
                 menuTagShowOrHide(4);
                 checkedFragment(meFragment, null, ME_FRAGMENT);

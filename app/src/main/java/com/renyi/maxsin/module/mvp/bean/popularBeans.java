@@ -127,6 +127,7 @@ public class PopularBeans {
              */
 
             private String id;
+            private String user_id;
             private String zp_id;
             private String nickname;
             private String head_url;
@@ -137,6 +138,14 @@ public class PopularBeans {
             private String maxdate;
             private String is_focus;
             private String user_name;
+
+            public String getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(String user_id) {
+                this.user_id = user_id;
+            }
 
             public String getUser_name() {
                 return user_name;

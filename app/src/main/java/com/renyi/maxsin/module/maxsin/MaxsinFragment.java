@@ -114,6 +114,12 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener {
                 readyGo(UniversitiesRankingActivity.class, "");
             }
         });
+        searchImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyGo(ComprehensiveSearchActivity.class, "");
+            }
+        });
     }
 
     protected void readyGo(Class<?> clazz, String id) {

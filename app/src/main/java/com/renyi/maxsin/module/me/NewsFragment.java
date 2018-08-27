@@ -134,7 +134,6 @@ public class NewsFragment extends Basefragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("id", get_listAll.get(position).getId());
-                //进入活动详情
                 Intent intent  ;
                 intent = new Intent(getActivity(), NewsDetailsActivity.class);
                 intent.putExtras(bundle);

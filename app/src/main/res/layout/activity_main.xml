@@ -64,7 +64,7 @@
                 android:layout_below="@+id/first_image_nor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="GET"
+                android:text="首页"
                 android:textColor="@color/colorf0"
                 android:textSize="10sp"/>
         </RelativeLayout>
@@ -104,10 +104,42 @@
                 android:layout_below="@+id/two_image_nor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="MVP"
+                android:text="发现"
                 android:textColor="@color/color9"
                 android:textSize="10sp"/>
         </RelativeLayout>
+
+        <RelativeLayout
+        android:id="@+id/four_rel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:onClick="onClick"
+        >
+
+        <ImageView
+        android:id="@+id/four_image_hl"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:background="@mipmap/ic_main_tab_four_hl"
+        android:visibility="invisible"/>
+
+        <ImageView
+        android:id="@+id/four_image_nor"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="6dp"
+        android:background="@mipmap/ic_main_tab_four_nor"/>
+
+
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/three_rel"
@@ -146,7 +178,7 @@
                 android:layout_below="@+id/three_image_nor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="ART"
+                android:text="MVP"
                 android:textColor="@color/color9"
                 android:textSize="10sp"
                 />
@@ -154,43 +186,43 @@
 
 
         <!--<RelativeLayout-->
-            <!--android:id="@+id/four_rel"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_weight="1"-->
-            <!--android:onClick="onClick"-->
-            <!--&gt;-->
+        <!--android:id="@+id/four_rel"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:onClick="onClick"-->
+        <!--&gt;-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/four_image_hl"-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginTop="6dp"-->
-                <!--android:background="@mipmap/ic_main_tab_four_hl"-->
-                <!--android:visibility="invisible"/>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/four_image_hl"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="6dp"-->
+        <!--android:background="@mipmap/ic_main_tab_four_hl"-->
+        <!--android:visibility="invisible"/>-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/four_image_nor"-->
-                <!--android:layout_width="20dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_alignParentTop="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginTop="6dp"-->
-                <!--android:background="@mipmap/ic_main_tab_four_nor"/>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/four_image_nor"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="6dp"-->
+        <!--android:background="@mipmap/ic_main_tab_four_nor"/>-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/four_tv"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/four_image_hl"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_marginTop="2dp"-->
-                <!--android:text="STUDY"-->
-                <!--android:textColor="@color/color9"-->
-                <!--android:textSize="10sp"/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/four_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/four_image_hl"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:text="STUDY"-->
+        <!--android:textColor="@color/color9"-->
+        <!--android:textSize="10sp"/>-->
         <!--</RelativeLayout>-->
 
         <RelativeLayout
@@ -228,7 +260,7 @@
                 android:layout_below="@+id/five_image_hl"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="ME"
+                android:text="我的"
                 android:textColor="@color/color9"
                 android:textSize="10sp"/>
         </RelativeLayout>
