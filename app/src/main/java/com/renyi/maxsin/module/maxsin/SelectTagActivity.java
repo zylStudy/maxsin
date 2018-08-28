@@ -142,11 +142,12 @@ public class SelectTagActivity extends BaseActivity {
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("tab", (ArrayList<String>) showUserList);
                 intent.putExtras(bundle);
-                setResult(1, intent);
-                finish();
+
                 if (showUserList.size() == 0) {
+                    setResult(2, intent);
                     postTag("0");
                 } else {
+                    setResult(1, intent);
                     String str = "";
                     for (int i = 0; i < showUserList.size(); i++) {
                         for (int j = 0; j < userTagsList.size(); j++) {
@@ -154,8 +155,6 @@ public class SelectTagActivity extends BaseActivity {
                                 str = str + "," + userTagsList.get(j).getId();
                             }
                         }
-
-
                     }
 
                     for (int i = 0; i < showUserList.size(); i++) {
@@ -164,8 +163,6 @@ public class SelectTagActivity extends BaseActivity {
                                 str = str + "," + tuiJianList.get(j).getId();
                             }
                         }
-
-
                     }
 
                     postTag(str.substring(1, str.length()));
@@ -198,7 +195,7 @@ public class SelectTagActivity extends BaseActivity {
             @Override
             public void onSuccess(Response response, ReturnBean resultBean) {
                 if (resultBean.getCode().equals("800")) {
-
+                    finish();
                 } else {
                 }
 

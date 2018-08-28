@@ -146,30 +146,35 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
         if (requestCode == 0 && resultCode == 1) {
             List<String> tab = data.getExtras().getStringArrayList("tab");
             if (tab != null && tab.size() != 0) {
-
+                for (int j = titles.size()-1; j >3; j--) {
+                    titles.remove(j);
+                    fragments.remove(j);
+                }
                 for (int i = 0; i < tab.size(); i++) {
-                    for (int j = 0; j < titles.size(); j++) {
-                        if (tab.get(i).equals(titles.get(j))) {
-                            titles.remove(j);
-                            fragments.remove(j);
-                        }
-
-                    }
                     fragments.add(MaxsinListFragment.getInstance(tab.get(tab.size() - 1)));
                     titles.add(tab.get(i));
-
                 }
                 notifyDataSetChanged();
-                adatper.notifyDataSetChanged();
-                setTextViewInlarge(0);
-                vpContlayout.setCurrentItem(0);
-                vpContlayout.setOffscreenPageLimit(titles.size());
             }
+        }
+
+        if (requestCode == 0 && resultCode == 2) {
+
+            for (int i = titles.size()-1; i >3 ; i--) {
+                titles.remove(i);
+                fragments.remove(i);
+            }
+            notifyDataSetChanged();
         }
     }
 
     protected void notifyDataSetChanged() {
         tab.notifyDataSetChanged();
+
+        adatper.notifyDataSetChanged();
+        setTextViewInlarge(0);
+        vpContlayout.setCurrentItem(0);
+        vpContlayout.setOffscreenPageLimit(titles.size());
     }
 
     protected void setOnclickListeners() {
