@@ -5,6 +5,7 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     >
 
 
@@ -43,12 +44,13 @@
 
 
             <RelativeLayout
+                android:id="@+id/viewPagerContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.01">
+                >
 
                 <TextView
                     android:id="@+id/heigh"
@@ -60,9 +62,11 @@
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/view_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_width="280dp"
+                    android:layout_height="208dp"
                     android:layout_below="@+id/heigh"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
                     >
                 </android.support.v4.view.ViewPager>
 
@@ -223,16 +227,17 @@
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginRight="15dp"
                 android:layout_toLeftOf="@+id/add_image"
                 app:tl_tab_width="90dp"
                 app:tl_textBold="BOTH"
-                android:layout_marginRight="15dp"
                 tl:tl_indicator_color="@color/colorOuteb4161"
                 tl:tl_indicator_width="25dp"
                 tl:tl_tab_space_equal="true"
                 tl:tl_textSelectColor="@color/color3"
-                tl:tl_textUnselectColor="@color/color9"
+                tl:tl_textUnselectColor="@color/colora3"
                 tl:tl_textsize="18sp"
+
                 tl:tl_underline_height="3dp"/>
 
             <ImageView
