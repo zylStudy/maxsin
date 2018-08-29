@@ -23,7 +23,7 @@
             android:layout_marginTop="15dp"
             android:text="热门搜索"
             android:textColor="@color/color9"
-            android:textSize="15sp"
+            android:textSize="13sp"
             />
         <com.renyi.maxsin.view.tagview.TagFlowLayout
             android:id="@+id/tag_flowlayout_aways"

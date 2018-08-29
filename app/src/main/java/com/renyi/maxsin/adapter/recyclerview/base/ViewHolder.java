@@ -132,7 +132,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                 .setEdgeShadowWidth(DensityUtil.dip2px(mContext, 8))   //四周阴影半径-- the shadow of each edge of the rectangle
                 .setFilterColor(0x56ffffff)                 //中间值，越大阴影越接近设置的值-- the slot to said how close to the shadowcolor
                 .setTopMargin(DensityUtil.dip2px(mContext, 3))  //上间距--top margin
-                .setParentHeight(DensityUtil.dip2px(mContext, 90))  //设置要依附的View的高度 -- the height of parent view
+                .setParentHeight(DensityUtil.dip2px(mContext, 80))  //设置要依附的View的高度 -- the height of parent view
                 .attach(vw)                                 //要在哪个View上面加阴影-- the shadow parent.※
                 .build();
         return this;

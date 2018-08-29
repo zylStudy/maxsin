@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tl="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -57,7 +57,7 @@
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textColor="@color/color6"
-                android:textSize="15sp"/>
+                android:textSize="13sp"/>
 
 
         </RelativeLayout>
@@ -69,6 +69,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
+            android:textColor="@color/colorae"
+            android:textSize="13sp"
             android:text="取消"
             />
 
@@ -90,9 +92,10 @@
         tl:tl_indicator_color="@color/colorOuteb4161"
         tl:tl_indicator_width="25dp"
         tl:tl_tab_space_equal="true"
+        app:tl_textBold="BOTH"
         tl:tl_textSelectColor="@color/color3"
-        tl:tl_textUnselectColor="@color/color9"
-        tl:tl_textsize="18sp"
+        tl:tl_textUnselectColor="@color/colora3"
+        tl:tl_textsize="16sp"
         tl:tl_underline_height="3dp"/>
 
     <android.support.v4.view.ViewPager

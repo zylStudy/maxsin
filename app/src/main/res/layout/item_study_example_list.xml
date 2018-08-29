@@ -66,8 +66,9 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color48"
-                    android:textSize="18sp"/>
+                    android:textColor="@color/color3"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
 
                 <TextView
                     android:id="@+id/major"
@@ -75,8 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/name"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/colora3"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/color6"
+                    android:textSize="12sp"/>
 
             </RelativeLayout>
 
@@ -85,7 +86,7 @@
         <ImageView
             android:id="@+id/image_cover"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="160dp"
             android:layout_below="@+id/head_layout"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -110,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:text="奖学金："
                 android:textColor="@color/color3"
-                android:textSize="15sp"/>
+                android:textStyle="bold"
+                android:textSize="14sp"/>
 
             <TextView
                 android:id="@+id/money"
@@ -118,8 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/course_type"
                 android:layout_toRightOf="@+id/course_type"
-                android:textColor="@color/color48"
-                android:textSize="15sp"/>
+                android:textColor="@color/color6"
+                android:textSize="14sp"/>
 
 
         </RelativeLayout>
@@ -141,17 +143,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="录取院校："
+                android:textStyle="bold"
                 android:textColor="@color/color3"
-                android:textSize="15sp"/>
+                android:textSize="14sp"/>
 
             <TextView
                 android:id="@+id/school"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_toRightOf="@+id/sch_tv"
-                android:textColor="@color/color48"
-                android:textSize="15sp"/>
+                android:textColor="@color/color6"
+                android:textSize="14sp"/>
 
 
         </RelativeLayout>

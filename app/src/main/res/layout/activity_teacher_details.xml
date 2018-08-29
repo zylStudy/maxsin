@@ -22,10 +22,9 @@
                 android:layout_height="235dp">
 
                 <ImageView
-
+                    android:id="@+id/image_bg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@mipmap/ic_me_bg"
                     android:scaleType="centerCrop"/>
 
                 <RelativeLayout
@@ -39,8 +38,7 @@
                         android:id="@+id/info_rel"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
-
-                        android:background="@drawable/shap_layout"
+                        android:background="@color/white"
                         >
 
 
@@ -64,7 +62,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="10dp"
-                                android:text="name"
                                 android:textColor="@color/color3"
                                 android:textSize="16sp"
                                 android:textStyle="bold"/>
@@ -87,9 +84,8 @@
                                 android:layout_below="@+id/line2"
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="15dp"
-                                android:text="name"
-                                android:textColor="@color/color6"
-                                android:textSize="12sp"/>
+                                android:textColor="@color/color2"
+                                android:textSize="13sp"/>
 
 
                             <TextView
@@ -99,8 +95,7 @@
                                 android:layout_below="@+id/major"
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="4dp"
-                                android:text="name"
-                                android:textColor="@color/color6"
+                                android:textColor="@color/color2"
                                 android:textSize="13sp"/>
 
                             <TextView
@@ -112,7 +107,6 @@
                                 android:layout_marginRight="15dp"
                                 android:layout_marginTop="8dp"
                                 android:lineSpacingExtra="4dp"
-                                android:text="擅长课程：\n平面设计|交互设计|视觉传达"
                                 android:textColor="@color/color2"
                                 android:textSize="12sp"/>
 
@@ -165,7 +159,6 @@
                 android:layout_marginTop="8dp"
                 android:lineSpacingExtra="3dp"
                 android:maxLines="4"
-                android:text="导师简介"
                 android:textColor="@color/color6"
                 android:textSize="13sp"/>
 

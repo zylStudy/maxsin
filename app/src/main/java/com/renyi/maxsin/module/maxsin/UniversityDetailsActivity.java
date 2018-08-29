@@ -68,6 +68,7 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
     @BindView(R.id.vp_contlayout)
     ViewPager vpContlayout;
     String college_id = "";
+    List<String> titles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +110,7 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
     private void setFragmentViewBindData(UniversityDetailsBeans.DataBean dataBean) {
 
         List<Fragment> fragments = new ArrayList<>();
-        List<String> titles = new ArrayList<>();
+          titles = new ArrayList<>();
         if (dataBean.getContent() != null && !dataBean.getContent().equals("")) {
             titles.add("院校简介");
             fragments.add(UniversityDetailsFragment.getInstance(dataBean.getContent()));
@@ -133,6 +134,23 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
             tab.setOnTabSelectListener(this);
             vpContlayout.setCurrentItem(0);
             vpContlayout.setOffscreenPageLimit(4);
+            setTextViewInlarge(0);
+            vpContlayout.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    setTextViewInlarge(position);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
         }
 
     }
@@ -212,10 +230,24 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
     @Override
     public void onTabSelect(int position) {
         vpContlayout.setCurrentItem(position);
+        setTextViewInlarge(position);
     }
 
     @Override
     public void onTabReselect(int position) {
+
+    }
+
+    private void setTextViewInlarge(int a) {
+
+        for (int i = 0; i < titles.size(); i++) {
+            if (i == a) {
+                tab.getTitleView(i).setTextSize(16);
+            } else {
+                tab.getTitleView(i).setTextSize(13);
+            }
+
+        }
 
     }
 }

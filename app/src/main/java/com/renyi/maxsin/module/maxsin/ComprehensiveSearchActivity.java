@@ -102,9 +102,9 @@ public class ComprehensiveSearchActivity extends BaseActivity implements OnTabSe
 
         for (int i = 0; i < list.size(); i++) {
             if (i == flag) {
-                tl5.getTitleView(i).setTextSize(18);
+                tl5.getTitleView(i).setTextSize(16);
             } else {
-                tl5.getTitleView(i).setTextSize(15);
+                tl5.getTitleView(i).setTextSize(13);
             }
 
         }

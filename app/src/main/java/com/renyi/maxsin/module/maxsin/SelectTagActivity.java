@@ -231,16 +231,19 @@ public class SelectTagActivity extends BaseActivity {
             public void onSuccess(Response response, TagBeans resultBean) {
                 if (resultBean.getCode().equals("800")) {
                     if (resultBean.getData() != null) {
-
-                        userTagsList = resultBean.getData().getUser_tags();
-                        tuiJianList = resultBean.getData().getTuijian();
-                        for (int i = 0; i < userTagsList.size(); i++) {
-                            showUserList.add(userTagsList.get(i).getTag_name());
+                        if (resultBean.getData().getUser_tags() != null) {
+                            userTagsList = resultBean.getData().getUser_tags();
+                            for (int i = 0; i < userTagsList.size(); i++) {
+                                showUserList.add(userTagsList.get(i).getTag_name());
+                            }
+                        }
+                        if (resultBean.getData().getTuijian() != null) {
+                            tuiJianList = resultBean.getData().getTuijian();
+                            for (int i = 0; i < tuiJianList.size(); i++) {
+                                showTuiList.add(tuiJianList.get(i).getTag_name());
+                            }
                         }
 
-                        for (int i = 0; i < tuiJianList.size(); i++) {
-                            showTuiList.add(tuiJianList.get(i).getTag_name());
-                        }
                         setTagView();
                     }
                 } else {

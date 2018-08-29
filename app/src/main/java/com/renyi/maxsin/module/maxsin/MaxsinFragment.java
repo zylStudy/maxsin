@@ -388,9 +388,9 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
         for (int i = 0; i < titles.size(); i++) {
             if (i == a) {
-                tab.getTitleView(i).setTextSize(18);
+                tab.getTitleView(i).setTextSize(16);
             } else {
-                tab.getTitleView(i).setTextSize(15);
+                tab.getTitleView(i).setTextSize(13);
             }
 
         }

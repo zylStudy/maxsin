@@ -40,6 +40,8 @@ public class MeFragment extends Basefragment {
 
     @BindView(R.id.headImageView)
     ImageView headImageView;
+    @BindView(R.id.iv_show)
+    ImageView ivShow;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.image_go)
@@ -78,6 +80,8 @@ public class MeFragment extends Basefragment {
     protected void initView() {
         IntentFilter filter = new IntentFilter("broadcast.updateMe");
         getActivity().registerReceiver(broadcastReceiverUpdate, filter);
+        Glide.with(this).load(R.mipmap.ic_me_bg).asBitmap().into(ivShow);
+
     }
 
     BroadcastReceiver broadcastReceiverUpdate = new BroadcastReceiver() {

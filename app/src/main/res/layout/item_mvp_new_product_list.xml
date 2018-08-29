@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/cover_image"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="168dp"
             android:layout_below="@+id/head_rel"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -36,16 +36,16 @@
 
             <ImageView
                 android:id="@+id/head_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
                 android:scaleType="centerCrop"
                 />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
                 android:background="@mipmap/ic_zhedang"
@@ -62,8 +62,7 @@
                 android:layout_marginRight="2dp"
                 android:layout_toLeftOf="@+id/followimage"
                 android:layout_toRightOf="@+id/head_image"
-                android:text="基础课"
-                android:textColor="@color/color48"
+                android:textColor="@color/color3"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -92,9 +91,8 @@
             android:layout_marginTop="4dp"
             android:lineSpacingExtra="2dp"
             android:maxLines="2"
-            android:text="基础课"
-            android:textColor="@color/color48"
-            android:textSize="17sp"
+            android:textColor="@color/color3"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
 
@@ -112,8 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="4dp"
-                android:text="2017.04.27"
-                android:textColor="@color/color8"
+                android:textColor="@color/color6"
                 android:textSize="12sp"/>
 
             <TextView
@@ -122,8 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="102"
-                android:textColor="@color/color8"
+                android:textColor="@color/colord3"
                 android:textSize="12sp"/>
 
 

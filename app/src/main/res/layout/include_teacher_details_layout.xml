@@ -41,7 +41,7 @@
                 android:layout_alignBottom="@+id/info_tv"
                 android:layout_below="@+id/type"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shap_tv_layout"
                 android:textSize="14sp"/>
 
@@ -56,9 +56,9 @@
                 android:layout_marginTop="8dp"
                 android:maxLines="4"
                 android:lineSpacingExtra="4dp"
-                android:textColor="@color/colorff2e4e"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
+                android:textColor="@color/color6"
+                android:textSize="12sp"
+                />
 
         </RelativeLayout>
     </RelativeLayout>

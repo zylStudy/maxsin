@@ -10,9 +10,9 @@
     >
 
     <ImageView
+        android:id="@+id/first_image"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:background="@mipmap/ic_me_bg"
         android:scaleType="centerCrop"/>
 
 

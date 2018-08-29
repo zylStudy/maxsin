@@ -12,17 +12,16 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.githang.statusbar.StatusBarCompat;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
 import com.renyi.maxsin.module.get.bean.ReturnBean;
@@ -33,7 +32,6 @@ import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
 import com.renyi.maxsin.utils.SPUtils;
-import com.renyi.maxsin.utils.StatusBarCompat;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -55,6 +53,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     ViewPager vpContlayout;
     @BindView(R.id.headImageView)
     ImageView headImageView;
+    @BindView(R.id.imageView5)
+    ImageView imageViewBack;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.info)
@@ -77,6 +77,10 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     @BindView(R.id.appbarlayout)
     AppBarLayout appbarlayout;
     String is_fans = "", id = "";
+    @BindView(R.id.back_rel)
+    RelativeLayout backRel;
+    @BindView(R.id.tv)
+    TextView tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,38 +89,28 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         id = getIntent().getExtras().getString("id");
 
         setContentView(R.layout.activity_me_center);
-        StatusBarCompat.translucentStatusBar(this);
+        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
         ButterKnife.bind(this);
         setRoleLayout();
         loadDataString();
-
-        tbToolbar.setContentInsetsRelative(R.styleable.Toolbar_contentInsetStart, R.styleable.Toolbar_contentInsetEnd);
-        tbToolbar.setNavigationIcon(R.mipmap.ic_back_bg);
-        setSupportActionBar(tbToolbar);
-        collaps.setCollapsedTitleGravity(Gravity.CENTER);//设置收缩后标题的位置
-        collaps.setTitle("_");
-        tbToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-
-            }
-        });
+        imageViewBack.setBackgroundResource(R.mipmap.ic_white_bach_bg);
         appbarlayout
                 .addOnOffsetChangedListener(new AppBarStateChangeListener() {
                     @Override
                     public void onStateChanged(AppBarLayout appBarLayout, State state) {
                         if (state == State.EXPANDED) {
-
+                            imageViewBack.setBackgroundResource(R.mipmap.ic_white_bach_bg);
                             //展开状态
-                            collaps.setTitle("");
+                            tv.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.white));
                         } else if (state == State.COLLAPSED) {
                             //折叠状态
-                            collaps.setTitle("个人中心  ");
+                            imageViewBack.setBackgroundResource(R.mipmap.ic_back_bg);
+                            tv.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.color3));
                             // toolbar.setNavigationIcon(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
                         } else {
                             //中间状态
-                            collaps.setTitle("");
+                            tv.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.white));
+                            imageViewBack.setBackgroundResource(R.mipmap.ic_white_bach_bg);
                             //toolbar.setNavigationIcon(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
 
                         }
@@ -130,6 +124,12 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
                 } else {
                     postDate("0");
                 }
+            }
+        });
+        backRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -191,7 +191,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
             if (i == position) {
                 tab.getTitleView(i).setTextSize(16);
             } else {
-                tab.getTitleView(i).setTextSize(14);
+                tab.getTitleView(i).setTextSize(13);
             }
 
         }
@@ -226,7 +226,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
                     popularity.setText(resultBeanData.getRenqi());
                     fans.setText(resultBeanData.getFans_num());
                     follower.setText(resultBeanData.getFocus_num());
-                    info.setText("不忘初心，感恩常在");
+                    // info.setText("不忘初心，感恩常在");
                     is_fans = resultBeanData.getIs_fans();
                     setFollowBut(resultBeanData.getIs_fans());
 
@@ -253,26 +253,26 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        //通过inflater对象将自己写的资源文件转换成menu对象
-        //参数1代表需要创建的菜单，参数2代表将菜单设置到对应的menu上
-        getMenuInflater().inflate(R.menu.menu_tab_layout, menu);
-
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.tab_add:
-                startActivity(new Intent(MeCenterActivity.this, MyMessageActivity.class));
-                return true;
-        }
-
-        return false;
-    }
+    //    @Override
+    //    public boolean onCreateOptionsMenu(Menu menu) {
+    //
+    //        //通过inflater对象将自己写的资源文件转换成menu对象
+    //        //参数1代表需要创建的菜单，参数2代表将菜单设置到对应的menu上
+    //        getMenuInflater().inflate(R.menu.menu_tab_layout, menu);
+    //
+    //        return true;
+    //    }
+    //
+    //    public boolean onOptionsItemSelected(MenuItem item) {
+    //
+    //        switch (item.getItemId()) {
+    //            case R.id.tab_add:
+    //                startActivity(new Intent(MeCenterActivity.this, MyMessageActivity.class));
+    //                return true;
+    //        }
+    //
+    //        return false;
+    //    }
 
     private void postDate(final String flage) {
 

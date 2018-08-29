@@ -8,32 +8,40 @@
     android:background="@color/white"
     >
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="GET"
-        android:textColor="@color/color3"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/line"
+    <RelativeLayout
+        android:id="@+id/heade_rel"
         android:layout_width="match_parent"
-        android:layout_height="0.25dp"
-        android:layout_below="@+id/tv"
-        android:layout_marginTop="5dp"
-        android:background="@color/colore1"
-        />
+        android:layout_height="48dp"
+        android:background="@color/white"
+        >
 
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="GET"
+            android:textColor="@color/color3"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colore1"
+            />
+    </RelativeLayout>
     <com.flyco.tablayout.SlidingTabLayout
         android:id="@+id/tl_5"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@+id/line"
+        android:layout_below="@+id/heade_rel"
         android:background="@color/white"
         tl:tl_indicator_color="@color/colorOuteb4161"
         tl:tl_indicator_width="25dp"

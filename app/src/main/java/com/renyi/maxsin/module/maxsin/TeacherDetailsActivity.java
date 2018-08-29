@@ -1,9 +1,6 @@
 package com.renyi.maxsin.module.maxsin;
 
-import android.graphics.Bitmap;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
@@ -36,6 +32,8 @@ public class TeacherDetailsActivity extends BaseActivity {
     String t_id = "";
     @BindView(R.id.cover_image)
     ImageView coverImage;
+    @BindView(R.id.image_bg)
+    ImageView imageBg;
     @BindView(R.id.name)
     TextView name;
     @BindView(R.id.major)
@@ -64,15 +62,17 @@ public class TeacherDetailsActivity extends BaseActivity {
             begood.setText("擅长课程：\n" + dataBean.getGoodcourse());
             info.setText(dataBean.getDesc());
 
-            Glide.with(this).load(dataBean.getPhoto()).asBitmap().centerCrop().into(new BitmapImageViewTarget(coverImage) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable =
-                            RoundedBitmapDrawableFactory.create(getResources(), resource);
-                    circularBitmapDrawable.setCornerRadius(10);
-                    coverImage.setImageDrawable(circularBitmapDrawable);
-                }
-            });
+            Glide.with(this).load(dataBean.getPhoto()).asBitmap().centerCrop().into(coverImage);
+
+            //            {
+            //                @Override
+            //                protected void setResource(Bitmap resource) {
+            //                    RoundedBitmapDrawable circularBitmapDrawable =
+            //                            RoundedBitmapDrawableFactory.create(getResources(), resource);
+            //                    circularBitmapDrawable.setCornerRadius(12);
+            //                    coverImage.setImageDrawable(circularBitmapDrawable);
+            //                }
+            //            });
 
 
             if (dataBean.getPrize() != null && dataBean.getPrize().size() != 0) {
@@ -136,6 +136,8 @@ public class TeacherDetailsActivity extends BaseActivity {
     @Override
     protected void initView() {
         showTitleAndBack("导师详情");
+        Glide.with(this).load(R.mipmap.ic_mvp_first_bg).asBitmap().into(imageBg);
+
     }
 
     protected void setShadowDrawable(View view, int high) {

@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/heade_rel"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="48dp">
 
         <TextView
             android:id="@+id/tv"
@@ -19,7 +19,7 @@
             android:layout_centerVertical="true"
             android:text="MVP"
             android:textColor="@color/color3"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             />
 
@@ -47,7 +47,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/heade_rel"
-        android:layout_marginTop="2dp"
         android:divider="@null"
         android:scrollbars="none"/>
 

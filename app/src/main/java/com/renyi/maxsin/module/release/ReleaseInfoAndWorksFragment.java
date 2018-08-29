@@ -1,6 +1,7 @@
 package com.renyi.maxsin.module.release;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,6 +14,7 @@ import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
 import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
 import com.renyi.maxsin.module.release.bean.RelesseInfoAndWorksBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -119,19 +121,13 @@ public class ReleaseInfoAndWorksFragment extends Basefragment {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
-                //                Bundle bundle = new Bundle();
-                //                bundle.putString("id", get_listAll.get(position).getId());
-                //                //进入课程详情
-                //                Intent intent = null;
-                //                if (get_listAll.get(position).getLeibie().equals("2")) {
-                //                    intent = new Intent(getActivity(), NewsDetailsActivity.class);
-                //                }
-                //                if (get_listAll.get(position).getLeibie().equals("3")) {
-                //                    intent = new Intent(getActivity(), ActivityDetailsActivity.class);
-                //                }
-                //
-                //                intent.putExtras(bundle);
-                //                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", get_listAll.get(position).getId());
+                Intent intent = null;
+                intent = new Intent(getActivity(), ReleaseDetailsActivity.class);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
 
             @Override

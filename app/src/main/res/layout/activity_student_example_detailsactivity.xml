@@ -52,7 +52,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="70dp"
-                    android:background="@mipmap/ic_student_info_bg"
                     android:scaleType="centerCrop"/>
 
                 <RelativeLayout
@@ -81,7 +80,8 @@
                         android:layout_marginTop="10dp"
                         android:maxLines="1"
                         android:textColor="@color/white"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/eschool"
@@ -93,8 +93,8 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="5dp"
                         android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/gray_CCCCCC"
+                        android:textSize="12sp"/>
 
                     <RelativeLayout
                         android:id="@+id/info_rel"
@@ -137,7 +137,8 @@
                                         android:layout_marginTop="3dp"
                                         android:maxLines="1"
                                         android:textColor="@color/color3"
-                                        android:textSize="15sp"/>
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"/>
 
 
                                     <TextView
@@ -147,7 +148,7 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="6dp"
                                         android:text="奖学金"
-                                        android:textColor="@color/color6"
+                                        android:textColor="@color/color9"
                                         android:textSize="12sp"/>
 
                                 </RelativeLayout>
@@ -169,7 +170,8 @@
                                         android:layout_marginTop="3dp"
                                         android:maxLines="1"
                                         android:textColor="@color/color3"
-                                        android:textSize="15sp"/>
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"/>
 
 
                                     <TextView
@@ -179,7 +181,7 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="6dp"
                                         android:text="培训时间"
-                                        android:textColor="@color/color6"
+                                        android:textColor="@color/color9"
                                         android:textSize="12sp"/>
 
                                 </RelativeLayout>
@@ -200,7 +202,8 @@
                                         android:layout_marginTop="3dp"
                                         android:maxLines="1"
                                         android:textColor="@color/color3"
-                                        android:textSize="15sp"/>
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"/>
 
 
                                     <TextView
@@ -210,7 +213,7 @@
                                         android:layout_centerHorizontal="true"
                                         android:layout_marginTop="6dp"
                                         android:text="本人基础"
-                                        android:textColor="@color/color6"
+                                        android:textColor="@color/color9"
                                         android:textSize="12sp"/>
 
 
@@ -248,7 +251,9 @@
                                     android:layout_height="wrap_content"
                                     android:text="录取院校："
                                     android:textColor="@color/color3"
-                                    android:textSize="15sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    />
 
                                 <TextView
                                     android:id="@+id/school_tv"
@@ -256,8 +261,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@+id/tv03"
                                     android:maxLines="4"
-                                    android:textColor="@color/color48"
-                                    android:textSize="15sp"/>
+                                    android:textColor="@color/color3"
+                                    android:textSize="13sp"/>
 
 
                             </RelativeLayout>
@@ -279,7 +284,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="申请学历："
                                     android:textColor="@color/color3"
-                                    android:textSize="15sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"/>
 
                                 <TextView
                                     android:id="@+id/education"
@@ -287,8 +293,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentTop="true"
                                     android:layout_toEndOf="@+id/sch_tv"
-                                    android:textColor="@color/color48"
-                                    android:textSize="15sp"/>
+                                    android:textColor="@color/color3"
+                                    android:textSize="13sp"/>
 
 
                             </RelativeLayout>
@@ -312,15 +318,16 @@
                                     android:layout_height="wrap_content"
                                     android:text="毕业院校："
                                     android:textColor="@color/color3"
-                                    android:textSize="15sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"/>
 
                                 <TextView
                                     android:id="@+id/graduation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_toRightOf="@+id/tv01"
-                                    android:textColor="@color/color48"
-                                    android:textSize="15sp"/>
+                                    android:textColor="@color/color3"
+                                    android:textSize="13sp"/>
 
 
                             </RelativeLayout>

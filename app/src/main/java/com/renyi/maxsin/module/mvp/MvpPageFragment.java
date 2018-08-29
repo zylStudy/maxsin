@@ -47,8 +47,6 @@ import java.util.Map;
 
 import butterknife.BindView;
 
-import static com.renyi.maxsin.R.id.viewpager;
-
 
 /**
  * Created by zhangyuliang on 2018/3/22.
@@ -163,7 +161,7 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         searchImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    readyGo(SearchMvpActivity.class,"");
+                readyGo(SearchMvpActivity.class, "");
             }
         });
 
@@ -341,7 +339,11 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
 
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.include_mvp_header_layout, null);
-        mViewPager = view.findViewById(viewpager);
+        mViewPager = view.findViewById(R.id.viewpager);
+        ImageView image = view.findViewById(R.id.first_image);
+        Glide.with(getActivity()).load(R.mipmap.ic_mvp_first_bg).asBitmap().into(image);
+
+
         viewPagerContainer = view.findViewById(R.id.viewPagerContainer);
         mViewPager.setClipChildren(false);
         viewPagerContainer.setClipChildren(false);

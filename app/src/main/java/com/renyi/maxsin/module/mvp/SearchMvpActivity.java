@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -178,6 +179,13 @@ public class SearchMvpActivity extends BaseActivity {
                 if (firstVisibleItem + visibleItemCount == totalItemCount) {
                     isBottom = true;
                 }
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                readyGo(MeCenterActivity.class, popularListAll.get(position).getId());
             }
         });
     }

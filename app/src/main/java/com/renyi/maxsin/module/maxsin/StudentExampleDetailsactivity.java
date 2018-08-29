@@ -68,6 +68,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     @BindView(R.id.vp_contlayout)
     ViewPager vpContlayout;
     String case_id = "";
+    List<String> titles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
         case_id = getIntent().getExtras().getString("id");
         ButterKnife.bind(this);
         loadData();
+        Glide.with(this).load(R.mipmap.ic_student_info_bg).asBitmap().into(imageBg);
 
         setOnClickListeners();
     }
@@ -98,7 +100,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable =
-                            RoundedBitmapDrawableFactory.create( getResources(), resource);
+                            RoundedBitmapDrawableFactory.create(getResources(), resource);
                     circularBitmapDrawable.setCircular(true);
                     //    circularBitmapDrawable.setCornerRadius(5);设置图片圆角
                     headImage.setImageDrawable(circularBitmapDrawable);
@@ -112,7 +114,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     private void setFragmentViewBindData(StudentExampleDetailsBeans.DataBean dataBean) {
 
         List<Fragment> fragments = new ArrayList<>();
-        List<String> titles = new ArrayList<>();
+        titles = new ArrayList<>();
         if (dataBean.getOffershow() != null && !dataBean.getOffershow().equals("")) {
             titles.add("Offer展示");
             fragments.add(UniversityDetailsFragment.getInstance(dataBean.getOffershow()));
@@ -134,6 +136,23 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
             tab.setOnTabSelectListener(this);
             vpContlayout.setCurrentItem(0);
             vpContlayout.setOffscreenPageLimit(3);
+            setTextViewInlarge(0);
+            vpContlayout.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    setTextViewInlarge(position);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
         }
 
     }
@@ -153,8 +172,8 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     }
 
     private void initView() {
-        int intw=View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
-        int inth=View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED);
+        int intw = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int inth = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         school_tv.measure(intw, inth);
         int intheight = school_tv.getMeasuredHeight();
         ViewTreeObserver vto = infoRel.getViewTreeObserver();
@@ -162,14 +181,12 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
             @Override
             public void onGlobalLayout() {
                 infoRel.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                shadowDrawable( infoRel.getHeight());
+                shadowDrawable(infoRel.getHeight());
             }
         });
 
 
-
     }
-
 
 
     private void shadowDrawable(int Height) {
@@ -189,7 +206,6 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
 
 
     private void loadDataFromSer() {
-
 
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
@@ -234,10 +250,24 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     @Override
     public void onTabSelect(int position) {
         vpContlayout.setCurrentItem(position);
+        setTextViewInlarge(position);
     }
 
     @Override
     public void onTabReselect(int position) {
+
+    }
+
+    private void setTextViewInlarge(int a) {
+
+        for (int i = 0; i < titles.size(); i++) {
+            if (i == a) {
+                tab.getTitleView(i).setTextSize(16);
+            } else {
+                tab.getTitleView(i).setTextSize(13);
+            }
+
+        }
 
     }
 }

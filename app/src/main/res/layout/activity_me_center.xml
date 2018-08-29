@@ -34,7 +34,7 @@
                 android:background="@color/white"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7">
+                >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -70,7 +70,6 @@
                     android:layout_below="@+id/tv_name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
-                    android:text="张玉良"
                     android:textColor="@color/color8"
                     android:textSize="12sp"
                     />
@@ -99,7 +98,7 @@
                         android:layout_below="@+id/cline"
                         android:layout_marginEnd="30dp"
                         android:layout_marginRight="30dp"
-                        android:layout_toStartOf="@+id/cline"
+                        android:layout_centerHorizontal="true"
                         android:gravity="center"
                         android:textColor="@color/colorOuteb4161"
                         android:textSize="12sp"/>
@@ -115,6 +114,7 @@
                         android:background="@drawable/shap_null_center_layout"
                         android:gravity="center"
                         android:text="私信"
+                        android:visibility="gone"
                         android:textColor="@color/colorOuteb4161"
                         android:textSize="12sp"/>
 
@@ -140,10 +140,10 @@
                             android:id="@+id/tv01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
                             android:text="66"
                             android:textColor="@color/color3"
                             android:textSize="16sp"
-                            android:layout_centerHorizontal="true"
                             android:textStyle="bold"
                             />
 
@@ -151,9 +151,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv01"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="人气"
-                            android:layout_centerHorizontal="true"
                             android:textColor="@color/color6"
                             android:textSize="12sp"/>
 
@@ -171,10 +171,10 @@
                             android:id="@+id/tv02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
                             android:text="88"
                             android:textColor="@color/color3"
                             android:textSize="16sp"
-                            android:layout_centerHorizontal="true"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -183,9 +183,9 @@
                             android:layout_height="wrap_content"
                             android:layout_alignStart="@+id/tv02"
                             android:layout_below="@+id/tv02"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="关注"
-                            android:layout_centerHorizontal="true"
                             android:textColor="@color/color6"
                             android:textSize="12sp"/>
 
@@ -203,8 +203,8 @@
                             android:id="@+id/tv03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="22"
                             android:layout_centerHorizontal="true"
+                            android:text="22"
                             android:textColor="@color/color3"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
@@ -213,9 +213,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv03"
+                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="粉丝"
-                            android:layout_centerHorizontal="true"
                             android:textColor="@color/color6"
                             android:textSize="12sp"/>
 
@@ -242,7 +242,59 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="_"
-                />
+                >
+
+                <RelativeLayout
+                    android:id="@+id/heade_rel"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/back_rel"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                             />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="个人中心"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+
+                    <ImageView
+                        android:id="@+id/search_image"
+                        android:layout_width="21dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:background="@mipmap/ic_search_mvp_bg"
+                        android:visibility="gone"/>
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
         <RelativeLayout
@@ -259,13 +311,13 @@
                 android:layout_height="48dp"
                 android:layout_below="@+id/line"
                 android:background="@color/white"
+                app:tl_textBold="BOTH"
                 tl:tl_indicator_color="@color/colorOuteb4161"
                 tl:tl_indicator_width="25dp"
                 tl:tl_tab_space_equal="true"
                 tl:tl_textSelectColor="@color/color3"
-                tl:tl_textUnselectColor="@color/color9"
+                tl:tl_textUnselectColor="@color/colora3"
                 tl:tl_textsize="16sp"
-                app:tl_textBold="BOTH"
                 tl:tl_underline_height="3dp"/>
 
         </RelativeLayout>
