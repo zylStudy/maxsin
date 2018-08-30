@@ -37,18 +37,14 @@ public class MyReleaseActivity extends BaseActivity implements OnTabSelectListen
     @Override
     protected void initView() {
         showTitleAndBack("我的发布");
-        list.add("内容");
+        list.add("文章");
         list.add("作品");
-
-
         mFragments.add(MyReleaseInfoAndWorksFragment.getInstance("1"));
         mFragments.add(MyReleaseInfoAndWorksFragment.getInstance("2"));
-
-
         FragmentAdapter mAdapter = new FragmentAdapter(getSupportFragmentManager(), mFragments, list);
 
         vp.setAdapter(mAdapter);
-   vp.addOnPageChangeListener(this);
+        vp.addOnPageChangeListener(this);
         tl5.setViewPager(vp);
         tl5.setOnTabSelectListener(this);
         vp.setCurrentItem(0);
@@ -75,9 +71,9 @@ public class MyReleaseActivity extends BaseActivity implements OnTabSelectListen
 
         for (int i = 0; i < list.size(); i++) {
             if (i == a) {
-                tl5.getTitleView(i).setTextSize(17);
-            } else {
                 tl5.getTitleView(i).setTextSize(16);
+            } else {
+                tl5.getTitleView(i).setTextSize(13);
             }
 
         }

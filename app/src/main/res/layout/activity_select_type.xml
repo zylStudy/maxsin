@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="栏目"
+            android:text="文章"
             android:textColor="@color/color3"
             android:textSize="18sp"
             android:textStyle="bold"/>
@@ -97,9 +97,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:text="我的发布"
+                android:text="我的文章"
                 android:textColor="@color/color3"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
         </RelativeLayout>
 
@@ -130,7 +130,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="我的作品"
                 android:textColor="@color/color3"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
 
         </RelativeLayout>
     </LinearLayout>

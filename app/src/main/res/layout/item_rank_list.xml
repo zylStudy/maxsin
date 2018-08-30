@@ -87,8 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/head_rel"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="6dp"
             >
 
@@ -119,8 +119,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/type_layout"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 
@@ -151,8 +151,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/sch_layout"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 
@@ -183,8 +183,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout01"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 
@@ -216,8 +216,8 @@
             android:layout_below="@+id/layout02"
             android:layout_centerVertical="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 

@@ -104,7 +104,7 @@
                 android:layout_below="@+id/two_image_nor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="发现"
+                android:text="资讯"
                 android:textColor="@color/color9"
                 android:textSize="10sp"/>
         </RelativeLayout>
@@ -178,7 +178,7 @@
                 android:layout_below="@+id/three_image_nor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="MVP"
+                android:text="发现"
                 android:textColor="@color/color9"
                 android:textSize="10sp"
                 />

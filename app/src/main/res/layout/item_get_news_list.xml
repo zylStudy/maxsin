@@ -34,10 +34,10 @@
             android:text="基础课"
             android:maxLines="2"
             android:lineSpacingExtra="2dp"
-            android:textColor="@color/color48"
+            android:textColor="@color/color3"
             android:textStyle="bold"
             android:layout_marginTop="4dp"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
 
         <RelativeLayout

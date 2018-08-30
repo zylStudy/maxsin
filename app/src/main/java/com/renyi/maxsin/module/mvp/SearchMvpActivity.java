@@ -23,6 +23,7 @@ import com.renyi.maxsin.module.mvp.bean.PopularBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.KeyboardUtils;
 import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -147,6 +148,8 @@ public class SearchMvpActivity extends BaseActivity {
                     popularListAll.clear();
                     page = 1;
                     loadSearchDataFromSer(editInfo.getText().toString().trim());
+                    KeyboardUtils.hideSoftInput(SearchMvpActivity.this);
+
                 }
             }
         });

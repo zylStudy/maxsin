@@ -69,9 +69,9 @@ public class CollectionActivity extends BaseActivity implements OnTabSelectListe
 
         for (int i = 0; i < list.size(); i++) {
             if (i == a) {
-                tl5.getTitleView(i).setTextSize(17);
-            } else {
                 tl5.getTitleView(i).setTextSize(16);
+            } else {
+                tl5.getTitleView(i).setTextSize(13);
             }
 
         }

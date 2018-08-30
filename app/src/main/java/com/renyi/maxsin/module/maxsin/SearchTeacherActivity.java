@@ -18,6 +18,7 @@ import com.renyi.maxsin.module.maxsin.bean.TeacherBeans;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.KeyboardUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -93,6 +94,8 @@ public class SearchTeacherActivity extends BaseActivity {
                     commonAdapter.notifyDataSetChanged();
                     page = 1;
                     loadDataFromSer(editInfo.getText().toString().trim());
+                    KeyboardUtils.hideSoftInput(SearchTeacherActivity.this);
+
                 }
             }
         });

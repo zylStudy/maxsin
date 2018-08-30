@@ -31,13 +31,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cover_image"
-            android:text="基础课"
             android:maxLines="2"
             android:lineSpacingExtra="2dp"
-            android:textColor="@color/color48"
+            android:textColor="@color/color3"
             android:textStyle="bold"
             android:layout_marginTop="4dp"
-            android:textSize="17sp"/>
+            android:textSize="16sp"/>
 
 
         <RelativeLayout
@@ -53,8 +52,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="4dp"
                 android:text="2017.04.27"
-                android:textColor="@color/color8"
-                android:textSize="12sp"/>
+                android:textColor="@color/colora3"
+                android:textSize="11sp"/>
 
             <TextView
                 android:id="@+id/lookNum"
@@ -63,8 +62,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:text="102"
-                android:textColor="@color/color8"
-                android:textSize="12sp"/>
+                android:textColor="@color/colora3"
+                android:textSize="11sp"/>
 
 
 

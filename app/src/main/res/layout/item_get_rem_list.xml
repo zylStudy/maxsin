@@ -30,13 +30,7 @@
             android:layout_height="30dp"
             android:layout_below="@+id/cover_image">
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="3dp"
-                android:layout_height="14dp"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/ic_news_type_bg"
-                />
+
 
             <TextView
                 android:id="@+id/type"
@@ -44,7 +38,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/image"
                 android:text="计算机专业"
                 android:layout_centerVertical="true"
                 android:textColor="@color/colora"
@@ -62,8 +55,8 @@
             android:lineSpacingExtra="2dp"
             android:maxLines="2"
             android:text="基础课"
-            android:textColor="@color/color48"
-            android:textSize="17sp"
+            android:textColor="@color/color3"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
         <RelativeLayout

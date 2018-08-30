@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
 import com.renyi.maxsin.module.maxsin.bean.BannerBeans;
 import com.renyi.maxsin.module.maxsin.bean.TabBeans;
+import com.renyi.maxsin.module.me.UserProtocolOrIntroduceActivity;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
@@ -65,7 +67,8 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
     @BindView(R.id.viewPagerContainer)
     RelativeLayout viewPagerContainer;
     List<String> titles = new ArrayList<>();
-
+    @BindView(R.id.ll_points)
+    LinearLayout llPoints;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
     @BindView(R.id.add_image)
@@ -75,7 +78,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
     int flag = 0;
     List<Fragment> fragments = new ArrayList<>();
     FragmentAdapter adatper;
-
+    private int previousSelectPosition = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_maxsin, null);
@@ -199,7 +202,12 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
         productRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readyGo(UniversitiesRankingActivity.class, "");
+                Bundle bundle = new Bundle();
+                bundle.putString("flage", "3");
+                bundle.putString("url", "appH5");
+                Intent intent = new Intent(getActivity(), UserProtocolOrIntroduceActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         searchImage.setOnClickListener(new View.OnClickListener() {
@@ -300,8 +308,9 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
 
     private void setBannerImageVew(BannerBeans resultBean) {
-        bannerList = resultBean.getData();
+
         if (resultBean.getData() != null) {
+            bannerList = resultBean.getData();
             mViewPager.setClipChildren(false);
             viewPagerContainer.setClipChildren(false);
             mViewPager.setPageTransformer(true, new ScalePageTransformer());
@@ -313,6 +322,38 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             mViewPager.setCurrentItem(1);
 
             mViewPager.addOnPageChangeListener(this);
+
+
+            for (int i = 0; i < bannerList.size(); i++) {
+
+                View view = new View(getActivity());
+                view.setBackgroundResource(R.mipmap.ic_splash_nor);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(15, 15);
+                lp.leftMargin = 15;
+                view.setLayoutParams(lp);
+                llPoints.addView(view);
+            }
+            llPoints.getChildAt(1).setBackgroundResource(R.mipmap.ic_splash_hl);
+            mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    llPoints.getChildAt(previousSelectPosition).setBackgroundResource(
+                            R.mipmap.ic_splash_nor);
+                    llPoints.getChildAt(position % bannerList.size()).setBackgroundResource(
+                            R.mipmap.ic_splash_hl);
+                    previousSelectPosition = position % bannerList.size();
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
         }
 
     }
@@ -338,7 +379,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
         @Override
         public int getCount() {
-            return bannerList == null ? 0 : bannerList.size();
+            return Integer.MAX_VALUE;
         }
 
         public void setOnNotifyChanged() {
@@ -355,7 +396,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_banner_layout, null);
 
             final ImageView cover_image = view.findViewById(R.id.cover_image);
-            Glide.with(getActivity()).load(bannerList.get(position).getImg_src()).asBitmap().centerCrop().into(new BitmapImageViewTarget(cover_image) {
+            Glide.with(getActivity()).load(bannerList.get(position % bannerList.size()).getImg_src()).asBitmap().centerCrop().into(new BitmapImageViewTarget(cover_image) {
                 @Override
                 protected void setResource(Bitmap resource) {
                     RoundedBitmapDrawable circularBitmapDrawable =

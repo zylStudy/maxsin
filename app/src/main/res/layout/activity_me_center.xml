@@ -58,9 +58,8 @@
                     android:layout_below="@+id/headImageView"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
-                    android:text="张玉良"
                     android:textColor="@color/color3"
-                    android:textSize="15sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -141,9 +140,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:text="66"
                             android:textColor="@color/color3"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold"
                             />
 
@@ -154,7 +152,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="人气"
-                            android:textColor="@color/color6"
+                            android:textColor="@color/color9"
                             android:textSize="12sp"/>
 
                     </RelativeLayout>
@@ -172,9 +170,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:text="88"
                             android:textColor="@color/color3"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -186,7 +183,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="关注"
-                            android:textColor="@color/color6"
+                            android:textColor="@color/color9"
                             android:textSize="12sp"/>
 
                     </RelativeLayout>
@@ -204,9 +201,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:text="22"
                             android:textColor="@color/color3"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -216,7 +212,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
                             android:text="粉丝"
-                            android:textColor="@color/color6"
+                            android:textColor="@color/color9"
                             android:textSize="12sp"/>
 
                     </RelativeLayout>
@@ -241,7 +237,6 @@
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="_"
                 >
 
                 <RelativeLayout

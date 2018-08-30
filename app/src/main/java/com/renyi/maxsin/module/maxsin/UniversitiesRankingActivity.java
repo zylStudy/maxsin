@@ -347,6 +347,15 @@ public class UniversitiesRankingActivity extends BaseActivity {
         popView.setTouchable(true); // 设置PopupWindow可触摸
         popView.setOutsideTouchable(true);
         setPopViewAdapter();
+        TextView dis_tv = view.findViewById(R.id.dis_tv);
+        dis_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popView.isShowing()) {
+                    popView.dismiss();
+                }
+            }
+        });
     }
 
 

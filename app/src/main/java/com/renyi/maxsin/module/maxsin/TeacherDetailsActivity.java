@@ -42,8 +42,7 @@ public class TeacherDetailsActivity extends BaseActivity {
     TextView school;
     @BindView(R.id.begood)
     TextView begood;
-    @BindView(R.id.info_rel)
-    RelativeLayout infoRel;
+
     @BindView(R.id.info)
     TextView info;
     @BindView(R.id.include_reward)

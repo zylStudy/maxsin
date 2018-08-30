@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.githang.statusbar.StatusBarCompat;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
 import com.renyi.maxsin.module.maxsin.bean.StudentExampleDetailsBeans;
@@ -78,6 +79,8 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
 
         case_id = getIntent().getExtras().getString("id");
         ButterKnife.bind(this);
+        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
+
         loadData();
         Glide.with(this).load(R.mipmap.ic_student_info_bg).asBitmap().into(imageBg);
 

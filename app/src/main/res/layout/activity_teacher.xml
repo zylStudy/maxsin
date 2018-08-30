@@ -72,6 +72,7 @@
         tl:tl_indicator_color="@color/colorOuteb4161"
         tl:tl_indicator_width="25dp"
         tl:tl_tab_space_equal="true"
+        tl:tl_textBold="SELECT"
         tl:tl_textSelectColor="@color/color3"
         tl:tl_textUnselectColor="@color/color9"
         tl:tl_textsize="16sp"

@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
             android:layout_alignParentTop="true">
 
             <ImageView
@@ -132,7 +133,7 @@
             android:layout_below="@+id/timerel"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="15dp"
             android:background="@color/colore1"
             />
     </RelativeLayout>

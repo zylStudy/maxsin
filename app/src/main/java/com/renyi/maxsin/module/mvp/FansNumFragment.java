@@ -28,8 +28,8 @@ import java.util.Map;
 import butterknife.BindView;
 
 /**
- * Created by zhangyuliang on 2018/3/22.资讯
- * 课程
+ *
+ *
  */
 
 public class FansNumFragment extends Basefragment {

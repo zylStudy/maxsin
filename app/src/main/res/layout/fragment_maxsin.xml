@@ -65,16 +65,30 @@
                     android:layout_width="290dp"
                     android:layout_height="165dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:layout_below="@+id/heigh"
                     >
                 </android.support.v4.view.ViewPager>
+                <LinearLayout
+                    android:id="@+id/layout_dot"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/view_pager"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" >
 
+                    <LinearLayout
+                        android:id="@+id/ll_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/view_pager"
+                    android:layout_below="@+id/layout_dot"
                     android:background="@color/white"
                     >
 
@@ -96,7 +110,7 @@
 
                             <ImageView
                                 android:id="@+id/image01"
-                                android:layout_width="100dp"
+                                android:layout_width="101dp"
                                 android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
                                 android:background="@mipmap/ic_school_bg"/>
@@ -116,7 +130,7 @@
 
                             <ImageView
                                 android:id="@+id/image02"
-                                android:layout_width="100dp"
+                                android:layout_width="101dp"
                                 android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
                                 android:background="@mipmap/ic_teacher_bg"/>
@@ -136,7 +150,7 @@
 
                             <ImageView
                                 android:id="@+id/image03"
-                                android:layout_width="100dp"
+                                android:layout_width="101dp"
                                 android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
                                 android:background="@mipmap/ic_maxsin_bg"/>
@@ -153,10 +167,9 @@
                             android:gravity="center"
                             >
 
-
                             <ImageView
                                 android:id="@+id/image04"
-                                android:layout_width="100dp"
+                                android:layout_width="101dp"
                                 android:layout_height="88dp"
                                 android:layout_centerHorizontal="true"
                                 android:background="@mipmap/ic_student_bg"/>
@@ -197,20 +210,14 @@
 
                     <ImageView
                         android:id="@+id/search_image"
-                        android:layout_width="21dp"
-                        android:layout_height="19dp"
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="15dp"
                         android:background="@mipmap/ic_search_mvp_bg"/>
 
-                    <TextView
-                        android:id="@+id/line"
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@color/colore1"
-                        />
+
                 </RelativeLayout>
 
             </android.support.v7.widget.Toolbar>
@@ -230,7 +237,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_toLeftOf="@+id/add_image"
                 app:tl_tab_width="90dp"
-                app:tl_textBold="BOTH"
+                app:tl_textBold="SELECT"
                 tl:tl_indicator_color="@color/colorOuteb4161"
                 tl:tl_indicator_width="25dp"
                 tl:tl_tab_space_equal="true"
@@ -241,10 +248,10 @@
 
             <ImageView
                 android:id="@+id/add_image"
-                android:layout_width="21dp"
-                android:layout_height="18dp"
+                android:layout_width="16dp"
+                android:layout_height="14dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="17dp"
                 android:layout_marginRight="15dp"
                 android:background="@mipmap/ic_first_add_type_bg"/>
 

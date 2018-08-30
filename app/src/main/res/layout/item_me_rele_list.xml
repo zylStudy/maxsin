@@ -47,7 +47,6 @@
                 android:layout_toRightOf="@+id/cover_image"
                 android:lineSpacingExtra="2dp"
                 android:maxLines="2"
-                android:text="基础课"
                 android:textColor="@color/color48"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
@@ -61,8 +60,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/cover_image"
                 android:maxLines="2"
-                android:text="2017.04.27"
-                android:textColor="@color/color8"
+                android:textColor="@color/color6"
                 android:textSize="12sp"/>
 
 
@@ -72,10 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/cover_image"
                 android:layout_toRightOf="@+id/cover_image"
-                android:text="2017.04.27"
                 android:maxLength="4"
-                android:textColor="@color/color8"
-                android:textSize="12sp"/>
+                android:textColor="@color/colora3"
+                android:textSize="11sp"/>
 
             <TextView
                 android:id="@+id/joinnum"
@@ -84,9 +81,8 @@
                 android:layout_alignBottom="@+id/cover_image"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="6dp"
-                android:text="2017.04.27"
-                android:textColor="@color/color8"
-                android:textSize="12sp"/>
+                android:textColor="@color/colora3"
+                android:textSize="11sp"/>
 
             <View
                 android:id="@+id/line"

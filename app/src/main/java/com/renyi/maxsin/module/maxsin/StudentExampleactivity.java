@@ -1,6 +1,7 @@
 package com.renyi.maxsin.module.maxsin;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -321,13 +322,24 @@ public class StudentExampleactivity extends BaseActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.popview_list_layout, null);
         popuRecyclerView = view.findViewById(R.id.typeRecyclerView);
 
+
         popView.setContentView(view);
         popView.setWidth(RelativeLayout.LayoutParams.MATCH_PARENT);// 设置菜单的宽度（需要和菜单于右边距的距离搭配，可以自己调到合适的位置）
         popView.setHeight(RelativeLayout.LayoutParams.WRAP_CONTENT);
         popView.setFocusable(true);// 获取焦点
         popView.setTouchable(true); // 设置PopupWindow可触摸
+        popView.setBackgroundDrawable(new BitmapDrawable());
         popView.setOutsideTouchable(true);
         setPopViewAdapter();
+        TextView dis_tv = view.findViewById(R.id.dis_tv);
+        dis_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popView.isShowing()) {
+                    popView.dismiss();
+                }
+            }
+        });
     }
 
 

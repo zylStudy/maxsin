@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
 
             <ImageView
                 android:id="@+id/head_image"
@@ -67,8 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color3"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/major"
@@ -100,8 +100,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_cover"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 
@@ -111,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:text="奖学金："
                 android:textColor="@color/color3"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/money"
@@ -133,8 +133,8 @@
             android:layout_below="@+id/type_layout"
             android:layout_centerVertical="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:layout_marginTop="8dp"
             >
 
@@ -143,9 +143,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="录取院校："
-                android:textStyle="bold"
                 android:textColor="@color/color3"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/school"

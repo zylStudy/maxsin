@@ -46,8 +46,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="8dp"
-                android:text="基础课"
-                android:textColor="@color/color48"
+                android:textColor="@color/color3"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 

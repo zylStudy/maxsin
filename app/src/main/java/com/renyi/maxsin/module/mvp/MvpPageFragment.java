@@ -15,6 +15,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -71,6 +72,7 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
     View tabLine02;
     TextView tvTitle1;
     TextView tvTitle2;
+    private boolean isBottom = false;
 
     @Override
     protected int getLayoutId() {
@@ -115,8 +117,6 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
                             postFollowDate("2", popularListAll.get(position).getId());
                             popularListAll.get(position).setIs_focus("1");
                         }
-
-
                     }
                 });
 
@@ -136,7 +136,30 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         };
 
         recyclerView.setAdapter(commonAdapter);
+        recyclerView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if (isBottom
+                        && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    isBottom = false;
+                    page++;
+                    if (popularBeans != null) {
+                        int parseInt = popularBeans.getData().getPageInfo().getTotal_page();
+                        if (page <= parseInt) {
+                            loadPopularDataFromSer();
+                        }
+                    }
+                }
 
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem + visibleItemCount == totalItemCount) {
+                    isBottom = true;
+                }
+            }
+        });
 
     }
 
@@ -410,14 +433,18 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
         if (position == 0) {
             tabLine01.setVisibility(tabLine01.VISIBLE);
             tabLine02.setVisibility(tabLine02.INVISIBLE);
-            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+            tvTitle1.setTextSize(16);
+            tvTitle2.setTextSize(13);
+            tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color3));
             tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
         }
         if (position == 1) {
+            tvTitle1.setTextSize(13);
+            tvTitle2.setTextSize(16);
             tabLine01.setVisibility(tabLine01.INVISIBLE);
             tabLine02.setVisibility(tabLine02.VISIBLE);
             tvTitle1.setTextColor(ContextCompat.getColor(getActivity(), R.color.color9));
-            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color6));
+            tvTitle2.setTextColor(ContextCompat.getColor(getActivity(), R.color.color3));
         }
     }
 

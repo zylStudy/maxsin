@@ -19,6 +19,7 @@ import com.renyi.maxsin.module.maxsin.bean.KeyWords;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.KeyboardUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -85,6 +86,7 @@ public class ComprehensiveSearchActivity extends BaseActivity implements OnTabSe
                     bundle.putString("keywords", editInfo.getText().toString().trim());
                     intent.putExtras(bundle);
                     sendBroadcast(intent);
+                    KeyboardUtils.hideSoftInput(ComprehensiveSearchActivity.this);
                 }
 
 
@@ -98,7 +100,7 @@ public class ComprehensiveSearchActivity extends BaseActivity implements OnTabSe
 
     }
 
-    private void setTextViewInlarge() {
+    private void setTextViewInlarge(int flag) {
 
         for (int i = 0; i < list.size(); i++) {
             if (i == flag) {
@@ -124,7 +126,7 @@ public class ComprehensiveSearchActivity extends BaseActivity implements OnTabSe
     @Override
     public void onPageSelected(int position) {
         flag = position;
-        setTextViewInlarge();
+        setTextViewInlarge(position);
     }
 
     @Override
@@ -190,6 +192,7 @@ public class ComprehensiveSearchActivity extends BaseActivity implements OnTabSe
         tl5.setOnTabSelectListener(this);
         vp.setCurrentItem(0);
         vp.setOffscreenPageLimit(4);
+        setTextViewInlarge(0);
     }
 
 }

@@ -85,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@+id/image_01"
                 android:text="100M"
                 android:textColor="@color/color6"
@@ -150,6 +151,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_toLeftOf="@+id/image_02"
                 android:text="13681099127"
+                android:layout_marginRight="5dp"
                 android:textColor="@color/color6"
                 android:textSize="16sp"/>
         </RelativeLayout>

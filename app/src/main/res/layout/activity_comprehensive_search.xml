@@ -17,7 +17,7 @@
         <RelativeLayout
             android:id="@+id/rel"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
@@ -92,7 +92,7 @@
         tl:tl_indicator_color="@color/colorOuteb4161"
         tl:tl_indicator_width="25dp"
         tl:tl_tab_space_equal="true"
-        app:tl_textBold="BOTH"
+        app:tl_textBold="SELECT"
         tl:tl_textSelectColor="@color/color3"
         tl:tl_textUnselectColor="@color/colora3"
         tl:tl_textsize="16sp"

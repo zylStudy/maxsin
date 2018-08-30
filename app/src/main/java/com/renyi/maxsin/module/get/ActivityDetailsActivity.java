@@ -73,7 +73,6 @@ public class ActivityDetailsActivity extends BaseActivity {
     @BindView(R.id.image5)
     ImageView image5;
     private List<ImageView> imageViewList = new ArrayList<>();
-    private List<String> imageUrlViewList = new ArrayList<>();
     public final static String CSS_STYLE = "<style>* {font-size:14px;line-height:20px;}p {color:#666666;}</style>";
     ActivityBean activityBean;
     String id;
@@ -92,26 +91,7 @@ public class ActivityDetailsActivity extends BaseActivity {
         imageViewList.add(image3);
         imageViewList.add(image4);
         imageViewList.add(image5);
-        imageUrlViewList.add("http://www.mxsyzen.com/uploadfiles/image/201712/101.jpg");
-        imageUrlViewList.add("http://www.mxsyzen.com/uploadfiles/image/201712/102.jpg");
-        imageUrlViewList.add("http://www.mxsyzen.com/uploadfiles/image/201712/103.jpg");
-        imageUrlViewList.add("http://www.mxsyzen.com/uploadfiles/image/201712/104.jpg");
-        imageUrlViewList.add("http://www.mxsyzen.com/uploadfiles/image/201712/105.jpg");
-        for (int i = 0; i < imageUrlViewList.size(); i++) {
-            final ImageView imageView = imageViewList.get(i);
 
-
-            Glide.with(ActivityDetailsActivity.this).load(imageUrlViewList.get(i)).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageView) {
-                @Override
-                protected void setResource(Bitmap resource) {
-                    RoundedBitmapDrawable circularBitmapDrawable =
-                            RoundedBitmapDrawableFactory.create(getResources(), resource);
-                    circularBitmapDrawable.setCircular(true);
-                    imageView.setImageDrawable(circularBitmapDrawable);
-                }
-            });
-
-        }
 
     }
 
@@ -171,7 +151,7 @@ public class ActivityDetailsActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("user_id", (String) SPUtils.get("uid",""));
+        map.put("user_id", (String) SPUtils.get("uid", ""));
         map.put("content_id", id);
 
         mHttpHelper.post(Api.URL + "activity_info", map, new BaseCallback<ActivityBean>() {
@@ -190,12 +170,25 @@ public class ActivityDetailsActivity extends BaseActivity {
                 activityBean = resultBean;
                 if (resultBean.getCode().equals("800")) {
                     title.setText(resultBean.getData().getTitle());
-                    //                    tname.setText(resultBean.getData().getSpeaker());
-                    //                    position.setText(resultBean.getData().getAddress());
-                    //                    time.setText(resultBean.getData().getActstart()+"至"+resultBean.getData().getActend());
 
-                    //                    Glide.with(ActivityDetailsActivity.this).load(resultBean.getData().getSpeakerphoto()).into(tImage);
-                    Glide.with(ActivityDetailsActivity.this).load(resultBean.getData().getThumb()).into(tImage);
+                    if (resultBean.getData().getSpeaker().isEmpty()) {
+                        tname.setText("美行思远");
+                    } else {
+                        tname.setText(resultBean.getData().getSpeaker());
+                    }
+                    if (resultBean.getData().getAddress().isEmpty()) {
+                        position.setText("线上");
+                    } else {
+                        position.setText(resultBean.getData().getAddress());
+                    }
+                    time.setText(resultBean.getData().getActstart() + "至" + resultBean.getData().getActend());
+
+                    if (resultBean.getData().getSpeakerphoto().isEmpty()) {
+                        Glide.with(ActivityDetailsActivity.this).load(resultBean.getData().getThumb()).into(tImage);
+                    } else {
+                        Glide.with(ActivityDetailsActivity.this).load(resultBean.getData().getSpeakerphoto()).into(tImage);
+
+                    }
 
                     if (resultBean.getData().getShoucang_status().equals("1")) {
 
@@ -226,9 +219,26 @@ public class ActivityDetailsActivity extends BaseActivity {
                             coverImage.setImageDrawable(circularBitmapDrawable);
                         }
                     });
+
+
+                    for (int i = 0; i < resultBean.getData().getTouxiang_img().size(); i++) {
+                        final ImageView imageView = imageViewList.get(i);
+
+                        Glide.with(ActivityDetailsActivity.this).load(resultBean.getData().getTouxiang_img().get(i).getImg()).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageView) {
+                            @Override
+                            protected void setResource(Bitmap resource) {
+                                RoundedBitmapDrawable circularBitmapDrawable =
+                                        RoundedBitmapDrawableFactory.create(getResources(), resource);
+                                circularBitmapDrawable.setCircular(true);
+                                imageView.setImageDrawable(circularBitmapDrawable);
+                            }
+                        });
+                    }
+
                     webView.loadDataWithBaseURL(null, CSS_STYLE + resultBean.getData().getContent() + "", "text/html", "utf-8", null);
                     webView.setVerticalScrollBarEnabled(false);
                     webView.setHorizontalScrollBarEnabled(false);
+
                 } else {
 
                 }
@@ -264,7 +274,7 @@ public class ActivityDetailsActivity extends BaseActivity {
             public void onSuccess(Response response, ReturnBean resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-
+                    postTv.setText("已报名");
                     postTv.setBackgroundResource(R.drawable.shape_bt_nor);
                     postTv.setClickable(false);
                     Toast.makeText(ActivityDetailsActivity.this, "报名成功", Toast.LENGTH_SHORT).show();

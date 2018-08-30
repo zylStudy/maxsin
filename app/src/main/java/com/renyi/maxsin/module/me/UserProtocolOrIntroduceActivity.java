@@ -25,9 +25,14 @@ public class UserProtocolOrIntroduceActivity extends BaseActivity {
         if (bundle.getString("flage").equals("1")) {
             url = bundle.getString("url");
             showTitleAndBack("功能介绍");
-        } else {
+        }
+        if (bundle.getString("flage").equals("2")) {
             url = bundle.getString("url");
             showTitleAndBack("用户协议");
+        }
+        if (bundle.getString("flage").equals("3")) {
+            url = bundle.getString("url");
+            showTitleAndBack("作品集培训");
         }
 
     }

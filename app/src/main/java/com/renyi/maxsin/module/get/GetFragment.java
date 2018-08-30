@@ -59,7 +59,7 @@ public class GetFragment extends Basefragment implements OnTabSelectListener, Vi
         tl5.setOnTabSelectListener(this);
         vp.setCurrentItem(0);
         vp.setOffscreenPageLimit(3);
-
+        setTextViewInlarge(0);
     }
 
     @Override
@@ -80,13 +80,13 @@ public class GetFragment extends Basefragment implements OnTabSelectListener, Vi
 
     }
 
-    private void setTextViewInlarge() {
+    private void setTextViewInlarge(int a) {
 
         for (int i = 0; i < list.size(); i++) {
             if (i == a) {
-                tl5.getTitleView(i).setTextSize(17);
-            } else {
                 tl5.getTitleView(i).setTextSize(16);
+            } else {
+                tl5.getTitleView(i).setTextSize(13);
             }
 
         }
@@ -106,7 +106,7 @@ public class GetFragment extends Basefragment implements OnTabSelectListener, Vi
     @Override
     public void onPageSelected(int position) {
         a = position;
-        setTextViewInlarge();
+        setTextViewInlarge(a);
     }
 
     @Override

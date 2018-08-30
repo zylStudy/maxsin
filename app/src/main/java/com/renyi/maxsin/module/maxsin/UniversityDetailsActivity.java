@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.githang.statusbar.StatusBarCompat;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
 import com.renyi.maxsin.module.maxsin.bean.UniversityDetailsBeans;
@@ -76,6 +77,8 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
         setContentView(R.layout.activity_university_details);
         college_id = getIntent().getExtras().getString("id");
         ButterKnife.bind(this);
+        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
+
         initView();
         loadData();
         setOnClickListeners();

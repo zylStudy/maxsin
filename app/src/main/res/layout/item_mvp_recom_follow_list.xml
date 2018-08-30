@@ -65,9 +65,8 @@
                     android:layout_marginRight="2dp"
                     android:layout_toLeftOf="@+id/followimage"
                     android:layout_toRightOf="@+id/head_image"
-                    android:text="基础课"
                     android:textColor="@color/color48"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"/>
 
 

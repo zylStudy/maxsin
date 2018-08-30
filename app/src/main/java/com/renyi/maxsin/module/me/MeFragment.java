@@ -192,7 +192,6 @@ public class MeFragment extends Basefragment {
                     Intent intent = new Intent(getActivity(), MyActivityActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
         setRel.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +205,6 @@ public class MeFragment extends Basefragment {
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 2);
                 }
-
             }
         });
     }
