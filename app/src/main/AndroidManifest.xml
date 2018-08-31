@@ -42,16 +42,24 @@
         tools:replace="icon, label, theme">
         <activity
             android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/WelcomeStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".module.me.PullScrollViewActivity"/>
-        <activity android:name=".view.headpic.ClipImageActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.me.PullScrollViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.headpic.ClipImageActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <provider
@@ -64,90 +72,142 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
-        <activity android:name=".module.Study.CourseDetailActivity">
+        <activity
+            android:name=".module.Study.CourseDetailActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.get.ActivityDetailsActivity">
+        <activity
+            android:name=".module.get.ActivityDetailsActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.get.NewsDetailsActivity">
+        <activity
+            android:name=".module.get.NewsDetailsActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".LoginActivity"
             android:windowSoftInputMode="adjustResize">
         </activity>
-        <activity android:name=".module.Study.OperationActivity">
+        <activity
+            android:name=".module.Study.OperationActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.login.BindingPhoneNumeberActivity">
+        <activity
+            android:name=".module.login.BindingPhoneNumeberActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.PersonalMsgActivity">
+        <activity
+            android:name=".module.me.PersonalMsgActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.ChangePersonalMsgActivity">
+        <activity
+            android:name=".module.me.ChangePersonalMsgActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyCollectionActivity">
+        <activity
+            android:name=".module.me.MyCollectionActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyActivityActivity">
+        <activity
+            android:name=".module.me.MyActivityActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MySeettingActivity">
+        <activity
+            android:name=".module.me.MySeettingActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.SuggestionActivity">
+        <activity
+            android:name=".module.me.SuggestionActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.AboutAppActivity">
+        <activity
+            android:name=".module.me.AboutAppActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.UserProtocolOrIntroduceActivity">
+        <activity
+            android:name=".module.me.UserProtocolOrIntroduceActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.login.VerificationPhoneNumberActivity">
+        <activity
+            android:name=".module.login.VerificationPhoneNumberActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyBindingPhoneNumberActivity">
+        <activity
+            android:name=".module.me.MyBindingPhoneNumberActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyVerificationPhoneActivity">
+        <activity
+            android:name=".module.me.MyVerificationPhoneActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyBindingNewPhonePostActivity">
+        <activity
+            android:name=".module.me.MyBindingNewPhonePostActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MyReleaseActivity"/>
-        <activity android:name=".module.me.MyChangePsdActivity"/>
-        <activity android:name=".module.me.MyMessageActivity"/>
-        <activity android:name=".module.login.SplashActivity">
+        <activity
+            android:name=".module.me.MyReleaseActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.me.MyChangePsdActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.me.MyMessageActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".module.login.SplashActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.MeCenterActivity">
+        <activity
+            android:name=".module.me.MeCenterActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.release.ReleaseImageAndTextActivity">
+        <activity
+            android:name=".module.release.ReleaseImageAndTextActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.release.ClipCoverImageActivity">
+        <activity
+            android:name=".module.release.ClipCoverImageActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.release.SelectTagTitleActivity">
+        <activity
+            android:name=".module.release.SelectTagTitleActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.release.SelectTypeActivity">
+        <activity
+            android:name=".module.release.SelectTypeActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.FollowActivity">
+        <activity android:name=".module.me.FollowActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.ReleaseDetailsActivity">
+        <activity android:name=".module.me.ReleaseDetailsActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.me.CollectionActivity">
+        <activity android:name=".module.me.CollectionActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.Study.StudyActivity">
+        <activity android:name=".module.Study.StudyActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.mvp.SearchMvpActivity">
+        <activity android:name=".module.mvp.SearchMvpActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.StudentExampleactivity">
+        <activity android:name=".module.maxsin.StudentExampleactivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.StudentExampleDetailsactivity">
+        <activity android:name=".module.maxsin.StudentExampleDetailsactivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.UniversitiesRankingActivity">
+        <activity android:name=".module.maxsin.UniversitiesRankingActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.SearchUniversityActivity">
+        <activity android:name=".module.maxsin.SearchUniversityActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.UniversityDetailsActivity">
+        <activity android:name=".module.maxsin.UniversityDetailsActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.SearchStudentExampleActivity">
+        <activity android:name=".module.maxsin.SearchStudentExampleActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.TeacherActivity">
+        <activity android:name=".module.maxsin.TeacherActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.TeacherDetailsActivity">
+        <activity android:name=".module.maxsin.TeacherDetailsActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.SearchTeacherActivity">
+        <activity android:name=".module.maxsin.SearchTeacherActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.ComprehensiveSearchActivity">
+        <activity android:name=".module.maxsin.ComprehensiveSearchActivity"  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".module.maxsin.SelectTagActivity">
+        <activity android:name=".module.maxsin.SelectTagActivity"  android:screenOrientation="portrait">
         </activity>
     </application>
 

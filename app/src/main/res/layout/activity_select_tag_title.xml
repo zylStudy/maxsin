@@ -78,7 +78,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@null"
                     android:gravity="top|left"
-                    android:hint="请输入项目简介，不超过30个中文字符"
+                    android:hint="请输入项目简介，不超过140个中文字符"
                     android:lineSpacingExtra="3dp"
                     android:maxLength="140"
                     android:text=""

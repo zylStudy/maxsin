@@ -149,8 +149,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
 
-        titles.add("他的发布");
-        titles.add("他的作品");
+        titles.add("Ta的发布");
+        titles.add("Ta的作品");
 
         fragments.add(ReleaseInfoAndWorksFragment.getInstance("1", getIntent().getExtras().getString("id")));
         fragments.add(ReleaseInfoAndWorksFragment.getInstance("2", getIntent().getExtras().getString("id")));

@@ -62,6 +62,24 @@ public class ResultBean {
         private String focus_num;
         private String fans_num;
         private String renqi;
+        private String sid;
+        private String add_flag;
+
+        public String getAdd_flag() {
+            return add_flag;
+        }
+
+        public void setAdd_flag(String add_flag) {
+            this.add_flag = add_flag;
+        }
+
+        public String getSid() {
+            return sid;
+        }
+
+        public void setSid(String sid) {
+            this.sid = sid;
+        }
 
         public String getFocus_num() {
             return focus_num;

@@ -125,17 +125,17 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="6dp"
-        android:background="@mipmap/ic_main_tab_four_hl"
+        android:background="@mipmap/ic_add_product_bg"
         android:visibility="invisible"/>
 
         <ImageView
         android:id="@+id/four_image_nor"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="6dp"
-        android:background="@mipmap/ic_main_tab_four_nor"/>
+        android:background="@mipmap/ic_add_product_bg"/>
 
 
         </RelativeLayout>

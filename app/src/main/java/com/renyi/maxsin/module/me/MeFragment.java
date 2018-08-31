@@ -124,7 +124,15 @@ public class MeFragment extends Basefragment {
         studyRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+
+                if (resultBeanData.getAdd_flag().equals("2")) {
+                    bundle.putString("sid", resultBeanData.getSid() );
+                }
+
+                bundle.putString("flag", resultBeanData.getAdd_flag() );
                 Intent intent = new Intent(getActivity(), StudyActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });

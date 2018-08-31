@@ -13,7 +13,6 @@ import com.renyi.maxsin.module.login.ResultBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
-import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
@@ -48,7 +47,16 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
     @Override
     protected void initView() {
         showTitleAndBack("学情管理");
-        getRoal();
+
+        if (getIntent().getExtras().getString("flag").equals("2")) {
+            getRoal();
+            emptyRel.setVisibility(emptyRel.GONE);
+            studyRel.setVisibility(emptyRel.VISIBLE);
+        } else {
+            emptyRel.setVisibility(emptyRel.VISIBLE);
+            studyRel.setVisibility(emptyRel.GONE);
+        }
+
 
 
     }
@@ -130,7 +138,7 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
     private void getRoal() {
         Map<String, String> map = new HashMap<>();
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", getIntent().getExtras().getString("sid"));
         map.put("key", Api.KEY);
 
 

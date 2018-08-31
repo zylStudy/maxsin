@@ -50,7 +50,7 @@ public class SplashActivity extends BaseActivity implements ViewPager.OnPageChan
         llPoints = (LinearLayout) findViewById(R.id.ll_points);
         getImages();
 
-        llPoints.getChildAt(0).setBackgroundResource(R.mipmap.ic_splash_nor);
+        llPoints.getChildAt(0).setBackgroundResource(R.mipmap.ic_splash_hl);
         SplashAdapter adapter = new SplashAdapter(mlist);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(this);
@@ -92,13 +92,14 @@ public class SplashActivity extends BaseActivity implements ViewPager.OnPageChan
             // 添加小圆点
             View view = new View(this);
 
-            view.setBackgroundResource(R.mipmap.ic_splash_hl);
+            view.setBackgroundResource(R.mipmap.ic_splash_nor);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(25, 25);
             params.leftMargin = 30;
             view.setLayoutParams(params);
             llPoints.addView(view);
 
         }
+
     }
 
     @Override
@@ -113,8 +114,8 @@ public class SplashActivity extends BaseActivity implements ViewPager.OnPageChan
 
     @Override
     public void onPageSelected(int position) {//ic_splash_nor
-        llPoints.getChildAt(position).setBackgroundResource(R.mipmap.ic_splash_nor);
-        llPoints.getChildAt(prePosition)
+        llPoints.getChildAt(prePosition).setBackgroundResource(R.mipmap.ic_splash_nor);
+        llPoints.getChildAt(position)
                 .setBackgroundResource(R.mipmap.ic_splash_hl);
         prePosition = position;
         imageView.setBackgroundResource(imageText[position]);

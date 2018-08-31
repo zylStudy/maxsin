@@ -65,8 +65,8 @@ public class SelectTagTitleActivity extends BaseActivity {
     String flage = "1", tage = "";
     private String[] mVals = new String[]
 
-            {"平面设计", "UI设计", "插画", "摄影", "景观设计", "建筑设计"
-            };
+            {"平面设计", "服装设计", "建筑设计", "插画设计", "景观设计", "交互设计", "纯艺术", "工业设计", "室内设计", "摄影"
+          , "版画","产品设计","艺术管理","装置艺术","动画设计" };
     private List<File> fileList = new ArrayList<>();
     private List<String> list = new ArrayList<>();
     private List<String> clearList = new ArrayList<>();
@@ -289,7 +289,7 @@ public class SelectTagTitleActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", (String) SPUtils.get("uid",""));
+        map.put("user_id", (String) SPUtils.get("uid", ""));
         map.put("key", Api.KEY);
         map.put("title", etTitle.getText().toString().trim());
         map.put("description", etInfo.getText().toString().trim());

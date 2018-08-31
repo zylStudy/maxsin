@@ -85,7 +85,6 @@ public class OkHttpHelper {
                     //返回成功回调
 
                     String resString = response.body().string();
-                    System.out.println("---------输出结果--" + resString);
                     if (callback.mType == String.class) {
                         //如果我们需要返回String类型
                         callbackSuccess(response, resString, callback);

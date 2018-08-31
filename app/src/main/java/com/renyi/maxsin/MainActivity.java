@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.five_rel:
-                menuTagShowOrHide(4);
+                menuTagShowOrHide(3);
                 checkedFragment(meFragment, null, ME_FRAGMENT);
 
                 break;
