@@ -83,13 +83,13 @@ public class ActivityFragment extends Basefragment {
                     public void run() {
 
 
-//                        if (get_listAll != null && get_listAll.size() != 0) {
-//                            get_listAll.clear();
-//                            adapter.notifyDataSetChanged();
-//                        }
-//
-//                        page = 1;
-//                        loadDataFromSer();
+                        //                        if (get_listAll != null && get_listAll.size() != 0) {
+                        //                            get_listAll.clear();
+                        //                            adapter.notifyDataSetChanged();
+                        //                        }
+                        //
+                        //                        page = 1;
+                        //                        loadDataFromSer();
 
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -100,10 +100,9 @@ public class ActivityFragment extends Basefragment {
         adapter = new CommonAdapter<GetBeans.DataBean.GetListBean>(getActivity(), R.layout.item_get_act_list, get_listAll) {
             @Override
             protected void convert(ViewHolder viewHolder, GetBeans.DataBean.GetListBean item, int position) {
-//                viewHolder.setText(R.id.type, item.getCatname());
                 viewHolder.setText(R.id.title, item.getTitle());
                 viewHolder.setText(R.id.time, item.getActstart());
-                viewHolder.setText(R.id.position, "北京");
+                viewHolder.setText(R.id.position, item.getAddress());
 
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getThumb(), 10);
 
@@ -131,7 +130,6 @@ public class ActivityFragment extends Basefragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("id", get_listAll.get(position).getId());
-                //进入资讯详情
                 Intent intent = null;
                 if (get_listAll.get(position).getLeibie().equals("2")) {
                     intent = new Intent(getActivity(), NewsDetailsActivity.class);
@@ -149,7 +147,6 @@ public class ActivityFragment extends Basefragment {
                 return false;
             }
         });
-//
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

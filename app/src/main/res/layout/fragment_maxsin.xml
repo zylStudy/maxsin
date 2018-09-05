@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        app:layout_behavior="com.renyi.maxsin.utils.FlingBehavior"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
@@ -64,24 +66,24 @@
                     android:id="@+id/view_pager"
                     android:layout_width="290dp"
                     android:layout_height="165dp"
-                    android:layout_centerHorizontal="true"
                     android:layout_below="@+id/heigh"
+                    android:layout_centerHorizontal="true"
                     >
                 </android.support.v4.view.ViewPager>
+
                 <LinearLayout
                     android:id="@+id/layout_dot"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/view_pager"
                     android:layout_marginTop="12dp"
-                    android:gravity="center" >
-
+                    android:gravity="center">
                     <LinearLayout
                         android:id="@+id/ll_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
                     </LinearLayout>
                 </LinearLayout>
 
@@ -227,13 +229,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="48dp"
             android:background="@color/white">
 
             <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="44dp"
                 android:layout_marginRight="15dp"
                 android:layout_toLeftOf="@+id/add_image"
                 app:tl_tab_width="90dp"
@@ -251,8 +253,8 @@
                 android:layout_width="16dp"
                 android:layout_height="14dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="17dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginTop="13dp"
                 android:background="@mipmap/ic_first_add_type_bg"/>
 
         </RelativeLayout>

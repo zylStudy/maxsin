@@ -256,7 +256,7 @@ public class ActivityDetailsActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("user_id", "1");
+        map.put("user_id", (String) SPUtils.get("uid", ""));
         map.put("content_id", getIntent().getExtras().getString("id"));
 
         mHttpHelper.post(Api.URL + "baoming", map, new BaseCallback<ReturnBean>() {
@@ -299,7 +299,7 @@ public class ActivityDetailsActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("user_id", "1");
+        map.put("user_id", (String) SPUtils.get("uid", ""));
         map.put("content_id", getIntent().getExtras().getString("id"));
         map.put("action", flag);
 

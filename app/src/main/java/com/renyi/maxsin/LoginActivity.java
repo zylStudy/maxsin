@@ -44,7 +44,6 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 
 import static android.R.attr.action;
@@ -356,7 +355,18 @@ public class LoginActivity extends AppCompatActivity implements KeyboardWatcher.
             }
         });
         //  第三方登录
-        image_weibo.setOnClickListener(new View.OnClickListener() {
+//        image_weibo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Platform mPlatform = ShareSDK.getPlatform(SinaWeibo.NAME);
+//                mPlatform.SSOSetting(true);
+//                setThreedLogin(mPlatform, 4);
+//
+//            }
+//
+//
+//        });
+        image_qq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Platform mPlatform = ShareSDK.getPlatform(SinaWeibo.NAME);
@@ -375,14 +385,14 @@ public class LoginActivity extends AppCompatActivity implements KeyboardWatcher.
                 setThreedLogin(wechat, 2);
             }
         });
-        image_qq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Platform qq = ShareSDK.getPlatform(QQ.NAME);
-                qq.SSOSetting(true);
-                setThreedLogin(qq, 3);
-            }
-        });
+//        image_qq.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Platform qq = ShareSDK.getPlatform(QQ.NAME);
+//                qq.SSOSetting(true);
+//                setThreedLogin(qq, 3);
+//            }
+//        });
 
     }
 

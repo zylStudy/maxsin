@@ -41,20 +41,22 @@
 
             <ImageView
                 android:id="@+id/first_image_hl"
-                android:layout_width="20dp"
+                android:layout_width="17dp"
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@mipmap/ic_main_tab_first_hl"
+                android:layout_marginTop="6dp"
+                android:background="@mipmap/ic_main_tab_three_hl"
                 />
 
             <ImageView
                 android:id="@+id/first_image_nor"
-                android:layout_width="20dp"
+                android:layout_width="17dp"
                 android:layout_height="20dp"
+                android:layout_marginTop="6dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@mipmap/ic_main_tab_first_nor"
+                android:background="@mipmap/ic_main_tab_three_nor"
                 android:visibility="invisible"/>
 
             <TextView
@@ -80,22 +82,22 @@
 
             <ImageView
                 android:id="@+id/two_image_hl"
-                android:layout_width="20dp"
+                android:layout_width="23dp"
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
-                android:background="@mipmap/ic_main_tab_two_hl"
+                android:background="@mipmap/ic_main_tab_first_hl"
                 android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/two_image_nor"
-                android:layout_width="20dp"
+                android:layout_width="23dp"
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
-                android:background="@mipmap/ic_main_tab_two_nor"/>
+                android:background="@mipmap/ic_main_tab_first_nor"/>
 
             <TextView
                 android:id="@+id/two_tv"
@@ -120,11 +122,10 @@
 
         <ImageView
         android:id="@+id/four_image_hl"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp"
         android:background="@mipmap/ic_add_product_bg"
         android:visibility="invisible"/>
 
@@ -134,7 +135,6 @@
         android:layout_height="28dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp"
         android:background="@mipmap/ic_add_product_bg"/>
 
 
@@ -157,7 +157,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="6dp"
-                android:background="@mipmap/ic_main_tab_three_hl"
+                android:background="@mipmap/ic_main_tab_two_hl"
                 android:visibility="invisible"/>
 
             <ImageView
@@ -168,7 +168,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="6dp"
-                android:background="@mipmap/ic_main_tab_three_nor"/>
+                android:background="@mipmap/ic_main_tab_two_nor"/>
 
 
             <TextView

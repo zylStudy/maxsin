@@ -30,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cover_image"
-            android:text="基础课"
             android:maxLines="2"
             android:lineSpacingExtra="2dp"
             android:textColor="@color/color3"
@@ -72,7 +71,6 @@
                 android:layout_marginLeft="6dp"
                 android:layout_toRightOf="@+id/pImage"
                 android:maxLines="1"
-                android:text="北京"
                 android:textColor="@color/color8"
                 android:textSize="14sp"
                 />
@@ -83,7 +81,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"
                 android:maxLines="1"
-                android:text="2018-9-8"
                 android:textColor="@color/color8"
                 android:textSize="14sp"
                 android:layout_alignBaseline="@+id/position"

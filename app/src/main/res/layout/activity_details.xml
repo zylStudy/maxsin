@@ -66,7 +66,6 @@
                     android:layout_marginLeft="6dp"
                     android:layout_toRightOf="@+id/tImage"
                     android:maxLines="1"
-                    android:text="孤舟猿人"
                     android:textColor="@color/color3"
                     android:textSize="14sp"
                     />
@@ -94,7 +93,6 @@
                     android:layout_marginLeft="6dp"
                     android:layout_toRightOf="@+id/pImage"
                     android:maxLines="1"
-                    android:text="三里屯SOHOB座2201室"
                     android:textColor="@color/color3"
                     android:textSize="14sp"
                     />
@@ -124,7 +122,6 @@
                     android:layout_marginLeft="6dp"
                     android:layout_toRightOf="@+id/sImage"
                     android:maxLines="1"
-                    android:text="2018-9-8至2018-9-10"
                     android:textColor="@color/color3"
                     android:textSize="14sp"
                     />
@@ -159,44 +156,44 @@
                     android:id="@+id/image1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
                     />
 
                 <ImageView
                     android:id="@+id/image2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:scaleType="centerCrop"
                     />
 
                 <ImageView
                     android:id="@+id/image3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="80dp"
+                    android:scaleType="centerCrop"
                     />
 
                 <ImageView
                     android:id="@+id/image4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="120dp"
+                    android:scaleType="centerCrop"
                     />
 
                 <ImageView
                     android:id="@+id/image5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:scaleType="centerCrop"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="160dp"
+                    android:scaleType="centerCrop"
                     />
 
                 <RelativeLayout
@@ -208,14 +205,14 @@
                     android:layout_toLeftOf="@+id/image5">
 
                     <!--<TextView-->
-                        <!--android:id="@+id/tv01"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_centerHorizontal="true"-->
-                        <!--android:text="CNY"-->
-                        <!--android:textColor="@color/color3"-->
-                        <!--android:textSize="14sp"-->
-                        <!--/>-->
+                    <!--android:id="@+id/tv01"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:text="CNY"-->
+                    <!--android:textColor="@color/color3"-->
+                    <!--android:textSize="14sp"-->
+                    <!--/>-->
 
                     <TextView
                         android:id="@+id/tv02"
@@ -294,7 +291,7 @@
                 android:layout_below="@+id/first_image_hl"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
-                android:text="收藏"
+                android:text="感兴趣"
                 android:textColor="@color/color6"
                 android:textSize="10sp"/>
         </RelativeLayout>

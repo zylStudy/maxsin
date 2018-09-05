@@ -455,6 +455,7 @@
                 android:layout_below="@+id/trel"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:visibility="invisible"
                 android:src="@mipmap/ic_login_xl_bg"/>
 
             <ImageView
@@ -474,7 +475,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/image_weibo"
                 android:layout_marginRight="60dp"
-                android:src="@mipmap/ic_login_qq_bg"/>
+                android:src="@mipmap/ic_login_xl_bg"/>
 
         </RelativeLayout>
     </LinearLayout>

@@ -73,6 +73,8 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
     ViewPager mViewPager;
     @BindView(R.id.add_image)
     ImageView addImage;
+//    @BindView(R.id.content_layout)
+//    CoordinatorLayout contentLayout;
     MvpBannerAdapter mvpBannerAdapter;
     List<BannerBeans.DataBean> bannerList = new ArrayList<>();
     int flag = 0;
@@ -93,7 +95,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
     protected void initView() {
         tv.setText("首页");
-
+//        contentLayout.setVisibility(contentLayout.INVISIBLE);
     }
 
     protected void loadData() {
@@ -291,6 +293,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             @Override
             public void onSuccess(Response response, TabBeans resultBean) {
                 if (resultBean.getCode().equals("800")) {
+//                    contentLayout.setVisibility(contentLayout.VISIBLE);
                     setTabView(resultBean);
                 } else {
 
