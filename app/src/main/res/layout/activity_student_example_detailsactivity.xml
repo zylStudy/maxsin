@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        app:layout_behavior="com.renyi.maxsin.utils.FlingBehavior"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
 
@@ -43,7 +44,6 @@
                     android:id="@+id/heigh"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:adjustViewBounds="true"
 
                     />
 

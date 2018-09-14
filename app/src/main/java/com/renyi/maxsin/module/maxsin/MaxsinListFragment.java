@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.recyclerview.CommonAdapter;
-import com.renyi.maxsin.adapter.recyclerview.MultiItemTypeAdapter;
 import com.renyi.maxsin.adapter.recyclerview.base.ViewHolder;
+import com.renyi.maxsin.module.me.MeCenterActivity;
 import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
 import com.renyi.maxsin.module.mvp.bean.PopularBeans;
 import com.renyi.maxsin.net.Api;
@@ -80,7 +80,7 @@ public class MaxsinListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         commonAdapter = new CommonAdapter<PopularBeans.DataBean.ListBean>(getActivity(), R.layout.item_mvp_new_product_list, get_listAll) {
             @Override
-            protected void convert(ViewHolder viewHolder, PopularBeans.DataBean.ListBean item, int position) {
+            protected void convert(ViewHolder viewHolder, PopularBeans.DataBean.ListBean item, final int position) {
                 viewHolder.setText(R.id.name, item.getUser_name());
                 viewHolder.setText(R.id.title, item.getTitle());
                 viewHolder.setText(R.id.time, item.getAdd_time());
@@ -88,6 +88,19 @@ public class MaxsinListFragment extends Fragment {
                 viewHolder.setCornerRadiusImageViewNetUrl(R.id.cover_image, item.getCover_img(), 10);
                 viewHolder.setImageViewNetUrl(R.id.head_image, item.getHead_url());
                 viewHolder.setVisible(R.id.followimage, false);
+
+                viewHolder.setOnClickListener(R.id.cover_image, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        readyGo(ReleaseDetailsActivity.class, get_listAll.get(position).getId());
+                    }
+                });
+                viewHolder.setOnClickListener(R.id.head_image, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        readyGo(MeCenterActivity.class, get_listAll.get(position).getUser_id());
+                    }
+                });
             }
         };
         if (recyclerView != null) {
@@ -96,6 +109,14 @@ public class MaxsinListFragment extends Fragment {
         }
     }
 
+    protected void readyGo(Class<?> clazz, String id) {
+        Intent intent = new Intent(getActivity(), clazz);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+    }
 
     protected void loadData() {
         loadDataFromSer();
@@ -103,23 +124,18 @@ public class MaxsinListFragment extends Fragment {
 
 
     protected void setOnclickListeners() {
-        commonAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-
-                Bundle bundle = new Bundle();
-                bundle.putString("id", get_listAll.get(position).getId());
-                Intent intent = null;
-                intent = new Intent(getActivity(), ReleaseDetailsActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                return false;
-            }
-        });
+        //        commonAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+        //            @Override
+        //            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        //
+        //
+        //            }
+        //
+        //            @Override
+        //            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        //                return false;
+        //            }
+        //        });
 
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -170,11 +186,11 @@ public class MaxsinListFragment extends Fragment {
 
                     resultBeanData = resultBean.getData();
 
-                    get_listAll.addAll( resultBeanData.getList());
+                    get_listAll.addAll(resultBeanData.getList());
                     if (get_listAll.size() != 0) {
                         commonAdapter.notifyDataSetChanged();
 
-                    }else{
+                    } else {
 
                     }
                 } else {

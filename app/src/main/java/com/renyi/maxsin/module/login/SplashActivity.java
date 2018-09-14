@@ -80,7 +80,7 @@ public class SplashActivity extends BaseActivity implements ViewPager.OnPageChan
     private void getImages() {
         mlist = new ArrayList<>();
         //  BitmapUtils util = new BitmapUtils(this);
-        int image[] = {R.mipmap.sp001, R.mipmap.sp002, R.mipmap.sp003, R.mipmap.sp004};
+        int image[] = {R.mipmap.sp001, R.mipmap.sp002, R.mipmap.sp003};
         for (int i = 0; i < image.length; i++) {
             ImageView iv = new ImageView(this);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -118,11 +118,11 @@ public class SplashActivity extends BaseActivity implements ViewPager.OnPageChan
         llPoints.getChildAt(position)
                 .setBackgroundResource(R.mipmap.ic_splash_hl);
         prePosition = position;
-        imageView.setBackgroundResource(imageText[position]);
+//        imageView.setBackgroundResource(imageText[position]);
+//
+//        imageView.startAnimation(loadAnimationBottomInto);
 
-        imageView.startAnimation(loadAnimationBottomInto);
-
-        if (position == 3) {
+        if (position == 2) {
             open.startAnimation(loadAnimationBottomInto);
             open.setVisibility(open.VISIBLE);
         } else {

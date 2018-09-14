@@ -8,8 +8,8 @@ android {
         applicationId "com.renyi.maxsin"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -41,12 +41,12 @@ android {
                     appSecret "2c13d37477489cdf5645f6f4eaf814bc"
                 }
                 QQ {
-                    appId "100371282"
-                    appKey "aed9b0303e3ed1e27bae87c33761161d"
+                    appId "1107826098"
+                    appKey "CYtlYKfTC4XTy2mu"
                 }
                 QZone {
-                    appId "100371282"
-                    appKey "aed9b0303e3ed1e27bae87c33761161d"
+                    appId "1107826098"
+                    appKey "CYtlYKfTC4XTy2mu"
                 }
 
             }

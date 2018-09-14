@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/viewPager"
         android:layout_marginBottom="110dp"
+        android:visibility="invisible"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
     </LinearLayout>
@@ -30,9 +31,9 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="60dp"
-        android:background="@drawable/shape_bt_hl"
+
         android:gravity="center"
-        android:text="立即进入"
+
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -46,6 +47,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="15dp"
+        android:visibility="invisible"
         android:layout_marginRight="25dp"
         android:scaleType="centerInside"/>
 

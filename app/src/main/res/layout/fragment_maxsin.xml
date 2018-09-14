@@ -27,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        app:layout_behavior="com.renyi.maxsin.utils.FlingBehavior"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_behavior="com.renyi.maxsin.utils.FlingBehavior">
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -49,8 +49,6 @@
                 android:id="@+id/viewPagerContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:fitsSystemWindows="true"
 
                 >
 
@@ -65,7 +63,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/view_pager"
                     android:layout_width="290dp"
-                    android:layout_height="165dp"
+                    android:layout_height="185dp"
                     android:layout_below="@+id/heigh"
                     android:layout_centerHorizontal="true"
                     >
@@ -92,13 +90,13 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/layout_dot"
                     android:background="@color/white"
+
                     >
 
                     <LinearLayout
                         android:id="@+id/layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
                         android:orientation="horizontal">
 
                         <RelativeLayout
@@ -107,6 +105,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center"
+
                             >
 
 

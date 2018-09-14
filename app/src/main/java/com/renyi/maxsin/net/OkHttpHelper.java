@@ -83,7 +83,6 @@ public class OkHttpHelper {
             public void onResponse(Response response) throws IOException {
                 if (response.isSuccessful()) {
                     //返回成功回调
-
                     String resString = response.body().string();
                     if (callback.mType == String.class) {
                         //如果我们需要返回String类型

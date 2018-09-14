@@ -22,8 +22,12 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
+import com.renyi.maxsin.module.get.ActivityDetailsActivity;
+import com.renyi.maxsin.module.get.NewsDetailsActivity;
 import com.renyi.maxsin.module.maxsin.bean.BannerBeans;
 import com.renyi.maxsin.module.maxsin.bean.TabBeans;
+import com.renyi.maxsin.module.me.MeCenterActivity;
+import com.renyi.maxsin.module.me.ReleaseDetailsActivity;
 import com.renyi.maxsin.module.me.UserProtocolOrIntroduceActivity;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -71,16 +75,19 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
     LinearLayout llPoints;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
+    //    @BindView(R.id.bd)
+    //    BezierBannerDot bezierBannerDot;
     @BindView(R.id.add_image)
     ImageView addImage;
-//    @BindView(R.id.content_layout)
-//    CoordinatorLayout contentLayout;
+    //    @BindView(R.id.content_layout)
+    //    CoordinatorLayout contentLayout;
     MvpBannerAdapter mvpBannerAdapter;
     List<BannerBeans.DataBean> bannerList = new ArrayList<>();
     int flag = 0;
     List<Fragment> fragments = new ArrayList<>();
     FragmentAdapter adatper;
     private int previousSelectPosition = 1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_maxsin, null);
@@ -95,7 +102,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
     protected void initView() {
         tv.setText("首页");
-//        contentLayout.setVisibility(contentLayout.INVISIBLE);
+        //        contentLayout.setVisibility(contentLayout.INVISIBLE);
     }
 
     protected void loadData() {
@@ -151,7 +158,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
         if (requestCode == 0 && resultCode == 1) {
             List<String> tab = data.getExtras().getStringArrayList("tab");
             if (tab != null && tab.size() != 0) {
-                for (int j = titles.size()-1; j >3; j--) {
+                for (int j = titles.size() - 1; j > 3; j--) {
                     titles.remove(j);
                     fragments.remove(j);
                 }
@@ -165,7 +172,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
         if (requestCode == 0 && resultCode == 2) {
 
-            for (int i = titles.size()-1; i >3 ; i--) {
+            for (int i = titles.size() - 1; i > 3; i--) {
                 titles.remove(i);
                 fragments.remove(i);
             }
@@ -263,10 +270,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
                 } else {
 
                 }
-
             }
-
-
             @Override
             public void onError(Response response, int errorCode, Exception e) {
 
@@ -293,7 +297,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             @Override
             public void onSuccess(Response response, TabBeans resultBean) {
                 if (resultBean.getCode().equals("800")) {
-//                    contentLayout.setVisibility(contentLayout.VISIBLE);
+                    //                    contentLayout.setVisibility(contentLayout.VISIBLE);
                     setTabView(resultBean);
                 } else {
 
@@ -317,15 +321,16 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             mViewPager.setClipChildren(false);
             viewPagerContainer.setClipChildren(false);
             mViewPager.setPageTransformer(true, new ScalePageTransformer());
-            mViewPager.setOffscreenPageLimit(3);
+
 
             mvpBannerAdapter = new MvpBannerAdapter();
             mViewPager.setAdapter(mvpBannerAdapter);
             mvpBannerAdapter.setOnNotifyChanged();
-            mViewPager.setCurrentItem(1);
+            //            bezierBannerDot.attachToViewpager(mViewPager);
 
             mViewPager.addOnPageChangeListener(this);
-
+            mViewPager.setOffscreenPageLimit(3);
+            mViewPager.setCurrentItem(0);
 
             for (int i = 0; i < bannerList.size(); i++) {
 
@@ -336,7 +341,10 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
                 view.setLayoutParams(lp);
                 llPoints.addView(view);
             }
-            llPoints.getChildAt(1).setBackgroundResource(R.mipmap.ic_splash_hl);
+
+
+            llPoints.getChildAt(0).setBackgroundResource(
+                    R.mipmap.ic_splash_hl);
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -408,7 +416,50 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
                     cover_image.setImageDrawable(circularBitmapDrawable);
                 }
             });
+            cover_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    if (bannerList.get(position % bannerList.size()).getType().equals("1")) {
+                        readyGo(ActivityDetailsActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("2")) {
+                        readyGo(NewsDetailsActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("3")) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("flage", "4");
+                        bundle.putString("url", bannerList.get(position % bannerList.size()).getType_id());
+                        Intent intent = new Intent(getActivity(), UserProtocolOrIntroduceActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("4")) {
+                        readyGo(MeCenterActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("5")) {
+                        readyGo(ReleaseDetailsActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("6")) {
+                        readyGo(StudentExampleDetailsactivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("7")) {
+                        readyGo(TeacherDetailsActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("8")) {
+                        readyGo(UniversitiesRankingActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("9")) {
+                        readyGo(StudentExampleactivity.class , bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("10")) {
+                        readyGo(TeacherActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                    if (bannerList.get(position % bannerList.size()).getType().equals("11")) {
+                        readyGo(UniversitiesRankingActivity.class, bannerList.get(position % bannerList.size()).getType_id());
+                    }
+                }
+            });
             container.addView(view);
             return view;
 
