@@ -86,7 +86,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
     int flag = 0;
     List<Fragment> fragments = new ArrayList<>();
     FragmentAdapter adatper;
-    private int previousSelectPosition = 1;
+    private int previousSelectPosition = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -271,6 +271,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
 
                 }
             }
+
             @Override
             public void onError(Response response, int errorCode, Exception e) {
 
@@ -326,12 +327,11 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
             mvpBannerAdapter = new MvpBannerAdapter();
             mViewPager.setAdapter(mvpBannerAdapter);
             mvpBannerAdapter.setOnNotifyChanged();
-            //            bezierBannerDot.attachToViewpager(mViewPager);
+            //bezierBannerDot.attachToViewpager(mViewPager);
 
             mViewPager.addOnPageChangeListener(this);
+            mViewPager.setCurrentItem(bannerList.size() * 3);
             mViewPager.setOffscreenPageLimit(3);
-            mViewPager.setCurrentItem(0);
-
             for (int i = 0; i < bannerList.size(); i++) {
 
                 View view = new View(getActivity());
@@ -358,6 +358,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
                     llPoints.getChildAt(position % bannerList.size()).setBackgroundResource(
                             R.mipmap.ic_splash_hl);
                     previousSelectPosition = position % bannerList.size();
+
                 }
 
                 @Override
@@ -450,7 +451,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
                         readyGo(UniversitiesRankingActivity.class, bannerList.get(position % bannerList.size()).getType_id());
                     }
                     if (bannerList.get(position % bannerList.size()).getType().equals("9")) {
-                        readyGo(StudentExampleactivity.class , bannerList.get(position % bannerList.size()).getType_id());
+                        readyGo(StudentExampleactivity.class, bannerList.get(position % bannerList.size()).getType_id());
                     }
                     if (bannerList.get(position % bannerList.size()).getType().equals("10")) {
                         readyGo(TeacherActivity.class, bannerList.get(position % bannerList.size()).getType_id());
