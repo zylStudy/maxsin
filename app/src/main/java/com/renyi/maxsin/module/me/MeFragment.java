@@ -44,8 +44,6 @@ public class MeFragment extends Basefragment {
     ImageView ivShow;
     @BindView(R.id.tv_name)
     TextView tvName;
-    @BindView(R.id.image_go)
-    ImageView tvMsg;
     @BindView(R.id.study_rel)
     RelativeLayout studyRel;
     @BindView(R.id.act_rel)
@@ -63,6 +61,8 @@ public class MeFragment extends Basefragment {
     RelativeLayout followRel;
     @BindView(R.id.fan_rel)
     RelativeLayout fanRel;
+    @BindView(R.id.rel)
+    RelativeLayout rel;
     @BindView(R.id.popularity)
     TextView popularity;
     @BindView(R.id.fan)
@@ -100,13 +100,6 @@ public class MeFragment extends Basefragment {
     @Override
     protected void setOnclickListeners() {
 
-        headImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //                Intent intent = new Intent(getActivity(), MeCenterActivity.class);
-                //                startActivity(intent);
-            }
-        });
         msgRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +158,7 @@ public class MeFragment extends Basefragment {
         });
 
 
-        tvMsg.setOnClickListener(new View.OnClickListener() {
+        rel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -1,8 +1,10 @@
 package com.renyi.maxsin.module.Study;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -79,6 +81,8 @@ public class BriefingFragment extends Basefragment {
     CBProgressBar tvStudyTypesettingProjectPro;
     @BindView(R.id.activity_base)
     RelativeLayout activityBase;
+    @BindView(R.id.calendar)
+    RelativeLayout calendarRel;
 
     public static BriefingFragment getInstance() {
 
@@ -206,7 +210,14 @@ public class BriefingFragment extends Basefragment {
 
     @Override
     protected void setOnclickListeners() {
-
+        calendarRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),
+                        ScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/shap_arl_study_bg">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="10:30"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                />
+
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:text="赢赢赢"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:text="项目课"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

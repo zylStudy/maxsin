@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    >
+
+    <RelativeLayout
+        android:layout_width="51dp"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:id="@+id/week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/color9"/>
+
+        <RelativeLayout
+            android:id="@+id/statu_layout"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/week"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+           >
+
+            <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="28"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/dot"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_below="@+id/statu_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:visibility="invisible"
+            android:background="@drawable/shape_msg_status"
+            android:textColor="@color/white"/>
+
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_below="@+id/dot"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+           />
+    </RelativeLayout>
+</RelativeLayout>

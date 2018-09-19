@@ -65,7 +65,11 @@ public class CourseDetailActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
+getDataFromServer();
 
+    }
+
+    private void getDataFromServer() {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();

@@ -38,6 +38,7 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
     RelativeLayout studyRel;
     @BindView(R.id.empty_rel)
     RelativeLayout emptyRel;
+    List<String> titles = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -58,16 +59,17 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
         }
 
 
-
     }
 
     private void setRoleLayout() {
 
-        List<String> titles = new ArrayList<>();
+
+//        titles.add("课程表");
         titles.add("简报");
         titles.add("课程");
         titles.add("我的学习");
 
+//        fragments.add(new ScheduleFragment());
         fragments.add(BriefingFragment.getInstance());
         fragments.add(CourseFragment.getInstance());
         fragments.add(MyStudyFragment.getInstance());
@@ -88,11 +90,11 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
 
     private void setTextViewInlarge(int position) {
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < titles.size(); i++) {
             if (i == position) {
-                tab.getTitleView(i).setTextSize(20);
-            } else {
                 tab.getTitleView(i).setTextSize(16);
+            } else {
+                tab.getTitleView(i).setTextSize(14);
             }
 
         }

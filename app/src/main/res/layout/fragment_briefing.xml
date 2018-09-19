@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cb="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_base"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
 
     >
 
@@ -67,7 +67,7 @@
                         android:lineSpacingExtra="3dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                         />
+                        />
 
                 </RelativeLayout>
 
@@ -191,12 +191,36 @@
             </RelativeLayout>
             <!--  添加我的学习进度   -->
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:id="@+id/calendar"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="日历课程表"
+                    android:textColor="@color/color3"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/ic_go_bg"
+                    />
+
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-
-                android:layout_marginTop="25dp"
                 android:background="@color/colore1"
                 />
 
@@ -206,7 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/line"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:text="我的学习进度"
                 android:textColor="@color/color3"
                 android:textSize="17sp"

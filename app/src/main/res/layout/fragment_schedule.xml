@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rel_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/headrel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+
+            >
+
+
+            <TextView
+                android:id="@+id/timetv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="第10周"
+                android:textColor="@color/color3"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <RelativeLayout
+                android:id="@+id/lefrel"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:layout_toLeftOf="@+id/timetv">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8dp"
+                    android:background="@mipmap/ic_left_bg"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rigrel"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:layout_toRightOf="@+id/timetv">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:background="@mipmap/ic_right_bg"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tab_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headrel"
+            android:background="@color/colorPrimary"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/tab_recyelerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/statusTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="暂无课程"
+            android:textColor="@color/color9"
+            android:textSize="18sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyelerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tab_rel"
+            />
+    </RelativeLayout>
+</RelativeLayout>
+
+
