@@ -111,10 +111,10 @@
 
                             <ImageView
                                 android:id="@+id/image01"
-                                android:layout_width="101dp"
-                                android:layout_height="88dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_school_bg"/>
+                                android:src="@mipmap/ic_school_bg"/>
 
 
                         </RelativeLayout>
@@ -131,10 +131,10 @@
 
                             <ImageView
                                 android:id="@+id/image02"
-                                android:layout_width="101dp"
-                                android:layout_height="88dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_teacher_bg"/>
+                                android:src="@mipmap/ic_teacher_bg"/>
 
 
                         </RelativeLayout>
@@ -151,10 +151,10 @@
 
                             <ImageView
                                 android:id="@+id/image03"
-                                android:layout_width="101dp"
-                                android:layout_height="88dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_maxsin_bg"/>
+                                android:src="@mipmap/ic_maxsin_bg"/>
 
 
                         </RelativeLayout>
@@ -170,10 +170,10 @@
 
                             <ImageView
                                 android:id="@+id/image04"
-                                android:layout_width="101dp"
-                                android:layout_height="88dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:background="@mipmap/ic_student_bg"/>
+                                android:src="@mipmap/ic_student_bg"/>
 
 
                         </RelativeLayout>

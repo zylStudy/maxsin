@@ -52,8 +52,8 @@ public class MeFragment extends Basefragment {
     RelativeLayout collectionRel;
     @BindView(R.id.set_rel)
     RelativeLayout setRel;
-    @BindView(R.id.msg_rel)
-    RelativeLayout msgRel;
+//    @BindView(R.id.msg_rel)
+//    RelativeLayout msgRel;
     ResultBean.DataBean resultBeanData;
     @BindView(R.id.push_rel)
     RelativeLayout pushRel;
@@ -100,13 +100,13 @@ public class MeFragment extends Basefragment {
     @Override
     protected void setOnclickListeners() {
 
-        msgRel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyMessageActivity.class);
-                startActivity(intent);
-            }
-        });
+//        msgRel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), MyMessageActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         pushRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
