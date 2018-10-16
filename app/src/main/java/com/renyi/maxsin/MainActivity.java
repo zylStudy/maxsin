@@ -1,6 +1,7 @@
 package com.renyi.maxsin;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,12 +23,25 @@ import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
 import com.renyi.maxsin.module.mvp.MvpPageFragment;
 import com.renyi.maxsin.module.release.ReleaseImageAndTextActivity;
+import com.renyi.maxsin.module.rongyun.bean.TokenBean;
+import com.renyi.maxsin.module.rongyun.bean.UserInfoBean;
+import com.renyi.maxsin.net.Api;
+import com.renyi.maxsin.net.BaseCallback;
+import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -101,9 +115,10 @@ public class MainActivity extends AppCompatActivity {
         //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         //                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         setContentView(R.layout.activity_main);
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this,R.color.white), true);
+        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
         mainActivity = this;
         ButterKnife.bind(this);
+        getTokenString();
         initView();
         setOnClickListeners();
     }
@@ -241,4 +256,112 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onKeyUp(keyCode, event);
     }
+
+
+    private void connectRongIMToSdk(String token) {
+
+       // String token = "oWaB9jnypahVzoNmq1EZEePvA59wXuGR2q8rStLP6JxeZMQTQSw5qm3Yz2bvE/O6iJfIPq+nkVbiRJVuSVaBew==";
+
+        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+            @Override
+            public void onSuccess(String s) {
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+            }
+
+            @Override
+            public void onTokenIncorrect() {
+
+            }
+        });
+
+    }
+
+
+    private void getTokenString() {
+        OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
+        Map<String, String> map = new HashMap<>();
+        map.put("key", Api.KEY);
+        map.put("uid", (String) SPUtils.get("uid", ""));
+
+        mHttpHelper.post(Api.URL + "getToken", map, new BaseCallback<TokenBean>() {
+            @Override
+            public void onRequestBefore() {
+
+            }
+
+            @Override
+            public void onFailure(Request request, Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Response response, TokenBean resultBean) {
+                if (resultBean.getCode()==200 && !resultBean.getToken().isEmpty()) {
+                    connectRongIMToSdk(resultBean.getToken());
+                    getUserInfoString();
+                } else {
+
+                }
+
+            }
+
+            @Override
+            public void onError(Response response, int errorCode, Exception e) {
+
+            }
+        });
+    }
+        private void getUserInfoString() {
+            OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
+            Map<String, String> map = new HashMap<>();
+            map.put("key", Api.KEY);
+            map.put("uid",   (String) SPUtils.get("uid", "") );
+
+            mHttpHelper.post(Api.URL + "getInfo", map, new BaseCallback<UserInfoBean>() {
+                @Override
+                public void onRequestBefore() {
+
+                }
+
+                @Override
+                public void onFailure(Request request, Exception e) {
+
+                }
+
+                @Override
+                public void onSuccess(Response response, UserInfoBean resultBean) {
+
+                    if (resultBean.getCode().equals("800") ) {
+
+//                        RongIM.getInstance()
+//                                .setCurrentUserInfo(
+//                                        new UserInfo(
+//                                               "132",
+//                                                "111111",
+//                                                Uri.parse(resultBean.getData().getHeadphoto())));
+
+                        RongIM.getInstance()
+                                .refreshUserInfoCache(
+                                        new UserInfo(
+                                                (String) SPUtils.get("uid", ""),
+                                                resultBean.getData().getName(),
+                                                Uri.parse(resultBean.getData().getHeadphoto())));
+
+                        RongIM.getInstance()
+                                .setMessageAttachedUserInfo(true);
+                    } else {
+
+                    }
+
+                }
+
+                @Override
+                public void onError(Response response, int errorCode, Exception e) {
+
+                }
+            });
+     }
 }

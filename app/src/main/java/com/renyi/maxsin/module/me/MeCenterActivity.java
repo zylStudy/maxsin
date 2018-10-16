@@ -2,6 +2,7 @@ package com.renyi.maxsin.module.me;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -42,6 +43,8 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
 
 
 public class MeCenterActivity extends AppCompatActivity implements OnTabSelectListener {
@@ -62,6 +65,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     @BindView(R.id.follow)
     TextView follow;
 
+
     @BindView(R.id.tv01)
     TextView popularity;
     @BindView(R.id.tv02)
@@ -81,6 +85,9 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     RelativeLayout backRel;
     @BindView(R.id.tv)
     TextView tv;
+    MeCenterBean.DataBean resultBeanData;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,7 +139,13 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
                 finish();
             }
         });
-
+        letter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RongIM.getInstance().startPrivateChat(MeCenterActivity.this, id,
+                        resultBeanData.getUser_name());
+            }
+        });
     }
 
     @Override
@@ -204,7 +217,6 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         map.put("key", Api.KEY);
         map.put("id", getIntent().getExtras().getString("id"));
         map.put("my_id", (String) SPUtils.get("uid", ""));
-
         mHttpHelper.post(Api.URL + "other_view", map, new BaseCallback<MeCenterBean>() {
             @Override
             public void onRequestBefore() {
@@ -221,7 +233,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
 
                 if (resultBean.getCode().equals("800")) {
 
-                    MeCenterBean.DataBean resultBeanData = resultBean.getData();
+                     resultBeanData = resultBean.getData();
                     tvName.setText(resultBeanData.getUser_name());
                     popularity.setText(resultBeanData.getRenqi());
                     fans.setText(resultBeanData.getFans_num());
@@ -240,6 +252,14 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
                             headImageView.setImageDrawable(circularBitmapDrawable);
                         }
                     });
+
+                    RongIM.getInstance()
+                            .setCurrentUserInfo(
+                                    new UserInfo(
+                                            id,
+                                            resultBeanData.getUser_name(),
+                                            Uri.parse(resultBeanData.getHead_url())));
+
                 } else {
 
                 }
@@ -252,27 +272,6 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
             }
         });
     }
-
-    //    @Override
-    //    public boolean onCreateOptionsMenu(Menu menu) {
-    //
-    //        //通过inflater对象将自己写的资源文件转换成menu对象
-    //        //参数1代表需要创建的菜单，参数2代表将菜单设置到对应的menu上
-    //        getMenuInflater().inflate(R.menu.menu_tab_layout, menu);
-    //
-    //        return true;
-    //    }
-    //
-    //    public boolean onOptionsItemSelected(MenuItem item) {
-    //
-    //        switch (item.getItemId()) {
-    //            case R.id.tab_add:
-    //                startActivity(new Intent(MeCenterActivity.this, MyMessageActivity.class));
-    //                return true;
-    //        }
-    //
-    //        return false;
-    //    }
 
     private void postDate(final String flage) {
 
@@ -337,4 +336,6 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
             follow.setTextColor(ContextCompat.getColor(MeCenterActivity.this, R.color.white));
         }
     }
+
+
 }

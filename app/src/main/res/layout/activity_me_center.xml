@@ -95,9 +95,8 @@
                         android:layout_width="80dp"
                         android:layout_height="28dp"
                         android:layout_below="@+id/cline"
-                        android:layout_marginEnd="30dp"
+                         android:layout_toLeftOf="@+id/cline"
                         android:layout_marginRight="30dp"
-                        android:layout_centerHorizontal="true"
                         android:gravity="center"
                         android:textColor="@color/colorOuteb4161"
                         android:textSize="12sp"/>
@@ -108,12 +107,11 @@
                         android:layout_height="28dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginLeft="30dp"
-                        android:layout_marginStart="28dp"
-                        android:layout_toEndOf="@+id/cline"
+                        android:layout_toRightOf="@+id/cline"
                         android:background="@drawable/shap_null_center_layout"
                         android:gravity="center"
                         android:text="私信"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:textColor="@color/colorOuteb4161"
                         android:textSize="12sp"/>
 

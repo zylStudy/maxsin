@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
+import io.rong.imkit.RongIM;
 
 /**
  * Created by zhangyuliang on 2018/3/22.
@@ -52,8 +53,8 @@ public class MeFragment extends Basefragment {
     RelativeLayout collectionRel;
     @BindView(R.id.set_rel)
     RelativeLayout setRel;
-//    @BindView(R.id.msg_rel)
-//    RelativeLayout msgRel;
+    @BindView(R.id.msg_rel)
+    RelativeLayout msgRel;
     ResultBean.DataBean resultBeanData;
     @BindView(R.id.push_rel)
     RelativeLayout pushRel;
@@ -100,13 +101,14 @@ public class MeFragment extends Basefragment {
     @Override
     protected void setOnclickListeners() {
 
-//        msgRel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+        msgRel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 //                Intent intent = new Intent(getActivity(), MyMessageActivity.class);
 //                startActivity(intent);
-//            }
-//        });
+                RongIM.getInstance().startConversationList(getActivity());
+            }
+        });
         pushRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

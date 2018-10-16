@@ -32,10 +32,8 @@ import butterknife.BindView;
 
 public class SearchUniversityActivity extends BaseActivity {
 
-
     int page = 1;
     CommonAdapter commonAdapter;
-
     @BindView(R.id.search_rellayout)
     RelativeLayout searchRel;
     @BindView(R.id.edit_info)
@@ -80,12 +78,19 @@ public class SearchUniversityActivity extends BaseActivity {
 
 
     }
-
+//    public boolean checkSam(String stringA, String stringB) {
+//        char[] c1 = stringA.toCharArray();
+//        char[] c2 = stringB.toCharArray();
+//        Arrays.sort(c1);
+//        Arrays.sort(c2);
+//        return Arrays.equals(c1, c2);
+//    }
 
     @Override
     protected void loadData() {
 
     }
+
 
     @Override
     protected void setOnClickListeners() {
