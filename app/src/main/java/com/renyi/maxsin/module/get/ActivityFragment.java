@@ -83,14 +83,6 @@ public class ActivityFragment extends Basefragment {
                     public void run() {
 
 
-                        //                        if (get_listAll != null && get_listAll.size() != 0) {
-                        //                            get_listAll.clear();
-                        //                            adapter.notifyDataSetChanged();
-                        //                        }
-                        //
-                        //                        page = 1;
-                        //                        loadDataFromSer();
-
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 300);

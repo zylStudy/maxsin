@@ -2,8 +2,10 @@ package com.renyi.maxsin.module.Study;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -83,7 +85,8 @@ public class BriefingFragment extends Basefragment {
     RelativeLayout activityBase;
     @BindView(R.id.calendar)
     RelativeLayout calendarRel;
-
+    @BindView(R.id.swipe_container)
+    SwipeRefreshLayout swipeRefreshLayout;
     public static BriefingFragment getInstance() {
 
         return new BriefingFragment();
@@ -96,7 +99,25 @@ public class BriefingFragment extends Basefragment {
 
     @Override
     protected void initView() {
+        swipeRefreshLayout.setColorSchemeResources(
 
+                android.R.color.holo_red_light,
+                android.R.color.black,
+                android.R.color.holo_green_light);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        loadData();
+
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 300);
+            }
+        });
         Glide.with(getActivity()).load(R.mipmap.ic_personal_page_bg).asBitmap().centerCrop().into(new BitmapImageViewTarget(coverImage) {
             @Override
             protected void setResource(Bitmap resource) {

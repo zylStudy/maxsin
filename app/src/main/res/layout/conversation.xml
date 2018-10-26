@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/white"
+            android:textColor="@color/color3"
             android:textSize="17sp"/>
 
         <RelativeLayout
@@ -29,7 +29,7 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="8dp"
+                android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"

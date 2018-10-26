@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
+import com.renyi.maxsin.module.rongyun.RongCloudEvent;
+
 import io.rong.imkit.RongIM;
 
 /**
@@ -25,7 +27,7 @@ public class AppConfigApplication extends Application {
              */
 
             RongIM.init(this);
-
+            RongCloudEvent.init(this);
         }
     }
     public static String getCurProcessName(Context context) {
