@@ -147,7 +147,6 @@ public class BindingPhoneNumeberActivity extends BaseActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
 
-                    // TODO: 2018/4/28 缓存uid 
                 } else {
                     Toast.makeText(BindingPhoneNumeberActivity.this, "绑定失败", Toast.LENGTH_SHORT).show();
                 }

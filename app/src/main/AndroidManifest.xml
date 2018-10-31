@@ -15,6 +15,8 @@
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     //获取设备网络状态，禁用后无法获取网络状态
@@ -63,13 +65,13 @@
         </activity>
 
         <provider
-        android:name="com.renyi.maxsin.utils.MyProvider"
-        android:authorities="com.renyi.maxsin.fileProvider"
-        android:exported="false"
-        android:grantUriPermissions="true">
-        <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths"/>
+            android:name="com.renyi.maxsin.utils.MyProvider"
+            android:authorities="com.renyi.maxsin.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
         </provider>
 
         <activity
@@ -323,22 +325,22 @@
         <activity
             android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
             android:screenOrientation="portrait"/>
-        <!--百度地图-->
 
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="9064a102f07509920433e400f66f4262" />
+        <!--腾讯bugly-->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent"/>
 
 
-
-
-        <receiver android:name=".module.rongyun.CharNotificationReceiver"
-                  android:exported="true">
+        <receiver
+            android:name=".module.rongyun.CharNotificationReceiver"
+            android:exported="true">
             <intent-filter>
-                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
-                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
-                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
-                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED"/>
+                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED"/>
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED"/>
+                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED"/>
             </intent-filter>
         </receiver>
 

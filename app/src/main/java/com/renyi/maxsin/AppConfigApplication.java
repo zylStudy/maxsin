@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
-import com.renyi.maxsin.module.rongyun.RongCloudEvent;
+import com.tencent.bugly.Bugly;
 
 import io.rong.imkit.RongIM;
 
@@ -19,6 +19,9 @@ public class AppConfigApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTextSize();
+        Bugly.init(getApplicationContext(), "ba9fc1bbcd", true);
+
+
         if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
                 "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
 
@@ -27,7 +30,7 @@ public class AppConfigApplication extends Application {
              */
 
             RongIM.init(this);
-            RongCloudEvent.init(this);
+           // RongCloudEvent.init(this);
         }
     }
     public static String getCurProcessName(Context context) {
