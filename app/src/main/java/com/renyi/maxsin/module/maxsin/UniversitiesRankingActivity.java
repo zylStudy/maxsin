@@ -69,8 +69,8 @@ public class UniversitiesRankingActivity extends BaseActivity {
     CommonAdapter listAdapter, popuAdapter;
     int page = 1;
     MaxsinUniversityRankBeans resultBeans;
-    String t_value = "-1", c_type = "-1", c_status = "-1";
-    int i_value = 0, i_type = 0, i_status = 0, flage = 0;
+    String t_city = "-1", c_degree = "-1", c_major = "-1";
+    int i_city = 0, i_degree = 0, i_major = 0, flage = 0;
     RecyclerView popuRecyclerView;
     PopupWindow popView;
     Map<String, String> popMap = new HashMap<>();
@@ -128,15 +128,16 @@ public class UniversitiesRankingActivity extends BaseActivity {
         map.put("key", Api.KEY);
 
         map.put("current_page", page + "");
-        if (!c_type.equals("-1")) {
-            map.put("country", c_type);
+        if (!t_city.equals("-1")) {
+            map.put("country", t_city);
         }
-        if (!t_value.equals("-1")) {
-            map.put("degree", t_value);
+        if (!c_degree.equals("-1")) {
+            map.put("degree", c_degree);
         }
-        if (!c_status.equals("-1")) {
-            map.put("major", c_status);
+        if (!c_major.equals("-1")) {
+            map.put("major", c_major);
         }
+
         mHttpHelper.post(Api.URL + "college_list", map, new BaseCallback<MaxsinUniversityRankBeans>() {
             @Override
             public void onRequestBefore() {
@@ -369,7 +370,7 @@ public class UniversitiesRankingActivity extends BaseActivity {
 
                 if (flage == 1) {
 
-                    if (i_value == position) {
+                    if (i_city == position) {
                         viewHolder.setVisible(R.id.change, true);
                     } else {
                         viewHolder.setVisible(R.id.change, false);
@@ -377,7 +378,7 @@ public class UniversitiesRankingActivity extends BaseActivity {
                 }
 
                 if (flage == 2) {
-                    if (i_type == position) {
+                    if (i_degree == position) {
                         viewHolder.setVisible(R.id.change, true);
                     } else {
                         viewHolder.setVisible(R.id.change, false);
@@ -386,7 +387,7 @@ public class UniversitiesRankingActivity extends BaseActivity {
 
 
                 if (flage == 3) {
-                    if (i_status == position) {
+                    if (i_major == position) {
                         viewHolder.setVisible(R.id.change, true);
                     } else {
                         viewHolder.setVisible(R.id.change, false);
@@ -403,31 +404,34 @@ public class UniversitiesRankingActivity extends BaseActivity {
                                                        popView.dismiss();
                                                    }
                                                    if (flage == 1) {
-                                                       i_value = position;
+                                                       i_city = position;
 
                                                        String str_t_value = popList.get(position);
                                                        type01.setText(str_t_value);
-                                                       t_value = popMap.get(str_t_value);
+                                                       t_city = popMap.get(str_t_value);
 
                                                    }
                                                    if (flage == 2) {
-                                                       i_type = position;
+                                                       i_degree = position;
                                                        String str_t_value = popList.get(position);
                                                        type02.setText(str_t_value);
-                                                       c_type = popMap.get(str_t_value);
+                                                       c_degree = popMap.get(str_t_value);
 
                                                    }
                                                    if (flage == 3) {
-                                                       i_status = position;
+                                                       i_major = position;
 
                                                        String str_t_value = popList.get(position);
                                                        type03.setText(str_t_value);
-                                                       c_status = popMap.get(str_t_value);
+                                                       c_major = popMap.get(str_t_value);
 
                                                    }
-                                                   if (course_list != null) {
-                                                       course_list.clear();
+                                                   if (course_listAll.size() != 0) {
                                                        course_listAll.clear();
+                                                       if (course_list != null) {
+                                                           course_list.clear();
+
+                                                       }
 
                                                    }
                                                    page = 1;
