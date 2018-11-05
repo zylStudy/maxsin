@@ -204,20 +204,24 @@ public class OkHttpHelper {
      */
     private RequestBody buildRequestBody(Map<String, String> params) {
         MultipartBuilder builder = new MultipartBuilder().type(MultipartBuilder.FORM);
-         // FormEncodingBuilder builder = new FormEncodingBuilder();
+        // FormEncodingBuilder builder = new FormEncodingBuilder();
         if (params != null) {
             for (Map.Entry<String, String> entity : params.entrySet()) {
 
-                                    if (entity.getKey().substring(0, 1).equals("0")) {
+                if (entity.getKey().substring(0, 1).equals("0")) {
 
-                                        RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), new File(entity.getValue()));
+                    RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), new File(entity.getValue()));
 
-                                        builder.addFormDataPart(entity.getKey().substring(1), entity.getKey()+".jpg", fileBody);
+                    builder.addFormDataPart(entity.getKey().substring(1), entity.getKey() + ".jpg", fileBody);
 
-                                    } else {
-                builder.addFormDataPart(entity.getKey(), entity.getValue());
-//                builder.addFormDataPart(entity.getKey(), entity.getValue());
-                   }
+                } else {
+                    try {
+                        builder.addFormDataPart(entity.getKey(), entity.getValue());
+                    } catch (NullPointerException e) {
+
+                    }
+
+                }
 
 
             }

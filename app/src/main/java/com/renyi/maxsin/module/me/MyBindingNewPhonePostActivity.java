@@ -90,7 +90,7 @@ public class MyBindingNewPhonePostActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("new_mobile", etPhone.getText().toString().trim());
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         map.put("code", etCode.getText().toString().trim());
 
 

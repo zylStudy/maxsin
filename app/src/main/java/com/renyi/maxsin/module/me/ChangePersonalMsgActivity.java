@@ -199,7 +199,7 @@ public class ChangePersonalMsgActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         if (flage == 1) {
             map.put("nickname", etName.getText().toString().trim());
         }

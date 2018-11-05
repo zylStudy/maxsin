@@ -171,7 +171,7 @@ public class CollectionFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("uid", (String) SPUtils.get("uid", ""));
+        map.put("uid", (String) SPUtils.get("uid", "0"));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "sc_work_list", map, new BaseCallback<GetBeans>() {

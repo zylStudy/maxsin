@@ -185,7 +185,7 @@ public class MyReleaseInfoAndWorksFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("cat_id", type);
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "work_list", map, new BaseCallback<RelesseInfoAndWorksBean>() {

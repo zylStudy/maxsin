@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
     //public static final String STUDY_FRAGMENT = "STUDYFRAGMENT";
     public static final String ME_FRAGMENT = "MEFRAGMENT";
     public static MainActivity mainActivity;
+    private String uid = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
         mainActivity = this;
+        uid = (String) SPUtils.get("uid", "0");
         ButterKnife.bind(this);
         getTokenString();
         initView();
@@ -260,8 +262,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void connectRongIMToSdk(String token) {
 
-       // String token = "oWaB9jnypahVzoNmq1EZEePvA59wXuGR2q8rStLP6JxeZMQTQSw5qm3Yz2bvE/O6iJfIPq+nkVbiRJVuSVaBew==";
-
         RongIM.connect(token, new RongIMClient.ConnectCallback() {
             @Override
             public void onSuccess(String s) {
@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("uid", (String) SPUtils.get("uid", ""));
+        map.put("uid", uid);
 
         mHttpHelper.post(Api.URL + "getToken", map, new BaseCallback<TokenBean>() {
             @Override
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(Response response, TokenBean resultBean) {
-                if (resultBean.getCode()==200 && !resultBean.getToken().isEmpty()) {
+                if (resultBean.getCode() == 200 && !resultBean.getToken().isEmpty()) {
                     connectRongIMToSdk(resultBean.getToken());
                     getUserInfoString();
                 } else {
@@ -314,54 +314,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-        private void getUserInfoString() {
-            OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
-            Map<String, String> map = new HashMap<>();
-            map.put("key", Api.KEY);
-            map.put("uid",   (String) SPUtils.get("uid", "") );
 
-            mHttpHelper.post(Api.URL + "getInfo", map, new BaseCallback<UserInfoBean>() {
-                @Override
-                public void onRequestBefore() {
+    private void getUserInfoString() {
+        OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
+        Map<String, String> map = new HashMap<>();
+        map.put("key", Api.KEY);
+        map.put("uid", uid);
 
-                }
+        mHttpHelper.post(Api.URL + "getInfo", map, new BaseCallback<UserInfoBean>() {
+            @Override
+            public void onRequestBefore() {
 
-                @Override
-                public void onFailure(Request request, Exception e) {
+            }
 
-                }
+            @Override
+            public void onFailure(Request request, Exception e) {
 
-                @Override
-                public void onSuccess(Response response, UserInfoBean resultBean) {
+            }
 
-                    if (resultBean.getCode().equals("800") ) {
+            @Override
+            public void onSuccess(Response response, UserInfoBean resultBean) {
 
-//                        RongIM.getInstance()
-//                                .setCurrentUserInfo(
-//                                        new UserInfo(
-//                                               "132",
-//                                                "111111",
-//                                                Uri.parse(resultBean.getData().getHeadphoto())));
+                if (resultBean.getCode().equals("800")) {
 
-                        RongIM.getInstance()
-                                .refreshUserInfoCache(
-                                        new UserInfo(
-                                                (String) SPUtils.get("uid", ""),
-                                                resultBean.getData().getName(),
-                                                Uri.parse(resultBean.getData().getHeadphoto())));
+                    RongIM.getInstance()
+                            .refreshUserInfoCache(
+                                    new UserInfo(
+                                            (String) SPUtils.get("uid", uid),
+                                            resultBean.getData().getName(),
+                                            Uri.parse(resultBean.getData().getHeadphoto())));
 
-                        RongIM.getInstance()
-                                .setMessageAttachedUserInfo(true);
-                    } else {
-
-                    }
+                    RongIM.getInstance()
+                            .setMessageAttachedUserInfo(true);
+                } else {
 
                 }
 
-                @Override
-                public void onError(Response response, int errorCode, Exception e) {
+            }
 
-                }
-            });
-     }
+            @Override
+            public void onError(Response response, int errorCode, Exception e) {
+
+            }
+        });
+    }
 }

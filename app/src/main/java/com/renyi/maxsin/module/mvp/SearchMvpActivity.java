@@ -206,7 +206,7 @@ public class SearchMvpActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("page", page + "");
         map.put("keywords", keywords);
 
@@ -250,7 +250,7 @@ public class SearchMvpActivity extends BaseActivity {
     private void postFollowDate(String opt, final String uid) {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", (String) SPUtils.get("uid", ""));
+        map.put("my_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
         map.put("other_id", uid);
         String url = "";

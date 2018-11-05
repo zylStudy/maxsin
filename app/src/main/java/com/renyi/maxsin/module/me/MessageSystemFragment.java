@@ -182,7 +182,7 @@ public class MessageSystemFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         map.put("current_page", page + "");
 
         mHttpHelper.post(Api.URL + "mess_list", map, new BaseCallback<MessageCourseBean>() {

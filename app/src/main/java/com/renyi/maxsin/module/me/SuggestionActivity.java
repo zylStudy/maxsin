@@ -66,7 +66,7 @@ public class SuggestionActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         map.put("content", etInfo.getText().toString().trim());
         map.put("key", Api.KEY);
 

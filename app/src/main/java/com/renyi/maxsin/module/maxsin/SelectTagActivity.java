@@ -178,7 +178,7 @@ public class SelectTagActivity extends BaseActivity {
     private void postTag(String tagStr) {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
         map.put("user_tags", tagStr);
         mHttpHelper.post(Api.URL + "saveTags", map, new BaseCallback<ReturnBean>() {
@@ -213,7 +213,7 @@ public class SelectTagActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
 
         mHttpHelper.post(Api.URL + "editTags", map, new BaseCallback<TagBeans>() {

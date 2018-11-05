@@ -188,7 +188,7 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
 
         mHttpHelper.post(Api.URL + "tuijian", map, new BaseCallback<MvpRecommendBean>() {
             @Override
@@ -226,7 +226,7 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("page", page + "");
 
         mHttpHelper.post(Api.URL + "newlist", map, new BaseCallback<PopularBeans>() {
@@ -267,7 +267,7 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
     private void postFollowDate(String opt, final String uid) {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", (String) SPUtils.get("uid", ""));
+        map.put("my_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
         map.put("other_id", uid);
         String url = "";
@@ -319,10 +319,8 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
 
             String uid = intent.getExtras().getString("uid");
 
-            System.out.println("-------uid------" + uid);
             for (int i = 0; i < popularListAll.size(); i++) {
                 if (popularListAll.get(i).getId().equals(uid)) {
-                    System.out.println("-------uid2------" + uid);
                     if (popularListAll.get(i).getIs_focus().equals("1")) {
                         popularListAll.get(i).setIs_focus("0");
                     } else {
@@ -333,7 +331,6 @@ public class MvpFirstPageFragment extends Fragment implements ViewPager.OnPageCh
             }
             for (int i = 0; i < listAll.size(); i++) {
                 if (listAll.get(i).getId().equals(uid)) {
-                    System.out.println("-------uid3------" + uid);
                     if (listAll.get(i).getIs_focus().equals("1")) {
                         listAll.get(i).setIs_focus("0");
                     } else {

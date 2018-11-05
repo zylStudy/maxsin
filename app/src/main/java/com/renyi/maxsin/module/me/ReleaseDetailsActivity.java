@@ -210,7 +210,7 @@ public class ReleaseDetailsActivity extends BaseActivity {
     private void postLoveOrZan(final String url, Map<String, String> map) {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("content_id", getIntent().getExtras().getString("id"));
 
         mHttpHelper.post(Api.URL + url, map, new BaseCallback<ReturnBean>() {

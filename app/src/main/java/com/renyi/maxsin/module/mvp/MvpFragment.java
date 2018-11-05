@@ -20,6 +20,7 @@ import com.renyi.maxsin.module.mvp.bean.MvpRecommendBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
+import com.renyi.maxsin.utils.SPUtils;
 import com.renyi.maxsin.view.DecoratorViewPager;
 import com.renyi.maxsin.view.galleryview.CardScaleHelper;
 import com.renyi.maxsin.view.galleryview.SpeedRecyclerView;
@@ -165,7 +166,7 @@ public class MvpFragment extends Basefragment implements ViewPager.OnPageChangeL
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", "1");
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
 
         mHttpHelper.post(Api.URL + "tuijian", map, new BaseCallback<MvpRecommendBean>() {
             @Override

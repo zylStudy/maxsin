@@ -283,7 +283,7 @@ public class MaxsinFragment extends Fragment implements OnTabSelectListener, Vie
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         mHttpHelper.post(Api.URL + "showTags", map, new BaseCallback<TabBeans>() {
             @Override
             public void onRequestBefore() {

@@ -19,7 +19,7 @@ public class AppConfigApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initTextSize();
-        Bugly.init(getApplicationContext(), "ba9fc1bbcd", true);
+        Bugly.init(getApplicationContext(), "ba9fc1bbcd", false);
 
 
         if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
@@ -30,9 +30,10 @@ public class AppConfigApplication extends Application {
              */
 
             RongIM.init(this);
-           // RongCloudEvent.init(this);
+            // RongCloudEvent.init(this);
         }
     }
+
     public static String getCurProcessName(Context context) {
 
         int pid = android.os.Process.myPid();

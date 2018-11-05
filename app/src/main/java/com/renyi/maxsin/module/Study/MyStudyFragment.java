@@ -184,7 +184,7 @@ public class MyStudyFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("s_id", (String) SPUtils.get("uid",""));
+        map.put("s_id", (String) SPUtils.get("sid","0"));
 
         mHttpHelper.post(Api.URL + "my_study", map, new BaseCallback<MyStudyBean>() {
             @Override

@@ -92,7 +92,7 @@ public class MyChangePsdActivity extends BaseActivity {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("mobile", phone);
-        map.put("uid", (String) SPUtils.get("uid",""));
+        map.put("uid", (String) SPUtils.get("uid","0"));
         map.put("code", etCode.getText().toString().trim());
         map.put("passwd", etPsdf.getText().toString().trim());
 
@@ -114,7 +114,7 @@ public class MyChangePsdActivity extends BaseActivity {
                 if (resultBean.getCode().equals("800")) {
                     Toast.makeText(MyChangePsdActivity.this, "密码修改成功", Toast.LENGTH_SHORT).show();
                     finish();
-                    // TODO: 2018/5/16 修改密码之后写入密码
+
 
                 } else if (resultBean.getCode().equals("903")) {
                     Toast.makeText(MyChangePsdActivity.this, "验证码错误", Toast.LENGTH_SHORT).show();

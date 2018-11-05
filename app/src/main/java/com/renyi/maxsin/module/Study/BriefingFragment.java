@@ -145,8 +145,7 @@ public class BriefingFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("stu_id", (String) SPUtils.get("uid",""));
-
+        map.put("stu_id", (String) SPUtils.get("sid",""));
         mHttpHelper.post(Api.URL + "learn_brief", map, new BaseCallback<BriefingBean>() {
             @Override
             public void onRequestBefore() {

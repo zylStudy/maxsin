@@ -125,7 +125,7 @@ public class ScheduleActivity extends AppCompatActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("stu_id", (String) SPUtils.get("uid", ""));
+        map.put("stu_id", (String) SPUtils.get("sid", "0"));
         mHttpHelper.post("http://edu.mxsyzen.com/stuapigetdate", map, new BaseCallback<WeekDayBean>() {
             @Override
             public void onRequestBefore() {

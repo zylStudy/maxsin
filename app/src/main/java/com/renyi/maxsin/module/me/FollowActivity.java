@@ -161,7 +161,7 @@ public class FollowActivity extends BaseActivity {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid",""));
+        map.put("u_id", (String) SPUtils.get("uid","0"));
         map.put("get_flag", flage);
         map.put("current_page", page + "");
 
@@ -207,7 +207,7 @@ public class FollowActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", (String) SPUtils.get("uid",""));
+        map.put("my_id", (String) SPUtils.get("uid","0"));
         map.put("key", Api.KEY);
         map.put("other_id", uid);
         String url = "";

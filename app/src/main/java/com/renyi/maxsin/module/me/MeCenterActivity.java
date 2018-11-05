@@ -216,7 +216,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("id", getIntent().getExtras().getString("id"));
-        map.put("my_id", (String) SPUtils.get("uid", ""));
+        map.put("my_id", (String) SPUtils.get("uid", "0"));
         mHttpHelper.post(Api.URL + "other_view", map, new BaseCallback<MeCenterBean>() {
             @Override
             public void onRequestBefore() {
@@ -277,7 +277,7 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("my_id", (String) SPUtils.get("uid", ""));
+        map.put("my_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
         map.put("other_id", id);
         String url = "";

@@ -289,7 +289,7 @@ public class SelectTagTitleActivity extends BaseActivity {
 
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", (String) SPUtils.get("uid", ""));
+        map.put("user_id", (String) SPUtils.get("uid", "0"));
         map.put("key", Api.KEY);
         map.put("title", etTitle.getText().toString().trim());
         map.put("description", etInfo.getText().toString().trim());

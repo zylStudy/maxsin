@@ -131,6 +131,7 @@ public class MeFragment extends Basefragment {
 
                 if (resultBeanData.getAdd_flag().equals("2")) {
                     bundle.putString("sid", resultBeanData.getSid() );
+                    SPUtils.put("sid", resultBeanData.getSid());
                 }
 
                 bundle.putString("flag", resultBeanData.getAdd_flag() );
@@ -243,7 +244,7 @@ public class MeFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("id", (String) SPUtils.get("uid", ""));
+        map.put("id", (String) SPUtils.get("uid", "0"));
 
         mHttpHelper.post(Api.URL + "my", map, new BaseCallback<ResultBean>() {
             @Override
@@ -292,191 +293,6 @@ public class MeFragment extends Basefragment {
     }
 
 
-    //    private void selectPic() {
-    //        dialog = new Dialog(getActivity(), R.style.SelectImageDialogStyleBottom);
-    //        dialog.setContentView(R.layout.dialog_select_pic_layout);
-    //        TextView btnCarema =   dialog.findViewById(R.id.btn_camera);
-    //        TextView btnPhoto =  dialog.findViewById(R.id.btn_photo);
-    //        TextView btnCancel =   dialog.findViewById(R.id.btn_cancel);
-    //        dialog.setCancelable(true);
-    //        dialog.show();
-    //        btnCarema.setOnClickListener(new View.OnClickListener() {
-    //            @Override
-    //            public void onClick(View v) {
-    //                //权限判断
-    //                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    //                        != PackageManager.PERMISSION_GRANTED) {
-    //                    //申请WRITE_EXTERNAL_STORAGE权限
-    //                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-    //                            WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-    //                } else {
-    //                    //跳转到调用系统相机
-    //                    gotoCamera();
-    //                }
-    //                dialog.dismiss();
-    //            }
-    //        });
-    //        btnPhoto.setOnClickListener(new View.OnClickListener() {
-    //            @Override
-    //            public void onClick(View v) {
-    //                //权限判断
-    //                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
-    //                        != PackageManager.PERMISSION_GRANTED) {
-    //                    //申请READ_EXTERNAL_STORAGE权限
-    //                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-    //                            READ_EXTERNAL_STORAGE_REQUEST_CODE);
-    //                } else {
-    //                    //跳转到相册
-    //                    gotoPhoto();
-    //                }
-    //                dialog.dismiss();
-    //            }
-    //        });
-    //        btnCancel.setOnClickListener(new View.OnClickListener() {
-    //            @Override
-    //            public void onClick(View v) {
-    //                dialog.dismiss();
-    //            }
-    //        });
-    //    }
-    //
-    //    /**
-    //     * 跳转到相册
-    //     */
-    //    private void gotoPhoto() {
-    //        Log.d("evan", "*****************打开图库********************");
-    //        //跳转到调用系统图库
-    //        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-    //        startActivityForResult(Intent.createChooser(intent, "请选择图片"), REQUEST_PICK);
-    //    }
-    //
-    //
-    //    /**
-    //     * 跳转到照相机
-    //     */
-    //    private void gotoCamera() {
-    //        Log.d("evan", "*****************打开相机********************");
-    //        //创建拍照存储的图片文件
-    //        tempFile = new File(checkDirPath(Environment.getExternalStorageDirectory().getPath() + "/image/"), System.currentTimeMillis() + ".jpg");
-    //
-    //        //跳转到调用系统相机
-    //        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-    //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-    //            //设置7.0中共享文件，分享路径定义在xml/file_paths.xml
-    //            intent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-    //            Uri contentUri = FileProvider.getUriForFile(getActivity(), BuildConfig.APPLICATION_ID + ".fileProvider", tempFile);
-    //            intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
-    //        } else {
-    //            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
-    //        }
-    //        startActivityForResult(intent, REQUEST_CAPTURE);
-    //    }
-    //
-    //    @Override
-    //    public void onCreate(@Nullable Bundle savedInstanceState) {
-    //        super.onCreate(savedInstanceState);
-    //    }
-    //
-    //
-    //    /**
-    //     * 检查文件是否存在
-    //     */
-    //    private static String checkDirPath(String dirPath) {
-    //        if (TextUtils.isEmpty(dirPath)) {
-    //            return "";
-    //        }
-    //        File dir = new File(dirPath);
-    //        if (!dir.exists()) {
-    //            dir.mkdirs();
-    //        }
-    //        return dirPath;
-    //    }
-    //
-    //
-    //    @Override
-    //    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-    //        switch (requestCode) {
-    //            case REQUEST_CAPTURE: //调用系统相机返回
-    //                if (resultCode == RESULT_OK) {
-    //                    Log.d("evan", "**********camera uri*******" + Uri.fromFile(tempFile).toString());
-    //                    Log.d("evan", "**********camera path*******" + getRealFilePathFromUri(getActivity(), Uri.fromFile(tempFile)));
-    //                    gotoClipActivity(Uri.fromFile(tempFile));
-    //                }
-    //                break;
-    //            case REQUEST_PICK:  //调用系统相册返回
-    //                if (resultCode == RESULT_OK) {
-    //                    Uri uri = intent.getData();
-    //                    Log.d("evan", "**********pick path*******" + getRealFilePathFromUri(getActivity(), uri));
-    //                    gotoClipActivity(uri);
-    //                }
-    //                break;
-    //            case REQUEST_CROP_PHOTO:  //剪切图片返回
-    //                if (resultCode == RESULT_OK) {
-    //                    final Uri uri = intent.getData();
-    //                    if (uri == null) {
-    //                        return;
-    //                    }
-    //                    String cropImagePath = getRealFilePathFromUri(getActivity(), uri);
-    //                    Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
-    //                    headImageView.setImageBitmap(bitMap);
-    //                    //                    if (type == 1) {
-    //                    //                        headImage1.setImageBitmap(bitMap);
-    //                    //                    } else {
-    //                    //                        headImage2.setImageBitmap(bitMap);
-    //                    //                    }
-    //                    //此处后面可以将bitMap转为二进制上传后台网络
-    //                    //......
-    //
-    //                }
-    //                break;
-    //        }
-    //    }
-    //
-    //
-    //    /**
-    //     * 打开截图界面
-    //     */
-    //    public void gotoClipActivity(Uri uri) {
-    //        if (uri == null) {
-    //            return;
-    //        }
-    //        Intent intent = new Intent();
-    //        intent.setClass(getActivity(), ClipImageActivity.class);
-    //        intent.putExtra("type", type);
-    //        intent.setData(uri);
-    //        startActivityForResult(intent, REQUEST_CROP_PHOTO);
-    //    }
-    //
-    //
-    //    /**
-    //     * 根据Uri返回文件绝对路径
-    //     * 兼容了file:///开头的 和 content://开头的情况
-    //     *
-    //     * @param context
-    //     * @param uri
-    //     * @return the file path or null
-    //     */
-    //    public static String getRealFilePathFromUri(final Context context, final Uri uri) {
-    //        if (null == uri) return null;
-    //        final String scheme = uri.getScheme();
-    //        String data = null;
-    //        if (scheme == null)
-    //            data = uri.getPath();
-    //        else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
-    //            data = uri.getPath();
-    //        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
-    //            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
-    //            if (null != cursor) {
-    //                if (cursor.moveToFirst()) {
-    //                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-    //                    if (index > -1) {
-    //                        data = cursor.getString(index);
-    //                    }
-    //                }
-    //                cursor.close();
-    //            }
-    //        }
-    //        return data;
-    //    }
+
 
 }

@@ -168,7 +168,7 @@ public class CourseFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("student_id", (String) SPUtils.get("uid",""));
+        map.put("student_id", (String) SPUtils.get("sid","0"));
 
         map.put("current_page", page + "");
         if (!c_type.equals("-1")) {

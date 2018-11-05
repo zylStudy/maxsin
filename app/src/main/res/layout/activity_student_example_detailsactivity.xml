@@ -57,7 +57,9 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_below="@+id/heigh"
+                    android:layout_marginTop="35dp"
                     android:layout_height="wrap_content"
+
                    >
 
                     <ImageView
@@ -65,7 +67,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="25dp"
+
                         android:scaleType="centerCrop"
                         />
 

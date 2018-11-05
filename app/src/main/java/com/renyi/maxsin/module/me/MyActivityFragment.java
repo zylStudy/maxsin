@@ -177,7 +177,7 @@ public class MyActivityFragment extends Basefragment {
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
         map.put("active_flag", type);
-        map.put("u_id", (String) SPUtils.get("uid",""));
+        map.put("u_id", (String) SPUtils.get("uid","0"));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "active_list", map, new BaseCallback<GetBeans>() {

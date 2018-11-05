@@ -174,7 +174,7 @@ public class NewsFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("u_id", (String) SPUtils.get("uid", ""));
+        map.put("u_id", (String) SPUtils.get("uid", "0"));
         map.put("cur_page", page + "");
 
         mHttpHelper.post(Api.URL + "collect_list", map, new BaseCallback<GetBeans>() {
