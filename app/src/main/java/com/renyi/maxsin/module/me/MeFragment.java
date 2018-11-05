@@ -65,6 +65,8 @@ public class MeFragment extends Basefragment {
     RelativeLayout fanRel;
     @BindView(R.id.rel)
     RelativeLayout rel;
+    @BindView(R.id.activity_base)
+    RelativeLayout activity_base;
     @BindView(R.id.popularity)
     TextView popularity;
     @BindView(R.id.fan)
@@ -80,6 +82,7 @@ public class MeFragment extends Basefragment {
 
     @Override
     protected void initView() {
+
         IntentFilter filter = new IntentFilter("broadcast.updateMe");
         getActivity().registerReceiver(broadcastReceiverUpdate, filter);
         Glide.with(this).load(R.mipmap.ic_me_bg).asBitmap().into(ivShow);
@@ -261,7 +264,7 @@ public class MeFragment extends Basefragment {
             public void onSuccess(Response response, ResultBean resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-
+                    activity_base.setVisibility(activity_base.VISIBLE);
                     resultBeanData = resultBean.getData();
                     tvName.setText(resultBeanData.getUser_name());
 

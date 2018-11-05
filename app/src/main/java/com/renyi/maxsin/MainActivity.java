@@ -31,6 +31,7 @@ import com.renyi.maxsin.net.OkHttpHelper;
 import com.renyi.maxsin.utils.SPUtils;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.tencent.bugly.Bugly;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
         mainActivity = this;
-        uid = (String) SPUtils.get("uid", "0");
+        SPUtils spUtils = new SPUtils(this);
+        uid =   SPUtils.get("uid", "0");
+        Bugly.setUserId(this,uid);
         ButterKnife.bind(this);
         getTokenString();
         initView();
