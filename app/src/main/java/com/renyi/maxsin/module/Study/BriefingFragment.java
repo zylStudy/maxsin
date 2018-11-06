@@ -8,6 +8,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -85,8 +86,17 @@ public class BriefingFragment extends Basefragment {
     RelativeLayout activityBase;
     @BindView(R.id.calendar)
     RelativeLayout calendarRel;
+    @BindView(R.id.rel01)
+    RelativeLayout rel01;
+    @BindView(R.id.rel02)
+    RelativeLayout rel02;
+    @BindView(R.id.rel03)
+    RelativeLayout rel03;
+    @BindView(R.id.rel04)
+    RelativeLayout rel04;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
+
     public static BriefingFragment getInstance() {
 
         return new BriefingFragment();
@@ -140,12 +150,18 @@ public class BriefingFragment extends Basefragment {
 
     }
 
+    private void setViewHideOrShow(RelativeLayout view) {
+        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) view.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
+        linearParams.height = 0;// 控件的高度强制设成0
+        view.setLayoutParams(linearParams);
+    }
+
     @Override
     protected void loadData() {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("stu_id", (String) SPUtils.get("sid",""));
+        map.put("stu_id", (String) SPUtils.get("sid", "0"));
         mHttpHelper.post(Api.URL + "learn_brief", map, new BaseCallback<BriefingBean>() {
             @Override
             public void onRequestBefore() {
@@ -163,7 +179,21 @@ public class BriefingFragment extends Basefragment {
                 if (resultBean.getCode().equals("800")) {
 
                     BriefingBean.DataBean data = resultBean.getData();
-                    name.setText("亲爱的美行学员\n"+data.getS_name()+"，你好");
+                    if (data.getBase_data().getHas_flag().equals("0")) {
+                        setViewHideOrShow(rel01);
+                    }
+                    if (data.getKeshi_data().getHas_flag().equals("0")) {
+                        setViewHideOrShow(rel02);
+                    }
+                    if (data.getPutong_data().getHas_flag().equals("0")) {
+                        setViewHideOrShow(rel03);
+                    }
+                    if (data.getPaiban_data().getHas_flag().equals("0")) {
+                        setViewHideOrShow(rel04);
+                    }
+                    swipeRefreshLayout.setVisibility(swipeRefreshLayout.VISIBLE);
+
+                    name.setText("亲爱的美行学员\n" + data.getS_name() + "，你好");
                     classNum.setText(data.getC_total());
                     timeNum.setText(data.getC_not_done());
                     stuNum.setText(data.getC_have_done());
@@ -190,10 +220,19 @@ public class BriefingFragment extends Basefragment {
                     int iputongPro = 0;
                     int ipaibanPro = 0;
                     try {
-                        iBasePro = Integer.parseInt(basePro.split("%")[0]);
-                        ikeshiPro = Integer.parseInt(keshiPro.split("%")[0]);
-                        iputongPro = Integer.parseInt(putongPro.split("%")[0]);
-                        ipaibanPro = Integer.parseInt(paibanPro.split("%")[0]);
+                        if (!basePro.equals("")) {
+                            iBasePro = Integer.parseInt(basePro.split("%")[0]);
+                        }
+                        if (!keshiPro.equals("")) {
+                            ikeshiPro = Integer.parseInt(keshiPro.split("%")[0]);
+                        }
+                        if (!putongPro.equals("")) {
+                            iputongPro = Integer.parseInt(putongPro.split("%")[0]);
+                        }
+                        if (!paibanPro.equals("")) {
+                            ipaibanPro = Integer.parseInt(paibanPro.split("%")[0]);
+                        }
+
 
                     } catch (NullPointerException e) {
 
@@ -203,6 +242,7 @@ public class BriefingFragment extends Basefragment {
                     tvStudyBaseProjectPro.setProgress(ikeshiPro);
                     tvStudyCourseProjectPro.setProgress(iputongPro);
                     tvStudyTypesettingProjectPro.setProgress(ipaibanPro);
+
 
 
                     Glide.with(getActivity()).load(data.getS_head()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImage) {

@@ -28,8 +28,13 @@ public class AppConfigApplication extends Application {
             /**
              * IMKit SDK调用第一步 初始化
              */
+            try {
+                RongIM.init(this);
+            } catch (IllegalStateException e) {
 
-            RongIM.init(this);
+            }
+
+
             // RongCloudEvent.init(this);
         }
     }

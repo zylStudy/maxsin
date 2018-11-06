@@ -167,6 +167,14 @@ public class ScheduleActivity extends AppCompatActivity {
         bundle.putString("cur_date", listAll.get(a).getDate_date());
         on.setArguments(bundle);
         transaction.add(R.id.first_layout, on, null);
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (imageView == null) {
+            
+        }
     }
 }

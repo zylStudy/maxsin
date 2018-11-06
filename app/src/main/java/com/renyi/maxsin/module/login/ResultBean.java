@@ -63,7 +63,16 @@ public class ResultBean {
         private String fans_num;
         private String renqi;
         private String sid;
+        private String is_music;
         private String add_flag;
+
+        public String getIs_music() {
+            return is_music;
+        }
+
+        public void setIs_music(String is_music) {
+            this.is_music = is_music;
+        }
 
         public String getAdd_flag() {
             return add_flag;
