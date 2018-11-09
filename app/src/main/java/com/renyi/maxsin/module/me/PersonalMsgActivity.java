@@ -172,7 +172,7 @@ public class PersonalMsgActivity extends BaseActivity {
                 if (ContextCompat.checkSelfPermission(PersonalMsgActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
                     //申请READ_EXTERNAL_STORAGE权限
-                    ActivityCompat.requestPermissions(PersonalMsgActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    ActivityCompat.requestPermissions(PersonalMsgActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                             READ_EXTERNAL_STORAGE_REQUEST_CODE);
                 } else {
                     //跳转到相册

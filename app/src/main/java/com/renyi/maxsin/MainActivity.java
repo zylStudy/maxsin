@@ -120,8 +120,10 @@ public class MainActivity extends AppCompatActivity {
         StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
         mainActivity = this;
         SPUtils spUtils = new SPUtils(this);
-        uid =   SPUtils.get("uid", "0");
-        Bugly.setUserId(this,uid);
+        uid = SPUtils.get("uid", "0");
+        Bugly.setUserId(this, uid);
+        Bugly.putUserData(this, "uid", uid);
+
         ButterKnife.bind(this);
         getTokenString();
         initView();

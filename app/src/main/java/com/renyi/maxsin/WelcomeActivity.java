@@ -38,7 +38,7 @@ public class WelcomeActivity extends Activity {
             Intent intent = new Intent(WelcomeActivity.this,
                     SplashActivity.class);
             startActivity(intent);
-            SPUtils.put("isFirst", false);
+            SPUtils.putBoolean("isFirst", false);
 
         } else {
 

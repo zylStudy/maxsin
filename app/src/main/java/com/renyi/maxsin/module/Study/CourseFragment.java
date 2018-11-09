@@ -272,17 +272,27 @@ public class CourseFragment extends Basefragment {
                 flage = 2;
                 popList.clear();
                 popMap.clear();
+              String  is_music = SPUtils.get("is_music", "-1");
+                if (is_music.equals("0")) {
+                    popList.add("全部");
+                    popList.add("基础课");
+                    popList.add("项目课");
+                    popList.add("排版课");
+                    popList.add("课时项目课");
+                    popMap.put("全部", "-1");
+                    popMap.put("基础课", "1");
+                    popMap.put("项目课", "2");
+                    popMap.put("排版课", "3");
+                    popMap.put("课时项目课", "4");
+                }else{
+                    popList.add("全部");
+                    popList.add("课时项目课");
+                    popList.add("录制课");
+                    popMap.put("全部", "-1");
+                    popMap.put("课时项目课", "4");
+                    popMap.put("录制课", "5");
+                }
 
-                popList.add("全部");
-                popList.add("基础课");
-                popList.add("项目课");
-                popList.add("排版课");
-                popList.add("课时项目");
-                popMap.put("全部", "-1");
-                popMap.put("基础课", "1");
-                popMap.put("项目课", "2");
-                popMap.put("排版课", "3");
-                popMap.put("课时项目", "4");
 
                 popView.showAsDropDown(rel02);
                 typeimage02.setBackgroundResource(R.mipmap.ic_selec_up);

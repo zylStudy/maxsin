@@ -50,7 +50,8 @@ public class StudyActivity extends BaseActivity implements OnTabSelectListener, 
         showTitleAndBack("学情管理");
 
         if (getIntent().getExtras().getString("flag").equals("2")) {
-            getRoal();
+          //  getRoal();
+            setRoleLayout();
             emptyRel.setVisibility(emptyRel.GONE);
             studyRel.setVisibility(emptyRel.VISIBLE);
         } else {

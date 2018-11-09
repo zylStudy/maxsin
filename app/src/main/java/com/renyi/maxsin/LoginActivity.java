@@ -586,7 +586,7 @@ public class LoginActivity extends AppCompatActivity implements KeyboardWatcher.
                             Intent intent = new Intent(LoginActivity.this,
                                     MainActivity.class);
                             startActivity(intent);
-                            SPUtils.put("isLogin", false);
+                            SPUtils.putBoolean("isLogin", false);
                             SPUtils.put("uid", resultBean.getData().getU_id());
                             finish();
                         }
@@ -609,7 +609,7 @@ public class LoginActivity extends AppCompatActivity implements KeyboardWatcher.
                                 Intent intent = new Intent(LoginActivity.this,
                                         MainActivity.class);
                                 startActivity(intent);
-                                SPUtils.put("isLogin", false);
+                                SPUtils.putBoolean("isLogin", false);
                                 SPUtils.put("uid", resultBean.getData().getU_id());
                                 finish();
                             }
@@ -676,7 +676,7 @@ public class LoginActivity extends AppCompatActivity implements KeyboardWatcher.
                     Intent intent = new Intent(LoginActivity.this,
                             MainActivity.class);
                     startActivity(intent);
-                    SPUtils.put("isLogin", false);
+                    SPUtils.putBoolean("isLogin", false);
                     finish();
 
                 } else {

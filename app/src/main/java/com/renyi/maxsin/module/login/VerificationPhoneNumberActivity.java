@@ -160,7 +160,7 @@ public class VerificationPhoneNumberActivity extends BaseActivity implements Key
                     Intent intent = new Intent(VerificationPhoneNumberActivity.this,
                             MainActivity.class);
                     startActivity(intent);
-                    SPUtils.put("isLogin", false);
+                    SPUtils.putBoolean("isLogin", false);
                     SPUtils.put("uid", resultBean.getData().getU_id());
                     BindingPhoneNumeberActivity.bindingPhoneNumeberActivity.finish();
                     LoginActivity.loginActivity.finish();

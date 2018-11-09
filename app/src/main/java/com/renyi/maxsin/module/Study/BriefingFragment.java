@@ -30,6 +30,8 @@ import java.util.Map;
 
 import butterknife.BindView;
 
+import static com.renyi.maxsin.R.id.tv_study_typesetting_project;
+
 /**
  * Created by zhangyuliang on 2018/3/22.
  * 简报
@@ -74,12 +76,13 @@ public class BriefingFragment extends Basefragment {
     TextView tvStudyCourseProjectNum;
     @BindView(R.id.tv_study_course_project_pro)
     CBProgressBar tvStudyCourseProjectPro;
-    @BindView(R.id.tv_study_typesetting_project)
+    @BindView(tv_study_typesetting_project)
     TextView tvStudyTypesettingProject;
     @BindView(R.id.tv_study_typesetting_project_status)
     TextView tvStudyTypesettingProjectStatus;
     @BindView(R.id.tv_study_typesetting_project_num)
     TextView tvStudyTypesettingProjectNum;
+
     @BindView(R.id.tv_study_typesetting_project_pro)
     CBProgressBar tvStudyTypesettingProjectPro;
     @BindView(R.id.activity_base)
@@ -96,6 +99,7 @@ public class BriefingFragment extends Basefragment {
     RelativeLayout rel04;
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
+    String is_music = "0";
 
     public static BriefingFragment getInstance() {
 
@@ -109,6 +113,7 @@ public class BriefingFragment extends Basefragment {
 
     @Override
     protected void initView() {
+        is_music = SPUtils.get("is_music", "-1");
         swipeRefreshLayout.setColorSchemeResources(
 
                 android.R.color.holo_red_light,
@@ -161,6 +166,7 @@ public class BriefingFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
+        map.put("is_music", is_music );
         map.put("stu_id", (String) SPUtils.get("sid", "0"));
         mHttpHelper.post(Api.URL + "learn_brief", map, new BaseCallback<BriefingBean>() {
             @Override
@@ -215,6 +221,13 @@ public class BriefingFragment extends Basefragment {
                     tvStudyCourseProjectNum.setText(putongPro);
                     tvStudyTypesettingProjectNum.setText(paibanPro);
 
+
+                    if (is_music .equals("1")) {
+                        tvStudyTypesettingProject.setText("录制课进度");
+                    } else {
+                        tvStudyTypesettingProject.setText("排版课进度");
+                    }
+
                     int iBasePro = 0;
                     int ikeshiPro = 0;
                     int iputongPro = 0;
@@ -242,7 +255,6 @@ public class BriefingFragment extends Basefragment {
                     tvStudyBaseProjectPro.setProgress(ikeshiPro);
                     tvStudyCourseProjectPro.setProgress(iputongPro);
                     tvStudyTypesettingProjectPro.setProgress(ipaibanPro);
-
 
 
                     Glide.with(getActivity()).load(data.getS_head()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImage) {

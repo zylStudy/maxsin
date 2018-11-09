@@ -134,7 +134,7 @@ public class MySeettingActivity extends BaseActivity {
                 Intent intent = new Intent(MySeettingActivity.this,
                         LoginActivity.class);
                 startActivity(intent);
-                SPUtils.put("isLogin", true);
+                SPUtils.putBoolean("isLogin", true);
                 finish();
             }
         });

@@ -28,23 +28,16 @@ public class SPUtils {
      * @param key
      * @param object
      */
-    public static void put(String key, Object object) {
-
-        if (object instanceof String) {
-            editor.putString(key, (String) object);
-        } else if (object instanceof Integer) {
-            editor.putInt(key, (Integer) object);
-        } else if (object instanceof Boolean) {
-            editor.putBoolean(key, (Boolean) object);
-        } else if (object instanceof Float) {
-            editor.putFloat(key, (Float) object);
-        } else if (object instanceof Long) {
-            editor.putLong(key, (Long) object);
-        } else {
-            editor.putString(key, object.toString());
-        }
+    public static void put(String key, String object) {
+        editor.putString(key, object);
         editor.commit();
     }
+
+    public static void putBoolean(String key, Object object) {
+        editor.putBoolean(key, (Boolean) object);
+        editor.commit();
+    }
+
 
     /**
      * 获取保存数据的方法，我们根据默认值的到保存的数据的具体类型，然后调用相对于的方法获取值

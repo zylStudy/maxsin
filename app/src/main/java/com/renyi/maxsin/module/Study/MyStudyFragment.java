@@ -44,9 +44,12 @@ public class MyStudyFragment extends Basefragment {
     private View includeView01, includeView02, includeView03, includeView04;
     private RecyclerView recyclerView1, recyclerView2, recyclerView3, recyclerView4;
     TextView projectType1, total1, projectType2, total2, projectType3, total3, projectType4, total4;
+    private String is_music = "";
+
     public static MyStudyFragment getInstance() {
         return new MyStudyFragment();
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_mystudy;
@@ -54,6 +57,7 @@ public class MyStudyFragment extends Basefragment {
 
     @Override
     protected void initView() {
+        is_music = SPUtils.get("is_music", "-1");
         includeLayout();
     }
 
@@ -78,8 +82,6 @@ public class MyStudyFragment extends Basefragment {
         recyclerView4 = includeView04.findViewById(recyclerView);
         projectType4 = includeView04.findViewById(R.id.project_type);
         total4 = includeView04.findViewById(R.id.total);
-
-
     }
 
     private void setDataToIncludeLayout(MyStudyBean myStudyBean) {
@@ -93,7 +95,7 @@ public class MyStudyFragment extends Basefragment {
                 @Override
                 protected void convert(ViewHolder viewHolder, MyStudyBean.DataBeanXXXX.PutongBean.DataBean item, int position) {
                     viewHolder.setText(R.id.tv_study_base, item.getEntry_name());
-                    viewHolder.setText(R.id.tv_study_base_status,"预计完成时间"+ item.getPre_finished_time());
+                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间" + item.getPre_finished_time());
                     viewHolder.setText(R.id.tv_study_post, item.getPre_finished_time_text());
 
                     viewHolder.setText(R.id.tv_study_base_num, item.getProject_progress() + "%");
@@ -115,7 +117,7 @@ public class MyStudyFragment extends Basefragment {
                 @Override
                 protected void convert(ViewHolder viewHolder, MyStudyBean.DataBeanXXXX.KeshiBean.DataBeanXX item, int position) {
                     viewHolder.setText(R.id.tv_study_base, item.getEntry_name());
-                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间"+item.getPre_finished_time());
+                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间" + item.getPre_finished_time());
                     viewHolder.setText(R.id.tv_study_post, item.getPre_finished_time_text());
                     viewHolder.setText(R.id.tv_study_base_num, item.getFinishend_count() + "/" + item.getTotal_number());
                     //  viewHolder.setText(R.id.time, item.getC_date() + " " + item.getC_start_time() + "-" + item.getC_end_time());
@@ -131,7 +133,13 @@ public class MyStudyFragment extends Basefragment {
         }
         if (data.getPaiban().getHas_flag().equals("1")) {
             rel3.addView(includeView03);
-            projectType3.setText("排版翻译");
+
+            if (is_music.equals("0")) {
+                projectType3.setText("排版翻译");
+            } else {
+                projectType3.setText("录制课");
+            }
+
             total3.setText(data.getPaiban().getFinished() + "/" + data.getPaiban().getTotal() + "已完成");
 
             recyclerView3.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -139,7 +147,7 @@ public class MyStudyFragment extends Basefragment {
                 @Override
                 protected void convert(ViewHolder viewHolder, MyStudyBean.DataBeanXXXX.PaibanBean.DataBeanX item, int position) {
                     viewHolder.setText(R.id.tv_study_base, item.getEntry_name());
-                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间"+item.getPre_finished_time());
+                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间" + item.getPre_finished_time());
                     viewHolder.setText(R.id.tv_study_post, item.getPre_finished_time_text());
                     viewHolder.setText(R.id.tv_study_base_num, item.getProject_progress() + "%");
                     //  viewHolder.setText(R.id.time, item.getC_date() + " " + item.getC_start_time() + "-" + item.getC_end_time());
@@ -161,7 +169,7 @@ public class MyStudyFragment extends Basefragment {
                 @Override
                 protected void convert(ViewHolder viewHolder, MyStudyBean.DataBeanXXXX.BaseBean.DataBeanXXX item, int position) {
                     viewHolder.setText(R.id.tv_study_base, item.getEntry_name());
-                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间"+item.getPre_finished_time());
+                    viewHolder.setText(R.id.tv_study_base_status, "预计完成时间" + item.getPre_finished_time());
                     viewHolder.setText(R.id.tv_study_post, item.getPre_finished_time_text());
                     viewHolder.setText(R.id.tv_study_base_num, item.getFinishend_count() + "/" + item.getTotal_number());
                     //  viewHolder.setText(R.id.time, item.getC_date() + " " + item.getC_start_time() + "-" + item.getC_end_time());
@@ -184,9 +192,10 @@ public class MyStudyFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("s_id", (String) SPUtils.get("sid","0"));
+        map.put("s_id", SPUtils.get("sid", "0"));
+        map.put("is_music", is_music);
 
-        mHttpHelper.post(Api.URL + "my_study", map, new BaseCallback<MyStudyBean>() {
+        mHttpHelper.post(Api.URL + "new_study", map, new BaseCallback<MyStudyBean>() {
             @Override
             public void onRequestBefore() {
 
