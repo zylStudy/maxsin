@@ -188,7 +188,7 @@ public class CourseListFragment extends Basefragment {
 
             @Override
             public void onSuccess(Response response, CourseListTeacherBean resultCodeList) {
-                        if (resultCodeList.getCode().equals("800")) {
+                        if (resultCodeList.getCode().equals("800") && recyclerView != null) {
                             if (dataAll != null) {
                                 dataAll.clear();
                             }

@@ -131,7 +131,7 @@ public class ReleaseDetailsActivity extends BaseActivity {
             @Override
             public void onSuccess(Response response, NewsBean resultBean) {
                 newsBean = resultBean;
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && title != null) {
                     title.setText(resultBean.getData().getTitle());
                     type.setText(resultBean.getData().getCatname());
 
@@ -181,7 +181,7 @@ public class ReleaseDetailsActivity extends BaseActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-//            imgReset();//重置webview中img标签的图片大小
+            //            imgReset();//重置webview中img标签的图片大小
             // html加载完成之后，添加监听图片的点击js函数
 
         }
@@ -196,17 +196,16 @@ public class ReleaseDetailsActivity extends BaseActivity {
     /**
      * 对图片进行重置大小，宽度就是手机屏幕宽度，高度根据宽度比便自动缩放
      **/
-//    private void imgReset() {
-//        webView.loadUrl("javascript:(function(){" +
-//                "var objs = document.getElementsByTagName('img'); " +
-//                "for(var i=0;i<objs.length;i++)  " +
-//                "{"
-//                + "var img = objs[i];   " +
-//                "    img.style.maxWidth = '100%'; img.style.height = 'auto';  " +
-//                "}" +
-//                "})()");
-//    }
-
+    //    private void imgReset() {
+    //        webView.loadUrl("javascript:(function(){" +
+    //                "var objs = document.getElementsByTagName('img'); " +
+    //                "for(var i=0;i<objs.length;i++)  " +
+    //                "{"
+    //                + "var img = objs[i];   " +
+    //                "    img.style.maxWidth = '100%'; img.style.height = 'auto';  " +
+    //                "}" +
+    //                "})()");
+    //    }
     private void postLoveOrZan(final String url, Map<String, String> map) {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         map.put("key", Api.KEY);

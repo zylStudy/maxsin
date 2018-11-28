@@ -65,7 +65,7 @@ public class CourseDetailActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-getDataFromServer();
+        getDataFromServer();
 
     }
 
@@ -90,7 +90,7 @@ getDataFromServer();
             @Override
             public void onSuccess(Response response, CourseDetailsBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && name != null) {
 
                     CourseDetailsBean.DataBean resultBeanData = resultBean.getData();
                     name.setText(resultBeanData.getT_name());

@@ -88,7 +88,7 @@ public class StudentExampleDetailsactivity extends AppCompatActivity implements 
     }
 
     private void setViewBindData(StudentExampleDetailsBeans resultBean) {
-        if (resultBean != null) {
+        if (resultBean != null&& school != null) {
             StudentExampleDetailsBeans.DataBean dataBean = resultBean.getData();
             setFragmentViewBindData(dataBean);
             school.setText(dataBean.getTitle());

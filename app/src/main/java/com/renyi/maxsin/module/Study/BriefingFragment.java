@@ -182,7 +182,7 @@ public class BriefingFragment extends Basefragment {
             @Override
             public void onSuccess(Response response, BriefingBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800")&& name != null) {
 
                     BriefingBean.DataBean data = resultBean.getData();
                     if (data.getBase_data().getHas_flag().equals("0")) {

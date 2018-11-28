@@ -135,7 +135,13 @@ public class MeFragment extends Basefragment {
                 if (resultBeanData.getAdd_flag().equals("2")) {
                     bundle.putString("sid", resultBeanData.getSid() );
                     SPUtils.put("sid", resultBeanData.getSid());
-                    SPUtils.put("is_music", resultBeanData.getIs_music());//0不是音乐学生1是音乐学生
+                    if ( resultBeanData.getIs_music() == null) {
+                        SPUtils.put("is_music", "-1");
+                    }else{
+                        SPUtils.put("is_music", resultBeanData.getIs_music());  //0不是音乐学生1是音乐学生
+                    }
+
+
                 }
 
                 bundle.putString("flag", resultBeanData.getAdd_flag() );

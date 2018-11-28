@@ -70,6 +70,7 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
     ViewPager vpContlayout;
     String college_id = "";
     List<String> titles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +84,11 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
         loadData();
         setOnClickListeners();
     }
+
     private void setViewBindData(UniversityDetailsBeans resultBean) {
-        if (resultBean != null) {
+        if (resultBean != null && school != null) {
             UniversityDetailsBeans.DataBean dataBean = resultBean.getData().get(0);
+
             setFragmentViewBindData(dataBean);
             school.setText(dataBean.getTitle());
             eschool.setText(dataBean.getEnname());
@@ -113,7 +116,7 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
     private void setFragmentViewBindData(UniversityDetailsBeans.DataBean dataBean) {
 
         List<Fragment> fragments = new ArrayList<>();
-          titles = new ArrayList<>();
+        titles = new ArrayList<>();
         if (dataBean.getContent() != null && !dataBean.getContent().equals("")) {
             titles.add("院校简介");
             fragments.add(UniversityDetailsFragment.getInstance(dataBean.getContent()));
@@ -157,7 +160,6 @@ public class UniversityDetailsActivity extends AppCompatActivity implements OnTa
         }
 
     }
-
 
 
     private void setOnClickListeners() {

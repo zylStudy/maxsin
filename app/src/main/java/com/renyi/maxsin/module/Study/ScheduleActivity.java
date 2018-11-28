@@ -140,7 +140,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Response response, WeekDayBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && week != null) {
                     listAll.addAll(resultBean.getData().getReturn_week_data());
                     week.setText(resultBean.getData().getCur_date() + " " + resultBean.getData().getCur_year());
 
@@ -173,8 +173,6 @@ public class ScheduleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (imageView == null) {
-            
-        }
+
     }
 }

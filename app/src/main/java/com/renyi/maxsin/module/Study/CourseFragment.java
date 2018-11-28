@@ -69,10 +69,12 @@ public class CourseFragment extends Basefragment {
     PopupWindow popView;
     Map<String, String> popMap = new HashMap<>();
     List<String> popList = new ArrayList();
+
     public static CourseFragment getInstance() {
 
         return new CourseFragment();
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_course;
@@ -168,7 +170,7 @@ public class CourseFragment extends Basefragment {
         OkHttpHelper mHttpHelper = OkHttpHelper.getinstance();
         Map<String, String> map = new HashMap<>();
         map.put("key", Api.KEY);
-        map.put("student_id", (String) SPUtils.get("sid","0"));
+        map.put("student_id", (String) SPUtils.get("sid", "0"));
 
         map.put("current_page", page + "");
         if (!c_type.equals("-1")) {
@@ -194,7 +196,7 @@ public class CourseFragment extends Basefragment {
             @Override
             public void onSuccess(Response response, CoursesListBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && recyclerView != null) {
 
                     coursesBean = resultBean.getData();
 
@@ -272,7 +274,7 @@ public class CourseFragment extends Basefragment {
                 flage = 2;
                 popList.clear();
                 popMap.clear();
-              String  is_music = SPUtils.get("is_music", "-1");
+                String is_music = SPUtils.get("is_music", "-1");
                 if (is_music.equals("0")) {
                     popList.add("全部");
                     popList.add("基础课");
@@ -284,7 +286,7 @@ public class CourseFragment extends Basefragment {
                     popMap.put("项目课", "2");
                     popMap.put("排版课", "3");
                     popMap.put("课时项目课", "4");
-                }else{
+                } else {
                     popList.add("全部");
                     popList.add("课时项目课");
                     popList.add("录制课");

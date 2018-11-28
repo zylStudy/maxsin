@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'com.mob.sdk'
+
+//apply plugin: 'mtj-circle-plugin'
 android {
     compileSdkVersion 26
     buildToolsVersion "25.0.3"
@@ -8,8 +10,8 @@ android {
         applicationId "com.renyi.maxsin"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 9
-        versionName "1.6.0"
+        versionCode 10
+        versionName "1.7.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
 
@@ -23,12 +25,22 @@ android {
 
     }
 
-
+//    MtjCirclePluginConfig {
+//        // 设置appkey
+//        appkey = '09ee87cea4'
+//        // 设置debug 开关，如果需要查看日志则打开开关，为避免影响性能建议上线前关闭（设置为false）
+//        debug = false
+//        // 默认启动此插件，如果开发者不需要可以禁用（设置为false）
+//        enabled = true
+//    }
     repositories {
+
         flatDir {
             dirs 'libs'   // aar目录
         }
     }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -106,4 +118,7 @@ dependencies {
 //设置状态栏的颜色
     compile 'com.githang:status-bar-compat:latest.integration'
     compile project(':IMKit')
+
+
+
 }

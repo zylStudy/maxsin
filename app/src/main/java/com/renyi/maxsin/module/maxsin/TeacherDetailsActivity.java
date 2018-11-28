@@ -185,8 +185,9 @@ public class TeacherDetailsActivity extends BaseActivity {
             public void onSuccess(Response response, TeacherListBeans resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
-                    setViewBindData(resultBean);
-
+                    if (name != null) {
+                        setViewBindData(resultBean);
+                    }
                 }
 
             }

@@ -22,6 +22,8 @@ import java.util.Map;
 
 import butterknife.BindView;
 
+import static com.renyi.maxsin.R.id.rel1;
+
 /**
  * 操作记录
  */
@@ -93,7 +95,7 @@ public class OperationActivity extends BaseActivity {
             @Override
             public void onSuccess(Response response, OperationBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && recyclerView != null) {
 
                     List<OperationBean.DataBean> dataBeanList = resultBean.getData();
                     dataBeanListAll.addAll(dataBeanList);

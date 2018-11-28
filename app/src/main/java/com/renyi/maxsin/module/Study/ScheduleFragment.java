@@ -26,6 +26,8 @@ import java.util.Map;
 
 import butterknife.BindView;
 
+import static com.renyi.maxsin.R.id.week;
+
 /**
  * Created by zhangyuliang on 2018/9/19.
  */
@@ -93,7 +95,7 @@ public class ScheduleFragment extends Basefragment {
             @Override
             public void onSuccess(Response response, WeekDayBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && timetv != null) {
                     List<WeekDayBean.DataBean.ReturnWeekDataBean> return_week_data = resultBean.getData().getReturn_week_data();
                     listAll.addAll(return_week_data);
                     for (int i = listAll.size() - 1; i > 6; i--) {
@@ -119,7 +121,7 @@ public class ScheduleFragment extends Basefragment {
         mAdapter = new CommonAdapter<WeekDayBean.DataBean.ReturnWeekDataBean>(getActivity(), R.layout.item_list, listAll) {
             @Override
             protected void convert(ViewHolder holder, WeekDayBean.DataBean.ReturnWeekDataBean s, int position) {
-                holder.setText(R.id.week, s.getWeek_data());
+                holder.setText(week, s.getWeek_data());
                 holder.setText(R.id.tv_day, s.getDate_data());
 
 

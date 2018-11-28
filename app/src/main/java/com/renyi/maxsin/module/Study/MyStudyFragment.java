@@ -209,7 +209,7 @@ public class MyStudyFragment extends Basefragment {
             @Override
             public void onSuccess(Response response, MyStudyBean resultBean) {
 
-                if (resultBean.getCode().equals("800")) {
+                if (resultBean.getCode().equals("800") && rel1 != null) {
                     setDataToIncludeLayout(resultBean);
                 } else {
                 }

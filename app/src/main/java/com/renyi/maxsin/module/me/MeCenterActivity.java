@@ -88,7 +88,6 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
     MeCenterBean.DataBean resultBeanData;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -232,34 +231,36 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
             public void onSuccess(Response response, MeCenterBean resultBean) {
 
                 if (resultBean.getCode().equals("800")) {
+                    if (tvName != null) {
 
-                     resultBeanData = resultBean.getData();
-                    tvName.setText(resultBeanData.getUser_name());
-                    popularity.setText(resultBeanData.getRenqi());
-                    fans.setText(resultBeanData.getFans_num());
-                    follower.setText(resultBeanData.getFocus_num());
-                    // info.setText("不忘初心，感恩常在");
-                    is_fans = resultBeanData.getIs_fans();
-                    setFollowBut(resultBeanData.getIs_fans());
 
-                    Glide.with(MeCenterActivity.this).load(resultBeanData.getHead_url()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImageView) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            RoundedBitmapDrawable circularBitmapDrawable =
-                                    RoundedBitmapDrawableFactory.create(getResources(), resource);
-                            circularBitmapDrawable.setCircular(true);
-                            //    circularBitmapDrawable.setCornerRadius(5);设置图片圆角
-                            headImageView.setImageDrawable(circularBitmapDrawable);
-                        }
-                    });
+                        resultBeanData = resultBean.getData();
+                        tvName.setText(resultBeanData.getUser_name());
+                        popularity.setText(resultBeanData.getRenqi());
+                        fans.setText(resultBeanData.getFans_num());
+                        follower.setText(resultBeanData.getFocus_num());
+                        // info.setText("不忘初心，感恩常在");
+                        is_fans = resultBeanData.getIs_fans();
+                        setFollowBut(resultBeanData.getIs_fans());
 
-                    RongIM.getInstance()
-                            .setCurrentUserInfo(
-                                    new UserInfo(
-                                            id,
-                                            resultBeanData.getUser_name(),
-                                            Uri.parse(resultBeanData.getHead_url())));
+                        Glide.with(MeCenterActivity.this).load(resultBeanData.getHead_url()).asBitmap().centerCrop().into(new BitmapImageViewTarget(headImageView) {
+                            @Override
+                            protected void setResource(Bitmap resource) {
+                                RoundedBitmapDrawable circularBitmapDrawable =
+                                        RoundedBitmapDrawableFactory.create(getResources(), resource);
+                                circularBitmapDrawable.setCircular(true);
+                                //    circularBitmapDrawable.setCornerRadius(5);设置图片圆角
+                                headImageView.setImageDrawable(circularBitmapDrawable);
+                            }
+                        });
 
+                        RongIM.getInstance()
+                                .setCurrentUserInfo(
+                                        new UserInfo(
+                                                id,
+                                                resultBeanData.getUser_name(),
+                                                Uri.parse(resultBeanData.getHead_url())));
+                    }
                 } else {
 
                 }
