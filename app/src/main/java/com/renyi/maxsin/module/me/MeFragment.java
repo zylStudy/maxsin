@@ -30,8 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.Conversation;
+
 
 /**
  * Created by zhangyuliang on 2018/3/22.
@@ -108,16 +107,15 @@ public class MeFragment extends Basefragment {
         msgRel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), MyMessageActivity.class);
-//                startActivity(intent);
-                Map<String,Boolean >map =new HashMap<>();
-                map.put(Conversation.ConversationType.GROUP.getName(),false);
-                map.put(Conversation.ConversationType.PRIVATE.getName(),false);
-                map.put(Conversation.ConversationType.DISCUSSION.getName(),false);
-                map.put(Conversation.ConversationType.PUBLIC_SERVICE.getName(),false);
-                map.put(Conversation.ConversationType.SYSTEM.getName(),false);
 
-                RongIM.getInstance().startConversationList(getActivity(),map);
+//                Map<String,Boolean >map =new HashMap<>();
+//                map.put(Conversation.ConversationType.GROUP.getName(),false);
+//                map.put(Conversation.ConversationType.PRIVATE.getName(),false);
+//                map.put(Conversation.ConversationType.DISCUSSION.getName(),false);
+//                map.put(Conversation.ConversationType.PUBLIC_SERVICE.getName(),false);
+//                map.put(Conversation.ConversationType.SYSTEM.getName(),false);
+//
+//                RongIM.getInstance().startConversationList(getActivity(),map);
             }
         });
         pushRel.setOnClickListener(new View.OnClickListener() {

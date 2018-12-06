@@ -43,8 +43,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.UserInfo;
+
 
 
 public class MeCenterActivity extends AppCompatActivity implements OnTabSelectListener {
@@ -141,8 +140,8 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
         letter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RongIM.getInstance().startPrivateChat(MeCenterActivity.this, id,
-                        resultBeanData.getUser_name());
+//                RongIM.getInstance().startPrivateChat(MeCenterActivity.this, id,
+//                        resultBeanData.getUser_name());
             }
         });
     }
@@ -254,12 +253,12 @@ public class MeCenterActivity extends AppCompatActivity implements OnTabSelectLi
                             }
                         });
 
-                        RongIM.getInstance()
-                                .setCurrentUserInfo(
-                                        new UserInfo(
-                                                id,
-                                                resultBeanData.getUser_name(),
-                                                Uri.parse(resultBeanData.getHead_url())));
+//                        RongIM.getInstance()
+//                                .setCurrentUserInfo(
+//                                        new UserInfo(
+//                                                id,
+//                                                resultBeanData.getUser_name(),
+//                                                Uri.parse(resultBeanData.getHead_url())));
                     }
                 } else {
 

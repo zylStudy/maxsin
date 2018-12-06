@@ -33,7 +33,7 @@ public class WelcomeActivity extends Activity {
     }
 
     private void getJumpWhere() {
-        if ( SPUtils.get("isFirst", true)) {
+        if (SPUtils.get("isFirst", true)) {
             //跳转到欢迎页
             Intent intent = new Intent(WelcomeActivity.this,
                     SplashActivity.class);
@@ -42,7 +42,7 @@ public class WelcomeActivity extends Activity {
 
         } else {
 
-            if ( SPUtils.get("isLogin", true)) {
+            if (SPUtils.get("isLogin", true)) {
                 //如果没有登录跳转到登录页面，登录成功后把isLogin=flase
                 Intent intent = new Intent(WelcomeActivity.this,
                         LoginActivity.class);

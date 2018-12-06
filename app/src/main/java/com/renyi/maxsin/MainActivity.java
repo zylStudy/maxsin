@@ -40,9 +40,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.UserInfo;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -267,20 +265,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void connectRongIMToSdk(String token) {
 
-        RongIM.connect(token, new RongIMClient.ConnectCallback() {
-            @Override
-            public void onSuccess(String s) {
-            }
-
-            @Override
-            public void onError(RongIMClient.ErrorCode errorCode) {
-            }
-
-            @Override
-            public void onTokenIncorrect() {
-
-            }
-        });
+//        RongIM.connect(token, new RongIMClient.ConnectCallback() {
+//            @Override
+//            public void onSuccess(String s) {
+//            }
+//
+//            @Override
+//            public void onError(RongIMClient.ErrorCode errorCode) {
+//            }
+//
+//            @Override
+//            public void onTokenIncorrect() {
+//
+//            }
+//        });
 
     }
 
@@ -342,15 +340,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if (resultBean.getCode().equals("800")) {
 
-                    RongIM.getInstance()
-                            .refreshUserInfoCache(
-                                    new UserInfo(
-                                            (String) SPUtils.get("uid", uid),
-                                            resultBean.getData().getName(),
-                                            Uri.parse(resultBean.getData().getHeadphoto())));
-
-                    RongIM.getInstance()
-                            .setMessageAttachedUserInfo(true);
+//                    RongIM.getInstance()
+//                            .refreshUserInfoCache(
+//                                    new UserInfo(
+//                                            (String) SPUtils.get("uid", uid),
+//                                            resultBean.getData().getName(),
+//                                            Uri.parse(resultBean.getData().getHeadphoto())));
+//
+//                    RongIM.getInstance()
+//                            .setMessageAttachedUserInfo(true);
                 } else {
 
                 }

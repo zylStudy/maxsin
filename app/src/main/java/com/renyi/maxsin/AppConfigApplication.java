@@ -8,7 +8,7 @@ import android.content.res.Resources;
 
 import com.tencent.bugly.Bugly;
 
-import io.rong.imkit.RongIM;
+
 
 /**
  * Created by zhangyuliang on 2018/8/3.
@@ -29,7 +29,7 @@ public class AppConfigApplication extends Application {
              * IMKit SDK调用第一步 初始化
              */
             try {
-                RongIM.init(this);
+              //  RongIM.init(this);
             } catch (IllegalStateException e) {
 
             }
