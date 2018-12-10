@@ -2,6 +2,7 @@ package com.renyi.maxsin.module.get;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -9,6 +10,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.adapter.FragmentAdapter;
 import com.renyi.maxsin.base.Basefragment;
+import com.renyi.maxsin.utils.StatusBarCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ public class GetFragment extends Basefragment implements OnTabSelectListener, Vi
     SlidingTabLayout tl5;
     @BindView(R.id.tv)
     TextView tv;
+    @BindView(R.id.statu_layout)
+    RelativeLayout statuLayout;
     int a = 0;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
@@ -43,6 +47,11 @@ public class GetFragment extends Basefragment implements OnTabSelectListener, Vi
 
     @Override
     protected void initView() {
+        StatusBarCompat.getStatusBarHeight(getContext());
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) statuLayout.getLayoutParams();
+        layoutParams.height =  StatusBarCompat.getStatusBarHeight(getActivity());
+        statuLayout.setLayoutParams(layoutParams);
+
         list.add("推荐");
         list.add("资讯");
         list.add("活动");

@@ -37,6 +37,7 @@ import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
 import com.renyi.maxsin.utils.SPUtils;
+import com.renyi.maxsin.utils.StatusBarCompat;
 import com.renyi.maxsin.view.viewpagergallery.ScalePageTransformer;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -73,7 +74,8 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
     TextView tvTitle1;
     TextView tvTitle2;
     private boolean isBottom = false;
-
+    @BindView(R.id.statu_layout)
+    RelativeLayout statuLayout;
     @Override
     protected int getLayoutId() {
 
@@ -82,6 +84,12 @@ public class MvpPageFragment extends Basefragment implements ViewPager.OnPageCha
 
     @Override
     protected void initView() {
+
+        StatusBarCompat.getStatusBarHeight(getContext());
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) statuLayout.getLayoutParams();
+        layoutParams.height =  StatusBarCompat.getStatusBarHeight(getActivity());
+        statuLayout.setLayoutParams(layoutParams);
+
         IntentFilter filter = new IntentFilter("broadcast.update");
         getActivity().registerReceiver(broadcastReceiverUpdate, filter);
         commonAdapter = new CommonAdapter<PopularBeans.DataBean.ListBean>(getActivity(), R.layout.item_mvp_new_product_list, popularListAll) {

@@ -17,9 +17,10 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 /**
- * 透明状态栏
+ * 透明状态栏getStatusBarHeight
  */
 public class StatusBarCompat {
+
     private static final int COLOR_TRANSLUCENT = Color.parseColor("#00000000");
 
     public static final int DEFAULT_COLOR_ALPHA = 112;

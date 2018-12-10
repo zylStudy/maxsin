@@ -1,7 +1,6 @@
 package com.renyi.maxsin;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.githang.statusbar.StatusBarCompat;
+
 import com.renyi.maxsin.module.get.GetFragment;
 import com.renyi.maxsin.module.maxsin.MaxsinFragment;
 import com.renyi.maxsin.module.me.MeFragment;
@@ -29,6 +28,7 @@ import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
 import com.renyi.maxsin.net.OkHttpHelper;
 import com.renyi.maxsin.utils.SPUtils;
+import com.renyi.maxsin.utils.StatusBarCompat;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.tencent.bugly.Bugly;
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         //                WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
         setContentView(R.layout.activity_main);
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.white), true);
+        StatusBarCompat.translucentStatusBar(this);
         mainActivity = this;
         SPUtils spUtils = new SPUtils(this);
         uid = SPUtils.get("uid", "0");
