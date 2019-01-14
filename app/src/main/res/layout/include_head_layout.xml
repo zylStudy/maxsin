@@ -40,7 +40,7 @@
 
         <RelativeLayout
             android:id="@+id/search_rel"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -56,10 +56,11 @@
                 android:id="@+id/operation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+               android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
                 android:layout_centerVertical="true"
-                android:textColor="@color/color3"
-                android:textSize="15sp"
+                android:textColor="@color/color9"
+                android:textSize="13sp"
                 />
         </RelativeLayout>
 

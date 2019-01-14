@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/color9"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/info_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shap_layout">
+
+
+        <RelativeLayout
+            android:id="@+id/info_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="20dp">
+
+
+            <TextView
+                android:id="@+id/tvdialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:lineSpacingExtra="5dp"
+                android:text="壕礼一：邀请好友报名成功，TA上课你得课时。\n\n壕礼二：推荐1人签约成功，可选1次礼品，多荐多得。"
+                android:textColor="@color/color9"
+                android:textSize="11sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/info_rel"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@color/colore1" />
+
+            <ImageView
+                android:id="@+id/image_frd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                android:layout_toLeftOf="@+id/line"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_me_gif_info_msg_bg" />
+
+
+            <ImageView
+                android:id="@+id/image_wechat"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@+id/line"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_me_gif_info_msg_bg" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_me_gif_info_msg_bg" />
+
+    <ImageView
+        android:id="@+id/colse_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_me_gif_close_bg" />
+
+</RelativeLayout>

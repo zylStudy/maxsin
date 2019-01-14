@@ -79,12 +79,13 @@ public class ActivityDetailsActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        id = getIntent().getExtras().getString("id");
+
         return R.layout.activity_details;
     }
 
     @Override
     protected void initView() {
+        id = getIntent().getExtras().getString("id");
         showTitleAndBack("活动详情");
         imageViewList.add(image1);
         imageViewList.add(image2);

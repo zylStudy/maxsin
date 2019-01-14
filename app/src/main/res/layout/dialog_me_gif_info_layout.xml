@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/color9"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/info_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+       android:layout_below="@+id/tv"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shap_layout">
+
+
+        <RelativeLayout
+            android:id="@+id/info_rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="20dp">
+
+
+            <TextView
+                android:id="@+id/tvdialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:lineSpacingExtra="5dp"
+
+                android:text="1、被推荐的新用户输入手机号，即可获赠一节海归导师为你量身定制留学指导课（仅限新人兑换）有效期1年。\n2、您推荐的新用户签约作品集辅导，您即可获得1节课时，可用于预约各科系老师获得专业指导交流机会。\n3、2019年1月31日前，推荐好友报名成功，教务老师会联系你领取礼品。\n4、您推荐的新用户同一手机设备、同一手机号码仅可领取一次。\n5、您邀请好友所获赠的课时，仅限本人使用，不得用于商业牟利。\n6、若毕业课时未兑换，可以联系教务老师折现，或者兑换京东购物卡。"
+                android:textColor="@color/color9"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="100dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_me_gif_info_msg_bg"/>
+
+    <ImageView
+        android:id="@+id/colse_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/info_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_me_gif_close_bg" />
+
+</RelativeLayout>

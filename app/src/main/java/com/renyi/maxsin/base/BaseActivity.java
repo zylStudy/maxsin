@@ -48,7 +48,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadData();
         setOnClickListeners();
 
+//        for (double i = 1; i <Double.MAX_VALUE ; i++) {
+//            if (i == 11.13) {
+//                System.out.println("Happy Birthday!Forever eighteen years old !");
+//            }else{
+//                System.out.println("Happy every day!");
+//            }
+//        }
+
+
     }
+
     protected void initIncludeView() {
 
         RelativeLayout contentView = (RelativeLayout) LayoutInflater.from(this).inflate(getLayoutId(), null);
@@ -97,7 +107,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    public void setSearchBtColors(int colors,int size) {
+    public void setSearchBtColors(int colors, int size) {
         operationTv.setTextColor(ContextCompat.getColor(this, colors));
         operationTv.setTextSize(size);
     }

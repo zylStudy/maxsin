@@ -18,6 +18,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.Basefragment;
 import com.renyi.maxsin.module.Study.StudyActivity;
+import com.renyi.maxsin.module.gift.ReceiveGiftActivity;
 import com.renyi.maxsin.module.login.ResultBean;
 import com.renyi.maxsin.net.Api;
 import com.renyi.maxsin.net.BaseCallback;
@@ -43,6 +44,8 @@ public class MeFragment extends Basefragment {
     ImageView headImageView;
     @BindView(R.id.iv_show)
     ImageView ivShow;
+    @BindView(R.id.apply_imageview)
+    ImageView applyImageview;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.study_rel)
@@ -122,6 +125,15 @@ public class MeFragment extends Basefragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MyReleaseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //进入申请领取奖品界面
+        applyImageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ReceiveGiftActivity.class);
                 startActivity(intent);
             }
         });
