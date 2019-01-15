@@ -310,7 +310,8 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
 
-        <activity android:name=".module.gift.ReceiveGiftActivity"></activity>
+        <activity android:name=".module.gift.ReceiveGiftActivity" />
+        <activity android:name=".module.me.ReceiveGiftFriendsListActivity"></activity>
     </application>
 
 </manifest>

@@ -11,5 +11,5 @@
     <dimen name="percent_text_size">22sp</dimen>
     <dimen name="round_width_default">6dp</dimen>
     <dimen name="rect_round_default">1dp</dimen>
-    <dimen name="horizontal_corner">0dp</dimen>
+    <dimen name="horizontal_corner">6dp</dimen>
 </resources>

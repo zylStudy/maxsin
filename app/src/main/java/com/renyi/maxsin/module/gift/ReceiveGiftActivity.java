@@ -16,6 +16,7 @@ import com.renyi.maxsin.R;
 import com.renyi.maxsin.base.BaseActivity;
 import com.renyi.maxsin.module.me.ClickListener;
 import com.renyi.maxsin.module.me.MySeettingActivity;
+import com.renyi.maxsin.module.me.ReceiveGiftFriendsListActivity;
 import com.renyi.maxsin.module.release.ClipCoverImageActivity;
 import com.renyi.maxsin.utils.SPUtils;
 
@@ -34,9 +35,10 @@ public class ReceiveGiftActivity extends BaseActivity {
     ImageView btimage05;
     @BindView(R.id.layout03)
     RelativeLayout layout03;
-    private Dialog dialog,dialogSend;
+    private Dialog dialog, dialogSend;
     @BindView(R.id.imageshare)
     ImageView imageshare;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_receive_gift;
@@ -48,10 +50,11 @@ public class ReceiveGiftActivity extends BaseActivity {
         showOrHideSearchBt(true, "我的邀请记录");
         setclickListener(new ClickListener() {
             @Override
-            public void getClickListener() {//dialog_me_gif_info_layout.xml
-                finish();
-//                Intent intent = new Intent();
-//                intent.setClass(ReceiveGiftActivity.this, ReceiveGiftActivity.class);
+            public void getClickListener() {
+
+                Intent intent = new Intent();
+                intent.setClass(ReceiveGiftActivity.this, ReceiveGiftFriendsListActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -109,7 +112,7 @@ public class ReceiveGiftActivity extends BaseActivity {
         layout03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//活动规则
+                //活动规则
                 if (!dialog.isShowing()) {
                     dialog.show();
                 }
@@ -121,6 +124,29 @@ public class ReceiveGiftActivity extends BaseActivity {
         dialogSend = new Dialog(ReceiveGiftActivity.this, R.style.MyDialogStyle);
         dialogSend.setContentView(R.layout.dialog_me_gif_send_layout);
         ImageView colse_image = dialogSend.findViewById(R.id.colse_image);
+        RelativeLayout werel = dialogSend.findViewById(R.id.werel);
+        RelativeLayout wechatrel = dialogSend.findViewById(R.id.wechatrel);
+
+        werel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogSend.isShowing()) {
+                    dialogSend.dismiss();
+                }
+
+            }
+        });
+
+        wechatrel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogSend.isShowing()) {
+                    dialogSend.dismiss();
+                }
+
+            }
+        });
+
 
         colse_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +159,7 @@ public class ReceiveGiftActivity extends BaseActivity {
         });
 
     }
+
     private void dialogInfo() {
         dialog = new Dialog(ReceiveGiftActivity.this, R.style.MyDialogStyle);
         dialog.setContentView(R.layout.dialog_me_gif_info_layout);

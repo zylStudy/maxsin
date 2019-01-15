@@ -40,7 +40,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:lineSpacingExtra="5dp"
                 android:text="壕礼一：邀请好友报名成功，TA上课你得课时。\n\n壕礼二：推荐1人签约成功，可选1次礼品，多荐多得。"
                 android:textColor="@color/color9"
                 android:textSize="11sp" />
@@ -63,26 +62,61 @@
                 android:layout_centerVertical="true"
                 android:background="@color/colore1" />
 
-            <ImageView
-                android:id="@+id/image_frd"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <RelativeLayout
+                android:id="@+id/wechatrel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="50dp"
-                android:layout_toLeftOf="@+id/line"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/ic_me_gif_info_msg_bg" />
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/line">
 
+                <ImageView
+                    android:id="@+id/image_wechat"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_me_gif_wechat_bg" />
 
-            <ImageView
-                android:id="@+id/image_wechat"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image_wechat"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="微信朋友圈"
+                    android:textColor="@color/color9"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/werel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="50dp"
-                android:layout_toRightOf="@+id/line"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/ic_me_gif_info_msg_bg" />
+                android:layout_marginRight="25dp"
+                android:layout_toLeftOf="@+id/line">
+
+                <ImageView
+                    android:id="@+id/image_frd"
+                    android:layout_width="29dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_me_gif_wec_bg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image_frd"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:text="微信好友"
+                    android:textColor="@color/color9"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
 
         </RelativeLayout>
     </RelativeLayout>
@@ -95,7 +129,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_me_gif_info_msg_bg" />
+        android:src="@mipmap/ic_me_gif_take_bg" />
 
     <ImageView
         android:id="@+id/colse_image"
