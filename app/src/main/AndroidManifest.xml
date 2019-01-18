@@ -311,7 +311,8 @@
         <!-- </receiver> -->
 
         <activity android:name=".module.gift.ReceiveGiftActivity" />
-        <activity android:name=".module.me.ReceiveGiftFriendsListActivity"></activity>
+        <activity android:name=".module.me.ReceiveGiftFriendsListActivity" />
+        <activity android:name=".module.gift.ReceiveGifLastActivity"></activity>
     </application>
 
 </manifest>
